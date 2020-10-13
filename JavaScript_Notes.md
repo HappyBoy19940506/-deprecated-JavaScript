@@ -1,3 +1,7 @@
 # JavaScript
-JSJSJSJSJSJSJS
+---
+
+## JS基础语法
+
+
 
