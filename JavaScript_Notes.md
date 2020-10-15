@@ -221,7 +221,7 @@
   > //1
   > 
   > ///说白了一句话，就下面2个点。
-  > /// +号(表达式里只有+号) 和 string 同时存在时候，触发 拼接特效，会把 ➕号左右的东西全都拼起来
+  > /// +号(表达式里只有+号) 和 string（只要出现哪怕一个） 同时存在时候，触发 拼接特效，会把 ➕号左右的东西全都拼起来
   > ///别的时候，看看能不能转成全部都是数字，如果不行，一定是 NaN
   > 
   > ```
@@ -311,6 +311,13 @@
   >
   > ​	--
 
+  > ```js
+  > parseInt(  )；
+  > //取整函数
+  > ```
+  >
+  > 
+
 + 赋值运算符
 
   + 基本赋值运算符
@@ -370,3 +377,145 @@
 
   + 分析表达式时，表达式一定有值
   + 分析表达式时，表达式一定有功能
+
+----
+
+## 强制数据类型转换
+
++ number () 其他数据类型强制转换成数字值。
+
+  ```js
+  number(100);
+  //100
+  number('100');
+  //100
+  number('100asasasa');
+  //NaN
+  ```
+
+  
+
++ boolean() 其他数据类型强制转换成布尔值。
+
+  > ```js
+  > boolean(-100); 
+  > //true
+  > boolean(100);
+  > //true
+  > boolean(0);
+  > //false
+  > // 只有0是false。
+  > boolean(infitnity);
+  > //true
+  > boolean('infitnity');
+  > //true
+  > boolean(' ');
+  > // false
+  > //只有空字符是 false;
+  > boolean(null);
+  > //false
+  > boolean(NaN);
+  > //false
+  > boolean(undefined);
+  > //false
+  > ```
+  >
+  > 
+
++ parseInt()
+
+  ```js
+  parseInt(100);
+  //100
+  parseInt('100.1');
+  //100
+  parseInt('100aaa');
+  //100
+  parseInt('10b0aaa');
+  //10
+  parseInt('c10b0aaa');
+  //NaN
+  
+  // 还可以用来 十进制转换
+  
+  
+  parseInt(string1 , 2);
+  //string1 是 二进制，转换为10进制。
+  parseInt(string2 , 8);
+  //string2 是 二进制，转换为8进制。
+  
+  //注意，此时 第一个参数必须是 字符串类型的哦~
+  ```
+
+  
+
++ parseFloat()
+
+```js
+parseFloat('3.14a');
+//3.14
+```
+
+----
+
+---
+
+## 关系运算符
+
++  一个等于号， 是用来赋值的。不是关系运算符，别搞错了。
+
++ 两个等于 或者 三个等于，才是用来判断的。
+
++ **最后运算的值 绝对是 布尔值。**
+
++ 不同数据类型之间的 关系运算符比较。
+
+  > ​	自动数据类型转换：
+  >
+  > ```js
+  > var result=( 1 > 5);
+  > //直接比较。 --> false; 
+  > var result=( 'A' < 'a');
+  > //比较 ASCII码值 -->true;
+  > var result=( 'worinima' < 'worinidie');
+  > //逐位比较 ASCII码值 -->如果比较出大小，就直接得结果。和长度无关。
+  > var result=( true == 1);
+  > var result=( '10' == 10);
+  > // true.
+  > //如果有一个数值，一定把所有都转换成数值。
+  > 
+  > var result=(10 == ’19a');
+  > // false
+  > // 不是纯数字的字符串 转成数值反正是NaN；
+  > //任何数字 和 NaN 做 ==  一定是 false，
+  > //任何数字 和 NaN 做 ！=  一定是 true
+  > //任何数字 包括他自己NaN，
+  > 
+  > 
+  > 
+  > 
+  > //说白了一句话。做关系运算符的时候，
+  > // 1.首先，结果肯定要么 true 要么false，他是一个值。 var a = 1 和var a( 1 == true)是一样的。
+  > // 如果 两边都是非纯数字，那就比较ASCII码
+  > // 如果 两边有一边是纯数字(包括 带字符串的纯数字，例如 '189'这样的，那就两边都转换成数值来比较，如果无法转化，比如'abcd'那就转化成NaN，和NaN比较。
+  > // 因此， NaN ==  NaN 会判断成 False
+  >             
+  >   
+  > 
+  > ```
+  >
+  > ```js
+  > 因此要注意一些特殊情况：
+  > null == undefined ---> true;
+  > 'NaN' == NaN --->false;
+  > NaN == NaN ---> false;
+  > undefined == 0; --->false;
+  > null == 0; ---> false;
+  > '100' == 100 ---> true;
+  > '100' === 100  ---> false;
+  > true == 2 ---> false;
+  > true == 1---> true;
+  > false == 0 ---> true;
+  > ```
+  >
+  > 
