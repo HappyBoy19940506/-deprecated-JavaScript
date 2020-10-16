@@ -80,3 +80,38 @@ alert(1 + false);
 // var result = ('10' < 11);
 // alert(result);
 // // true
+/* alert(! '');
+// true
+alert(!'ss');
+//false
+alert(!0);
+//true;
+alert(!10);
+//false;
+alert(!NaN);
+//true;
+alert(!null);
+//true;
+alert(!undefined);
+//true;
+alert(!Infinity);
+//false; */
+
+/* alert(!'0');
+//false;
+
+alert(Boolean('0'));
+//true; */
+
+alert(Number(NaN));
+//NaN
+alert(Number(null));
+// 0
+alert(Number(undefined));
+// NaN
+alert(Boolean(NaN));
+// false 
+alert(Boolean(null));
+//false
+alert(Boolean(undefined));
+//false;

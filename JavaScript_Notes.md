@@ -382,41 +382,41 @@
 
 ## 强制数据类型转换
 
-+ number () 其他数据类型强制转换成数字值。
++ Number () 其他数据类型强制转换成数字值。
 
   ```js
-  number(100);
+  Number(100);
   //100
-  number('100');
+  Number('100');
   //100
-  number('100asasasa');
+  Number('100asasasa');
   //NaN
   ```
 
   
 
-+ boolean() 其他数据类型强制转换成布尔值。
++ Boolean() 其他数据类型强制转换成布尔值。
 
   > ```js
-  > boolean(-100); 
+  > Boolean(-100); 
   > //true
-  > boolean(100);
+  > Boolean(100);
   > //true
-  > boolean(0);
+  > Boolean(0);
   > //false
   > // 只有0是false。
-  > boolean(infitnity);
+  > Boolean(infitnity);
   > //true
-  > boolean('infitnity');
+  > Boolean('infitnity');
   > //true
-  > boolean(' ');
+  > Boolean(' ');
   > // false
   > //只有空字符是 false;
-  > boolean(null);
+  > Boolean(null);
   > //false
-  > boolean(NaN);
+  > Boolean(NaN);
   > //false
-  > boolean(undefined);
+  > Boolean(undefined);
   > //false
   > ```
   >
@@ -439,9 +439,9 @@
   // 还可以用来 十进制转换
   
   
-  parseInt(string1 , 2);
+  parseInt('string1' , 2);
   //string1 是 二进制，转换为10进制。
-  parseInt(string2 , 8);
+  parseInt('string2' , 8);
   //string2 是 二进制，转换为8进制。
   
   //注意，此时 第一个参数必须是 字符串类型的哦~
@@ -516,6 +516,99 @@ parseFloat('3.14a');
   > true == 2 ---> false;
   > true == 1---> true;
   > false == 0 ---> true;
+  > NaN属于一种混沌状态不确定值的 number类型。
+  > 
+  > 
+  > Number(null) ---> 0 ;
+  > Number(undefined) --->NaN;
+  > null == undefined ---> true;
   > ```
   >
   > 
+
+----
+
+## 逻辑运算符
+
++ 注意，这和 数学运算符、关系运算符不一样。它是 表达式之间的 运算符。用在表达式1 表达式2之间。
+
++ &&
+
+  > ​	exp1 && exp2 ;
+  >
+  > exp 1 exp2 都为真， 这个&&式子才成立。
+
++ ||
+
+  > ​	exp1 || exp2 ;
+  >
+  > exp 1 exp2 都为假， 这个&&式子就才为假，也就是只要一个是真，就是真。
+
++ ！ 
+
+  > ​	!表达式 
+  >
+  >  !exp ;
+  >
+  > 先将exp转化成布尔值， 再取反。
+  >
+  > ```js
+  > alert(! '');
+  > // true
+  > alert(!'ss');
+  > //false
+  > alert(!0);
+  > //true;
+  > alert(!10);
+  > //false;
+  > alert(!NaN);
+  > //true;
+  > alert(!null);
+  > //true;
+  > alert(!undefined);
+  > //true;
+  > alert(!Infinity);
+  > //false;
+  > 
+  > 
+  > alert(!'0');
+  > //false;
+  > 
+  > alert(Boolean('0'));
+  > //true;
+  > 
+  > //总之一句话：   先转化成布尔值 再取！
+  > //  NaN， null ， undefined , 0 他们取布尔值 都是 0，也就是 false；
+  > // 但是 ’0’ 取boolean（），不是0，是1.
+  > ```
+  >
+  > 
+
++  注意 短路操作：在 &&中，如果 exp1已经判为false了，那后面不管咋样都是无所谓了，直接出false结果。同理在 ||中，如果 exp1已true了，后面无所谓了，直接出true。
+
+  ```js
+  alert( 1 > 2 && num);
+  
+  //此时num没有初始化，如果直接写 alert（num）肯定会报错，但是因为 短路操作机制的存在，
+  //系统允许 1>2时，就已经判断是false，并且跳出 && 了
+  //所以不会运行后面的 num;
+  // 因此 最终 他alert显示为   false;
+  ```
+
++ ```js
+  alert(Number(NaN));
+  //NaN
+  alert(Number(null));
+  // 0
+  alert(Number(undefined));
+  // NaN
+  alert(Boolean(NaN));
+  // false 
+  alert(Boolean(null));
+  //false
+  alert(Boolean(undefined));
+  //false;
+  ```
+
++ 
+
