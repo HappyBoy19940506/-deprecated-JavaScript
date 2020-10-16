@@ -141,9 +141,45 @@ alert(num1 + '+' + num2); */
 //     alert(num1+ 'bigger');
 // }
 
-var year = 1922;
-if((year % 400 == 0)||((year % 4 ==0 ) && (year % 100 !=0 ) )){
+/* var year = 1922;
+if((year % 400 == 0)||((year % 4 == 0 ) && (year % 100 != 0 ) )){
     alert('run nian');
 }else{
     alert('bu shi run nian');
+} */
+
+/* 
+var num = 6;
+
+if(num < 1){
+    alert('y is' + num);
+    if( num > 85){
+        alert('1000');
+    }else if( num <= 85){
+        alert('1122');
+    }else{
+        alert('sb');
+    }
+}else if( num < 10 && num >= 1){
+    alert('y is' + num);
+}else{
+    alert('y is ' + num);
+} */
+
+var grade = 'C';
+
+switch(grade){
+    case 'A':
+        alert('80-100');
+        break;
+    case 'B':
+        alert('80-100');
+        break;
+    case 'C':
+        alert('801-1010');
+        break;
+    default:  
+        alert('worinima');
+        break;        
+
 }
