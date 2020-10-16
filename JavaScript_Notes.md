@@ -617,5 +617,55 @@ parseFloat('3.14a');
 ## 流程控制语句
 
 + 顺序结构
+
+  ```js
+  var num1 =	20;
+  var num2 =	30;
+  alert(num1 + '+' + num2);
+  var temp = num1;
+  num1 = num2;
+  //num1 --> 30;
+  num2 = temp;
+  //num2 -->  20;
+  alert(num1 + '+' + num2);
+  
+  //交换两个数的值，需要引入第三个量。
+  ```
+
+  
+
 + 分支结构/选择结构/条件结构
+
+  + 单分支结构
+
+    ```js
+    if ( 条件语句为 true){
+        执行该语句;
+        }
+    /////
+    var num = 8;
+    if ( num % 2 == 0){
+      alert(num+ 'is an even');
+    }
+    ```
+
+  + 双分支语句
+
+    ```js
+    if ( 条件语句为 true  ){
+          执行该语句;
+        }else{
+        否则执行该语句;
+    }
+    
+    var num = 7;
+    if (num % 2 != 0){
+      alert('this is an even');
+    }else{
+      alert('this is an odd');
+    }
+    ```
+
+    
+
 + 循环结构  
