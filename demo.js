@@ -116,7 +116,7 @@ alert(Boolean(null));
 alert(Boolean(undefined));
 //false; */
 
-var num1 =	20;
+/* var num1 =	20;
 var num2 =	30;
 alert(num1 + '+' + num2);
 var temp = num1;
@@ -125,9 +125,25 @@ num1 = num2;
 //num1 --> 30; num2->30;
 num2 = temp;
 //num2 -->  20; temp --->20;
-alert(num1 + '+' + num2);
+alert(num1 + '+' + num2); */
 
 //交换两个数的值，需要引入第三个量。
 // var number1 = 1;
 // var number2 = 2;
 // alert('this number' + 'is' + number1 + 'and' +)
+
+// var num1 = 123;
+// var num2 = 456;
+
+// if (num1 < num2){
+//     alert(num2+ 'bigger');
+// }else{
+//     alert(num1+ 'bigger');
+// }
+
+var year = 1922;
+if((year % 400 == 0)||((year % 4 ==0 ) && (year % 100 !=0 ) )){
+    alert('run nian');
+}else{
+    alert('bu shi run nian');
+}
