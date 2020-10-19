@@ -54,7 +54,8 @@ alert(1 + false);
 //  var she = 5 / 0.5  * (hua_t - 32);
 
 //  alert(she);
-
+//
+//
 
 // var num = 978;
 // var baiwei = parseInt(num / 100);
