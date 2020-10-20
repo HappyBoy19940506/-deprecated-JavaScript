@@ -592,7 +592,7 @@ parseFloat('3.14a');
     //此时num没有初始化，如果直接写 alert（num）肯定会报错，但是因为 短路操作机制的存在，
     //系统允许 1>2时，就已经判断是false，并且跳出 && 了
     //所以不会运行后面的 num;
-    // 因此 最终 他alert显示为   false;
+    // 因此 最终 他alert显示为   false; 而不是 undefined；  
     ```
 
 + ```js
@@ -756,6 +756,24 @@ parseFloat('3.14a');
         相当于一个 简写版的 if else
         ```
 
+    + switch结构中省略break简写:
+
+        ```js
+        var month = 8;
+        switch(month){
+            case 1:
+            case 2:
+            case 3:
+            case 4:
+                alert('worinima');
+                break;
+            default:
+                alert('wocaonidie');
+                break;
+        ///case 1,2,3,4合并到一起写。
+            
+        ```
+
         
 
     
@@ -764,4 +782,4 @@ parseFloat('3.14a');
 
 + 循环结构  
 
-+ 123
++ 1234

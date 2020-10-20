@@ -167,7 +167,7 @@ if(num < 1){
     alert('y is ' + num);
 } */
 
-var grade = 'C';
+/* var grade = 'C';
 
 switch(grade){
     case 'A':
@@ -182,5 +182,24 @@ switch(grade){
     default:  
         alert('worinima');
         break;        
+
+} */
+
+
+var month = 8;
+switch(month){
+    case 1:
+    case 2:
+    case 3:
+    case 4:
+        alert('worinima');
+        break;
+    default:
+        alert('wocaonidie');
+        break;
+
+    
+
+
 
 }
