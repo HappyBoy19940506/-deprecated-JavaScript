@@ -172,9 +172,9 @@
     > 	+  %(取余)
     >  + 自动数据类型转换( 加号➕）：
     >     	+ 纯数字 直接算
-    >     	+ 数字 + true/ false  /null 转换成 1/ 0 / 空  算
-    >     	+ 数字+ NaN / undefined = NaN
-    >     	+ string 和 +号 ：字符串拼接。连 NaN也可以拼。'haha'+NaN= 'hahaNaN'
+    >        	+ 数字 + true/ false  /null 转换成 1/ 0 / 空  算
+    >           	+ 数字+ NaN / undefined = NaN
+    >              	+ string 和 +号 ：字符串拼接。连 NaN也可以拼。'haha'+NaN= 'hahaNaN'
     > + 自动数据类型转换( 非 加号）：
     >     + 纯数字，直接算
     >     + 数字和string，如果string是数字，可以当做数字算
@@ -782,4 +782,4 @@ parseFloat('3.14a');
 
 + 循环结构  
 
-+ 123456789
++ 1234567891011
