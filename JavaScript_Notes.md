@@ -939,6 +939,42 @@ parseFloat('3.14a');
             }
             ```
 
-        + 
+    + 死循环：
 
-+ 
+        + 循环条件永远成立：
+
+            + ```js
+                while(true或者1){
+                	execute
+                }
+                //
+                do{
+                  execute
+                }while(1);
+                //
+                for(;;){
+                  execute
+                }
+                ```
+
++ 循环嵌套
+
+    + ```js
+        打印三角形
+        *
+        **
+        ***
+        ****
+        *****
+          
+        for(var i = 1; i <= 5 ; i++){
+          //设置有几行；
+          for(var j=1; j <= i; j++){
+            //在每一行设置 打印几个*； 获取到此次循环中，i的值，然后j<=i;
+            document.write('*');
+          }   
+          document.write('</br>');
+        }
+        ```
+
+    + 

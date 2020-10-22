@@ -255,3 +255,10 @@ if(i % 2 == 0){
     i = i * (-1);
 }
 alert(i); */
+
+for(var i = 1; i <= 5 ; i++){
+    for(var j=1; j <= i+1; j++){
+      document.write('*');
+    }   
+    document.write('</br>');
+  }
