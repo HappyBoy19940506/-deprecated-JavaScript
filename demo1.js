@@ -256,9 +256,39 @@ if(i % 2 == 0){
 }
 alert(i); */
 
-for(var i = 1; i <= 5 ; i++){
-    for(var j=1; j <= i+1; j++){
-      document.write('*');
+/* for(var i = 1; i <= 5 ; i++){
+    for(var j=1; j <= i; j++){
+      document.write(j + '*' + i + '='+ (i*j) +'&nbsp');
     }   
     document.write('</br>');
-  }
+  } */
+
+  
+/* 
+for(var i = 1;i <= 5;i++){
+    for(var k =1; k <= (5-i);k++){
+        document.write('😃');
+    }
+    for(var j = 1;j <= i;j++){
+        document.write('*');
+    }
+    document.write('</br>');
+} */
+
+
+/* var num = 17;
+var zhishu = true;
+for(i = 2;i < num;i++){
+    if(num % i == 0){
+        zhishu = false;
+        break;
+    }
+/*     else{ 测下一个 i} */    
+/* }
+
+if(zhishu == true){
+    alert('zhishu');
+}else{
+    alert('heshu');
+}
+ */ 

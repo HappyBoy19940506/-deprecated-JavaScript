@@ -977,4 +977,84 @@ parseFloat('3.14a');
         }
         ```
 
+    + ```js
+        打印三角形
+        
+        for(var i = 1;i <= 5;i++){
+            for(var k =1; k <= (5-i);k++){
+                document.write('😃');
+            }
+            for(var j = 1;j <= i;j++){
+                document.write('*');
+            }
+            document.write('</br>');
+        } 
+        ```
+
+    + ```js
+        9*9乘法表
+        
+        /* for(var i = 1; i <= 5 ; i++){
+            for(var j=1; j <= i; j++){
+              document.write(j + '*' + i + '='+ (i*j) +'&nbsp');
+            }   
+            document.write('</br>');
+          } */
+        
+        ```
+
+        
+
+    + ```js
+        判断质数还是合数
+        var num = 17;
+        var zhishu = true;
+        for(i = 2;i < num;i++){
+            if(num % i == 0){
+                zhishu = false;
+                break;
+            }
+        /*     else{ 测下一个 i} */    
+        }
+        
+        if(zhishu == true){
+            alert('zhishu');
+        }else{
+            alert('heshu');
+        }
+        
+        ```
+
+    + ```js
+        水仙花数： 三位数 = 个位 十位 百位上的数字的立方之和。
+        //思路一： 每个位设一个var
+        //肯定这个复杂度要高的多。不推荐
+        
+        for(var i = 0;i <= 9;i++){
+            for(var j = 0;j <= 9;j++){
+                for(var k = 1;k <= 9;k++){
+                    var temp = 100 * k + 10 * j + i;
+                    if(temp == Math.pow(k,3) + Math.pow(i,3) + Math.pow(j,3)){
+                        document.write(temp +'='+i+'*'+j+'*'+k+ '</br>');
+                    }
+                    // if(temp = i*i*i + k*k*k + j*j*j){
+                    //      document.write(temp +'='+i+'*'+j+'*'+k+ '</br>');
+                    //  } 
+                    //  document.write(temp+ '</br>');
+                }
+            }
+        }
+        
+        
+        //思路二： 直接三位数设为var
+         for( var i = 100; i < 1000; i++){
+             var a = i % 10;
+             var b = parseInt(i / 10) % 10;
+             var c = parseInt(i/100);
+             if(i == Math.pow(a,3) + Math.pow(b,3) + Math.pow(c,3)){
+                 document.write(i+ '</br>');
+             }
+         }
+        ```
+
     + 
