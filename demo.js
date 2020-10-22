@@ -186,7 +186,7 @@ switch(grade){
 } */
 
 
-var month = 8;
+/* var month = 8;
 switch(month){
     case 1:
     case 2:
@@ -197,9 +197,61 @@ switch(month){
     default:
         alert('wocaonidie');
         break;
-
-    
-
+} */
 
 
+
+// var i = 1;
+// var sum = 0;
+
+// while(i < 101){
+//     sum = sum + i;
+//     i++;
+// }
+
+// alert(sum);
+
+/*  */
+/* var i = 1;
+var sum = 0;
+while(i < 101){
+    if(i % 2 == 0){
+        sum = sum - (1 / i);
+    }else{       
+        sum = sum + (1 / i);
+    }  
+    i++;
 }
+alert(sum); */
+/*  */
+/* var i = 1;
+var sum = 0;
+while(i < 101){
+    if(i % 2 == 0){
+        i = i * 1;    
+    }else{
+        i = i * (-1);
+    }
+    document.write(i);
+    i++;
+}  */
+// alert(sum);
+/*  */
+/* var i = 1;
+var  sum = 0;
+var flag = 1;
+while( i < 101){
+    sum = sum +  flag * (1/i);
+    i++;
+    flag = flag * (-1);
+}
+alert(sum); */
+/*  */
+
+/* var i = 3;
+if(i % 2 == 0){
+    i = i * 1;    
+}else{
+    i = i * (-1);
+}
+alert(i); */

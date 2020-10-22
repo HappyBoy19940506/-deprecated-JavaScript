@@ -764,16 +764,22 @@ parseFloat('3.14a');
             case 1:
             case 2:
             case 3:
+            			if(month % 4 == 0){
+                    alert('shabi');
+                 	  }else{
+                      alert('28');
+                    }
+                 		break;
             case 4:
                 alert('worinima');
                 break;
-            default:
+        default:
                 alert('wocaonidie');
                 break;
         ///case 1,2,3,4合并到一起写。
             
         ```
-
+        
         
 
     
@@ -781,5 +787,95 @@ parseFloat('3.14a');
     
 
 + 循环结构  
+
+    + while
+
+        + ```js
+            while(循环条件){
+            	循环语句；
+            }
+            //如果循环条件成立时就执行循环语句；
+            
+            ```
+
+        + ```js
+            var i = 0; //计数
+            while( i < 10){
+              i++;
+              document.write('hello');
+            }
+            //打印10次。
+            ```
+
+        + ```js
+            //循环的步骤：
+            1. 确定循环次数 var i = 0;  while（i < 次数+1）
+            2. 确定每一次循环的要执行的代码;
+            //但是不能 在while 条件里面 写 永远为true的 条件。不然死循环，一直循环下去。
+            ```
+
+        + ```js
+            计算1 到 100的和;
+            var i = 1;
+            var sum = 0;
+            
+            while(i < 101){
+                sum = sum + i;
+              // sum += i;
+                i++;
+            }
+            
+            alert(sum);
+            ```
+
+        + ```js
+            计算1/1-1/2+1/3-1/4+1/5 …… + 1/99 - 1/100
+            // 思路一：  while设置次数， if判断奇数偶数，偶数就把sum+ （-1）*1/i；
+            var i = 1;
+            var sum = 0;
+            while(i < 101){
+                if(i % 2 == 0){
+                    sum = sum - (1 / i);
+                }else{       
+                    sum = sum + (1 / i);
+                }  
+                i++;
+            }
+            alert(sum);
+            
+            
+            //思路二： 多设置一个var flag=1,跟着循环次数，每次*-1,这样在第2，4，6，8...次时乘以 1/i， 这样 1/i在偶数位置的时候就为负数。
+            var i = 1;
+            var  sum = 0;
+            var flag = 1;
+            while( i < 101){
+                sum = sum +  flag * (1/i);
+                i++;
+                flag = flag * (-1);
+            }
+            alert(sum);
+            
+            
+            //错误思路:  仔细看，在出if判断的时候，i的值已经变了，比如如果是负数，此时已经变成-7了，你再去i++,显然 -7后面+1变成-6，而我们要的是8.
+            var i = 1;
+            var sum = 0;
+            while(i < 101){
+                if(i % 2 == 0){
+                    i = i * 1;    
+                }else{
+                    i = i * (-1);
+                }
+                document.write(i);
+                i++;
+            } 
+            ```
+
+        + 
+
+        + 
+
+    + do_while
+
+    + for
 
 + 
