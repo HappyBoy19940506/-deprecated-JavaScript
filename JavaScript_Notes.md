@@ -460,7 +460,7 @@ parseFloat('3.14a');
 
 ---
 
-## 关系运算符
+## 关系运算符< > ==
 
 +  一个等于号， 是用来赋值的。不是关系运算符，别搞错了。
 
@@ -528,7 +528,7 @@ parseFloat('3.14a');
 
 ----
 
-## 逻辑运算符
+## 逻辑运算符&&||!
 
 + 注意，这和 数学运算符、关系运算符不一样。它是 表达式之间的 运算符。用在表达式1 表达式2之间。
 
@@ -633,7 +633,7 @@ parseFloat('3.14a');
     ```
 
     
-
+### if - else
 + 分支结构/选择结构/条件结构
 
     + 单分支结构
@@ -699,93 +699,108 @@ parseFloat('3.14a');
             alert('y is ' + num);
         }
         ```
+### switch
 
-    + switch的多分支语句
+- switch的多分支语句
 
-        ```js
-        switch(exp1){
-            case 常量1:
-                执行语句1;
-                break;
-            case 常量2:
-                执行语句2;
-                break;
-            case 常量3:
-                执行语句3;
-                break;
-            ...
-            default:
-                执行语句;
-            		break;
-        }
-        //这里的exp1不是布尔值，而是一个没计算的式子
-        // case后面的常量就是 exp1可能的各种值
-        // 如果全都不满足，执行default
-        
-        var grade = 'C';
-        
-        switch(grade){
-            case 'A':
-                alert('80-100');
-                break;
-            case 'B':
-                alert('80-100');
-                break;
-            case 'C':
-                alert('801-1010');
-                break;
-            default:
-                alert('worinima');
-                break;        
-        
-        }
-        
-        
-        //也就是说， switch多用在 同一个条件，不同值的情况下。
-        //所以说，一定可以转换成if else
-        //但是else if 可以处理 多个 不同条件下的情况。
-        ///而且 switch中的条件 值的个数是固定的。
-        ```
+```js
++ switch的多分支语句
 
-    + 三目运算
-
-        ```js
-        exp1 ? exp2 : exp3
-        //意思就是， exp1如果为真，就执行exp2
-        //如果exp1为假，那就执行exp3.
-        相当于一个 简写版的 if else
-        ```
-
-    + switch结构中省略break简写:
-
-        ```js
-        var month = 8;
-        switch(month){
-            case 1:
-            case 2:
-            case 3:
-            			if(month % 4 == 0){
-                    alert('shabi');
-                 	  }else{
-                      alert('28');
-                    }
-                 		break;
-            case 4:
-                alert('worinima');
-                break;
+    switch(exp1){
+        case 常量1:
+            执行语句1;
+            break;
+        case 常量2:
+            执行语句2;
+            break;
+        case 常量3:
+            执行语句3;
+            break;
+        ...
         default:
-                alert('wocaonidie');
-                break;
-        ///case 1,2,3,4合并到一起写。
-            
-        ```
-        
-        
-
+            执行语句;
+        		break;
+    }
+    //这里的exp1不是布尔值，而是一个没计算的式子
+    // case后面的常量就是 exp1可能的各种值
+    // 如果全都不满足，执行default
     
-
+    var grade = 'C';
     
+    switch(grade){
+        case 'A':
+            alert('80-100');
+            break;
+        case 'B':
+            alert('80-100');
+            break;
+        case 'C':
+            alert('801-1010');
+            break;
+        default:
+            alert('worinima');
+            break;        
+    
+    }
+​        //也就是说， switch多用在 同一个条件，不同值的情况下。
+​        //所以说，一定可以转换成if else
+​        //但是else if 可以处理 多个 不同条件下的情况。
+​        ///而且 switch中的条件 值的个数是固定的。  
+```
 
+
+   
+
+### exp1 ? exp 2 :exp3
+
++ 三目运算
+
+```js
+
+    exp1 ? exp2 : exp3
+    //意思就是， exp1如果为真，就执行exp2
+    //如果exp1为假，那就执行exp3.
+    相当于一个 简写版的 if else
+
+    常用例子：
+    简写一个 a和b的较小数：
+    var min = a <=b ? a : b;
+
+    // exp1 ? exp2 : exp3
+
+
+```
+
+​        
+
++ switch结构中省略break简写:
+  
+    ```js
+    var month = 8;
+    switch(month){
+        case 1:
+        case 2:
+        case 3:
+        			if(month % 4 == 0){
+                alert('shabi');
+             	  }else{
+                  alert('28');
+                }
+             		break;
+        case 4:
+            alert('worinima');
+            break;
+    default:
+            alert('wocaonidie');
+            break;
+    ///case 1,2,3,4合并到一起写。
+        
+    ```
+
+​    
+
+
+### while loop
 + 循环结构  
 
     + while
@@ -872,7 +887,7 @@ parseFloat('3.14a');
             ```
 
         + 
-
+    ### do_while loop
     + do_while
 
         + ```js
@@ -903,7 +918,7 @@ parseFloat('3.14a');
             ```
 
         + 
-
+    ### for loop
     + for
 
         + ```js
@@ -938,12 +953,12 @@ parseFloat('3.14a');
               }
             }
             ```
-
+    
     + 死循环：
 
         + 循环条件永远成立：
 
-            + ```js
+             + ```js
                 while(true或者1){
                 	execute
                 }
@@ -956,7 +971,7 @@ parseFloat('3.14a');
                   execute
                 }
                 ```
-
+### nested for{} loop
 + 循环嵌套
 
     + ```js
@@ -1057,4 +1072,43 @@ parseFloat('3.14a');
          }
         ```
 
-    + go
+    + ```js
+        输入两个数，求这两个数的最大公约数。
+        //思路一， 你的方法老是for for ，空间复杂度太高！
+         var a = 12;
+ var b = 6;
+         var num = 0;
+         for(var i = 1; i <= a;i++){
+            for(var j = 1; j <= b;j++){
+                if(i == j && (a % i == 0) && (b % j == 0) ){
+                    num =  i; 
+                }
+            }
+         }
+         document.write(num + '*');
+        
+         //思路二： 从2个数中的较小数开始判断，判断能不能被2个数整除，如果可以，直接出结果，如果不可以，减一之后继续判断。
+        
+        var a = 15;
+        var b = 75;
+        
+        /*if(a <= b){
+            var num = a;
+        }else{
+            num = b;
+        }*/
+        
+        var num = a <=b ? a : b;
+        
+        // document.write(num);
+        for(var i = num; i >= 1;i--){
+            if( a % i == 0 && b % i ==0){
+                document.write(i + '*');
+                break;
+            }
+        }
+        
+        
+        ```
+        
+    + 
