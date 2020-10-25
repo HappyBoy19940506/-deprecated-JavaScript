@@ -36,7 +36,7 @@
  } */
 
 
-
+/* 
 
  var a = 12;
  var b = 6;
@@ -69,3 +69,18 @@ for(var i = num; i >= 1;i--){
         break;
     }
 }
+ */
+
+
+ var n = 3;
+ var a = 2;
+
+ for(var i = 1; i <= 3; i++){
+     var sum = 0;
+     for(var j = (i-1); j = 0; j--){
+        var temp = a*(Math.pow(10,(i-1)))
+
+     }
+     
+
+ }
