@@ -79,8 +79,9 @@ for(var i = num; i >= 1;i--){
      var sum = 0;
      for(var j = (i-1); j = 0; j--){
         var temp = a*(Math.pow(10,(i-1)))
-
+        sum = sum + temp;
+       
      }
-     
+     document.write(sum+'</br>');
 
  }
