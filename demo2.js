@@ -72,16 +72,46 @@ for(var i = num; i >= 1;i--){
  */
 
 
- var n = 3;
- var a = 2;
+//  var n = 3;
+//  var a = 2;
 
- for(var i = 1; i <= 3; i++){
-     var sum = 0;
-     for(var j = (i-1); j = 0; j--){
-        var temp = a*(Math.pow(10,(i-1)))
-        sum = sum + temp;
+//  for(var i = 1; i <= 3; i++){
+//      var sum = 0;
+//      for(var j = (i-1); j = 0; j--){
+//         var temp = a*(Math.pow(10,(i-1)))
+//         sum = sum + temp;
        
-     }
-     document.write(sum+'</br>');
+//      }
+//      document.write(sum+'</br>');
 
- }
+//  }
+
+/* var n = 4;
+var a = 3;
+//output 2 22 222
+// n=1 --2
+// n=2 --22
+// n=3 ---222
+var sum = 0;
+var finalSum = 0;
+for(var i = 0; i <= (n-1); i++){
+    sum = a * Math.pow(10,i ) + sum;
+    // document.write(sum + '</br>');
+    finalSum += sum;
+    // document.write(finalSum + '</br>');
+}
+document.write(finalSum); */
+
+
+/* for(var i = 10000; i <= 99999; i++ ){
+    var a = i % 10; //ge wei;
+    var b = parseInt( (i % 100) / 10 ); // shiwei;
+    var c = parseInt((i % 10000) / 1000); // qian wei;
+    var d = parseInt(i / 10000); // wang wei;
+    // document.write(a + '*'+ b+ '*'+ c+ '*'+ d);
+    if( a == d && b == c){
+        document.write(i+'</br>');
+    }
+}
+
+ */

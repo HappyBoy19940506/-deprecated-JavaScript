@@ -1115,7 +1115,40 @@ parseFloat('3.14a');
         输入两个数n和a.
         比如 n为3 ， a 为2的话，输出 2+22+222
         比如 n为4 ， a 为3的话，输出 3+33+333+3333的值。
-        sss
+        
+        var n = 4;
+        var a = 3;
+        //output 2 22 222
+        // n=1 --2
+        // n=2 --22
+        // n=3 ---222
+        var sum = 0;
+        var finalSum = 0;
+        for(var i = 0; i <= (n-1); i++){
+            sum = a * Math.pow(10,i ) + sum;
+            // document.write(sum + '</br>');
+            finalSum += sum;
+            // document.write(finalSum + '</br>');
+        }
+        document.write(finalSum);
+        ```
+    
+    + ```js
+        五位数中，对称的数称为回文数。比如 12321，找出所有回文数。
+        for(var i = 10000; i <= 99999; i++ ){
+            var a = i % 10; //ge wei;
+            var b = parseInt( (i % 100) / 10 ); // shiwei;
+            var c = parseInt((i % 10000) / 1000); // qian wei;
+            var d = parseInt(i / 10000); // wang wei;
+            // document.write(a + '*'+ b+ '*'+ c+ '*'+ d);
+            if( a == d && b == c){
+                document.write(i+'</br>');
+            }
+        }
+        ```
+    
+    + ```js
+        ​```
         ```
     
     + 
