@@ -115,3 +115,44 @@ document.write(finalSum); */
 }
 
  */
+
+/* var year = 2020;
+var month = 8;
+var date = 2;
+//nian yue ri ;
+var sum = 0;
+switch(month){
+    case 1:
+        alert;
+    default:
+        alert('Input error');
+        break;
+
+
+} */
+
+var year=parseInt(prompt('输入年'));
+var month=parseInt(prompt('输入月'));
+var day=parseInt(prompt('输入日'));
+var allDays=0;//所有天数
+for (var i=1;i<month;i++){
+    if (i===1||i===3||i===5||i===7||i===8||i===10||i===12){
+        allDays+=31;
+    }
+    else if (i===4||i===6||i===9||i===11){
+        allDays+=30;
+    }
+    else{
+        if (year%4===0&&year%100!==0||year%400===0){
+            allDays+=29;
+        }
+        else {
+            allDays+=28;
+        }
+    }
+}
+allDays=day+allDays;
+document.write(allDays)
+
+
+

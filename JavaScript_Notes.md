@@ -1148,8 +1148,40 @@ parseFloat('3.14a');
         ```
     
     + ```js
-        ​```
+        ** switch配合break**
+        题目： 输入 年、月、日，计算某一天是该年的第几天？
+        	var year=parseInt(prompt('输入年'));
+            var month=parseInt(prompt('输入月'));
+            var day=parseInt(prompt('输入日'));
+            var allDays=0;//所有天数
+            for (var i=1;i<month;i++){
+                if (i===1||i===3||i===5||i===7||i===8||i===10||i===12){
+                    allDays+=31;
+                }
+                else if (i===4||i===6||i===9||i===11){
+                    allDays+=30;
+                }
+                else{
+                    if (year%4===0&&year%100!==0||year%400===0){
+                        allDays+=29;
+                    }
+                    else {
+                        allDays+=28;
+                    }
+                }
+            }
+            allDays=day+allDays;
+            document.write(allDays)
+        
+        
         ```
     
-    + 
+    ----
+
+
+
+## function
+
+1. function申明：
+    - 
 
