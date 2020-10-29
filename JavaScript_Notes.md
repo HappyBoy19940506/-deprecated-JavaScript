@@ -1183,5 +1183,102 @@ parseFloat('3.14a');
 ## function
 
 1. function申明：
-    - 
+
+    - ```js
+        	function name ( ){
+        
+        		code;
+        
+        }
+        //无参数无返回值
+        
+        	function name (arg1,arg2... ){
+        
+        		code;
+        
+        }
+        //有参数无返回值
+        	function name (arg1,arg2... ){
+        
+        		code;
+        	  return  表达式；
+        }
+        //有参数有返回值
+        //如果不写return，那就是没有返回值，你做 var a = function（agr1）的时候 会显示 underfind。a取不到任何值。
+        //一个function不一定只能写一个return，但是遇到return一定会终止运行function。
+        ```
+
+2. function调用：
+
+    ```js
+    function_name();//
+    function_name(arg1,arg2...); //
+    ```
+
+3. 函数封装的步骤：
+
+    ```js
+    1.找出不确定的值，不确定的值就是形参。灵活根据有没有不确定的值（如果有，那就是形参），以及值要不要用别的地方来决定（如果其中有值要提出来，要那就是return）， 用三种之中的哪种function。
+    2.不确定的值写成形参。
+    3.函数名和形参名都要遵循semantic;
+    4.注意:不能将函数的运行的处理结果写在函数里面，意思就是 封装函数运行的结果不要显示成alert.doc.write这种。 也就是说，应该用 var a = fuc(arg1); 然后再alert(a);  这样。
+    ```
+
+    
+
+----
+
+## arguments
+
+1. 每个function内部默认都有一个内置的函数 arguments、
+
+2. arguments其实是一个数组，用来存储输入的实际参数.
+
+3. ```js
+    function show(1,2,3,4){
+      alert(arguments.length);
+      //output 4. 
+      alert(arguments[2]);
+      //从0开始，所以2号位置上是 3;
+    }
+    ```
+
+4. ```js
+    知道这个有什么用？
+    处理极端情况： 比如 要你求输入任意个数的和，我不确定参数的个数.只知道一定要写形参。
+    所以function sum（）的（）里我不知道写什么。
+    遇到这种情况可以这么写。
+    
+    function sum(){
+      var result = 0;
+      for(var i = 0;i < arguments.length;i++){
+        result += arguments[i];
+      }
+      return result;
+    }
+    
+    //调用：
+    var  num = sum (19,20,22,22);
+    alert(num);
+    ```
+
+
+
+
+
+
+
+----
+
+## 作用域
+
+1. 内存管理机制：
+
+    > ​	调用函数要占用内存，每调用一次完之后 ，会回收内存。
+
+2. 直接在内存里面申明的变量，叫做```全局变量```，它永远不变化的。不会因为函数变化而变化。
+
+3. 在函数内部的变量，叫做```局部变量```，他会存着 函数的内存回收时候销毁 而跟着一起销毁。
+
+4.  也就是说，函数中声明的变量和形参，有效范围只有在function内部的大括号
 
