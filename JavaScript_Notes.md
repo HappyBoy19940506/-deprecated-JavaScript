@@ -1,4 +1,4 @@
-# 00
+#  00
 
 # JavaScript
 
@@ -1330,5 +1330,145 @@ parseFloat('3.14a');
 
 5. 递归，没有算出临界值之前，会一瞬间开辟一大堆内存空间，却没有释放，然后一瞬间释放一大堆内存，所以会影响内存效率。
 
-6. 777
+6. 递归的练习 
 
+    1. ```js
+         有一对兔子，从第四个月开始，就可以生一对兔子，第20个月的月末有一共有机制兔子。
+         ///月份 总数
+         /// 1月 1
+         /// 2月 1
+         /// 3月 1
+         /// 4月 2
+         /// 5月 3
+         /// 6月 4
+         /// 7月 6
+         /// 8月 9
+         /// 9月 13
+         ///rabbit(4) =  rabbit(3) + rabbit(1);
+         ///rabbit(n) =  rabbit(n-1) + rabbit(n-3);
+         function rabbit( n ){
+           if(n < 4){
+             return 1
+           }
+           
+           return rabbit(n-1) + rabbit(n-3);
+         }
+        ```
+
+    2. ```js
+        猴子吃桃子，n个桃子，每天吃掉 （桃子的一半+1）个桃子，最后一天(第num天，且num <= 10)发现还剩一个桃子,请问一共有多少个桃子。
+        ///也就是说 第10天，有1个桃子
+        ///问第一天有几个桃子。
+        /// 如果我们设n为 还剩下的天数
+        /// 那么，第10天，就是还剩1天，也就是 n=1时，意思就是第十天。
+        /// 公式就是 ： 第2天的桃子，是第1天的桃子的一半 再减去1 ；
+        /// peach (2) = peanch (1) /2  -1 ; 
+        /// peach( n ) = 2*(peach (n -1)+1 );
+        function peach( n ){
+          if ( n == 1 ){
+            return 1;
+          }
+          return  2*(peach (n -1)+1 );
+        }
+        ```
+
+    3. ```js
+        在页面上输出n个hello world。
+        // n = 0 return 0;
+        print(n) = print(n-1) + helloworld;
+        
+        function print(n){
+          if (n == 0){
+            return 0;
+          }
+          document.write('hello world');
+          return print(n-1);
+        }
+        ```
+
+
+
+---
+
+## Array数组
+
+1. 数组的本质，就是用一个变量，存贮一堆数据。
+
+2. 如何申明一个数组：
+
+    ```js
+    var arr = new Array(100, true, '77');
+    
+    // 也可以省略new
+    
+    var arr = Array(100,99,1);
+    
+    //也可以用常量表示
+    
+    var arr =[100, true, '77'];
+    
+    // index都是从0开始。
+    
+    //【但是注意，当 用 var arr = new Array时，如何（参数）里写得 是一个单独的数字的话，他意思不是 存入数组，而是申明数组的长度】
+    
+    比如：
+     var arr = new Array(3);
+    这句话的意思 其实是，有3个房间的数组。
+    ```
+
+3. 数组的属性
+
+    1. ```js
+        数组.length
+        var arr = [100,true,1];
+        arr.length
+        ```
+
+    2. ```js
+        访问数组的元素
+        数组[下标]
+        var arr = [100,true,1];
+        arr[1];
+        ```
+
+    3. ```js
+        数组+循环
+        for(var i = 0; i < arr.length; i++){
+          document.write(arr[i]+'</br>');
+        }
+        ```
+
+4. 数组的遍历
+
+    1. ```js
+        随机生成一个0-9随机数字的数组：
+        function randomNumber( ){
+            var arr = new Array(10);
+            for (var i = 0; i < arr.length; i++){
+                arr[i] = parseInt(Math.random() * 10);
+                // Math.random() 会随机生成0到1的小数，包括0，不包括1. 把他乘以10，就会变成0到9的小数。然后再取整，就可以随机生成0-9的数字。
+            }
+        
+            alert(arr);
+        
+        }
+        
+        randomNumber();
+        ```
+
+    2. ```js
+        for in 遍历, 快速遍历. 
+        for ( var i in arr){
+          xxxxx;
+        }
+        // 如果数组长度变化，就出bug
+        ```
+
+5. 数组的方法
+
+    1. ```
+        栈结构
+        ss
+        ```
+
+    2. 

@@ -131,7 +131,7 @@ switch(month){
 
 } */
 
-var year=parseInt(prompt('输入年'));
+/* var year=parseInt(prompt('输入年'));
 var month=parseInt(prompt('输入月'));
 var day=parseInt(prompt('输入日'));
 var allDays=0;//所有天数
@@ -154,5 +154,24 @@ for (var i=1;i<month;i++){
 allDays=day+allDays;
 document.write(allDays)
 
+ */
+/* 
+function sum(){
+    return
+} */
 
+////
+////
+///
+function randomNumber( ){
+    var arr = new Array(10);
+    for (var i = 0; i < arr.length; i++){
+        arr[i] = parseInt(Math.random() * 10);
+        // Math.random() 会随机生成0到1的小数，包括0，不包括1. 把他乘以10，就会变成0到9的小数。然后再取整，就可以随机生成0-9的数字。
+    }
 
+    alert(arr);
+
+}
+
+randomNumber();
