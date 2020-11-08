@@ -1224,7 +1224,7 @@ parseFloat('3.14a');
     1.找出不确定的值，不确定的值就是形参。灵活根据有没有不确定的值（如果有，那就是形参），以及值要不要用别的地方来决定（如果其中有值要提出来，要那就是return）， 用三种之中的哪种function。
     2.不确定的值写成形参。
     3.函数名和形参名都要遵循semantic;
-    4.注意:不能将函数的运行的处理结果写在函数里面，意思就是 封装函数运行的结果不要显示成alert.doc.write这种。 也就是说，应该用 var a = fuc(arg1); 然后再alert(a);  这样。
+    4.注意:不能将函数的运行的处理结果写在函数里面，意思就是 封装函数运行的结果不要显示成alert/ doc.write这种。 也就是说，应该用 var a = fuc(arg1); 然后再alert(a);  这样。
     ```
 
     
@@ -1466,10 +1466,235 @@ parseFloat('3.14a');
 
 5. 数组的方法
 
-    1. ```
+    1. ```js 
         栈结构
-        后进后出
-        现金后出
+        后进先出
+        先进后出
+        
+        数组的两个方法形成栈结构。
+        push.
+        格式： array.push（arg1,arg2...);
+        
+        var arr = [1,2,3];
+        arr.push(4,5,6);
+        alert(arr);
+        // 1，2，3，4，5，6
+        //arr.push 返回值 为 插完新元素之后的数组的新长度。
+        所以.
+        var res = arr.push;
+        alert(res);
+        // res 值为6;
+        
         ```
 
-    2. 
+    2. ```js
+        栈结构
+        pop
+        数组末尾 弹出一个末尾元素；
+        格式： 数组.pop(); 
+        //注意： 没有参数，没有实参，没有形参，就是直接 array.pop();
+        返回值是 取出的那个元素的值。
+        e.g.
+        var array = [1,2,3];
+        var res = arr.pop();
+        alert(res);
+        alert(arr);
+         //结果是res 为3
+         //arr 变成 [1,2]
+        ```
+
+    3. ```js
+        队列结构
+        特点:先进先出，从末尾进，从头部出。
+        push 这个和 栈结构的push一样，就是从末尾推进去一个。
+        shift()
+        格式： array.shift();
+        // 没有参数，类似pop();
+        //  功能： 从数组的头部取下一个元素;
+        // 返回值： 取下的元素；
+        e.g.
+        var arr = [1,2,3];
+        var res =arr.shift();
+        alert(res);
+        alert(arr);
+        // res--> 1
+        // arr --> [2,3]
+        ```
+
+    4. ```js
+        队列结构
+        unshift();
+        格式： array.unshfit(arg1,arg2);
+        //类似于 array.push()
+        功能: 从头部插入元素
+        返回值： 插入后队列的长度
+        
+        var arr = [1,2,3];
+        var res =arr.unshift(0);
+        alert(res);
+        // 4
+        alert(arr);
+        // [0,1,2,3];
+        ```
+
+         
+
+    5. > 总结： 头插  unshift 
+        >
+        >  头取 shift
+        >
+        > 尾插 push
+        >
+        > 尾取 pop 
+        >
+        > 关于 插入的，返回值都是掺入后的新数组长度
+        >
+        > 关于取出的， 返回值都是 取出的那个元素
+
+    6. 更多关于数组的方法
+
+    7. ```js
+        concat()
+        格式： array,concat(数组，数据)；
+        功能：拷贝原始数组，生成新的数组 
+        功能二：合并数组
+        返回值：合并成的新数组
+        e.g.
+        var arr1 = [1,2,3];
+        var arr2 = [4,5,6];
+        var arr3 = arr1.concat(arr2,'hello');
+        alert(arr3);
+        //[1,2,3,4,5,6,hello];
+        alert(arr3.length);
+        //8 --？ 看清楚为什么不是6.因为 concat如果加入的是一个数组，那么他会把这个数组里面的元素全部提取出来，也就是说，他在加入arr2的时候，不是把arr2当做一个整体，而是把arr2里面的三个元素提取出来，当做三个加进去了。
+        alert(arr1);
+        // [1,2,3] 没变化
+        所以说。arr1.concat并不会改变arr1的内容，他只是复制了一个新的arr1再做操作
+        ```
+
+    8. ```js
+        slice()
+        功能：提取数组里面的片段
+        格式: array.slice(start,end);
+        这里的start和end都是index下标。
+        而且注意，提取的 数组是 [start,end)。 也就是说 包括起始的index的那个元素，但是不包括 结束end的那个元素。
+        返回值：生成新的数组。 且 :star:原数组不发生任何改变。
+        var arr =[1,2,3,4,5];
+        var newArr = arr.slice(1,4);
+        alert(newArr);
+        // [2,3,4]
+        alert(arr);
+        //[1,2,3,4,5]
+        ```
+
+    9. :star:
+
+        ```js
+        splice 方法： 我一般理解为 替换操作， 参数1：替换的位置。 参数2，替换的长度，参数3，要替换进去的片段。返回值： 被替换出来的片段
+         // 最大的区别是。 他会 改变原数组。
+         // 最大的区别是。 他会 改变原数组。
+         // 最大的区别是。 他会 改变原数组。
+         // 最大的区别是。 他会 改变原数组。
+        所以他的返回值 是提取出来的数组。 而原数组会发生改变、
+        格式： array.splice(start , length , 需要加入的元素1， 需要加入的元素2);
+        功能： 由于其特性，可以实现三个功能。 添加， 删除 ，修改。
+        返回值：截取下来的片段数组， 而且原数组会发生改变。
+        
+        添加：
+        var arr1 = [1,2,3,4，5];
+        var newArr = arr1.splice(   2 ,        0 ,           'hello');
+        ---------------------start位置（也就是第一个替换的位置） -- 截取数组的长度---- 插入的元素
+        
+        alert(arr1);
+        // 原数组改变，改变成  [1, 2 ,hello，3  ,4，5];
+        alert(newArr);
+        // null 因为你截取数组长度为0，所以数组长度为0.
+        
+        
+        删除：
+        
+        var arr1 = [1,2,3,4，5];
+        var newArr = arr1.splice( 1 , 2 );
+        // 从 1号位开始取，取2个 提取出来。
+        alert(arr1);
+        //[1,4,5]
+        alert(newArr);
+        //[2,3]
+        
+        
+        修改：
+        
+        var arr1 = [1,2,3,4，5];
+        var newArr = arr1.splice( 2 , 1 ， hello );
+        //  修改其实是 先 删除该位置上的元素，再添加入一个元素在该位置。也就是 删除+添加功能同时用。
+        // 从 2号位开始取出元素，长度为1 ，那就是取了一个3，然后再插入hello。
+        alert(arr1);
+        //[1,2,hello ,4 ,5]
+        alert(newArr);
+        //[3]
+        ```
+
+    10. ```js
+        join方法：
+        格式： 数组.join(字符串);
+        功能： 修改显示效果，之前数组元素直接都是用 ， 来分隔的。
+        返回值：替换字符串后的数组。
+        
+        var arr  = [1,2,3];
+        var res = arr.join(*);
+        
+        alert(arr);
+        // 1,2,3
+        // 也就是说 不改变原数组
+        alert(res);
+        //1*2*3
+        ```
+
+    11. ```js
+        reverse方法：
+        功能： 数组倒序展示
+        格式：arr.reverse();
+        **会改变原数组**
+        var arr1 = [1,2,3,4];
+        var res = arr1.reverse();
+        alert(arr1);
+        alert(res);
+        //一样，都是4,3,2,1
+        ```
+
+    12. ```js
+        sort()方法
+        功能： 从小到大排序。但是注意， 是按照 ASCO码值来比较的。
+        格式：array.sort()  /  array.sort( function sortNumber(a,b){ ...})
+        默认情况下， 直接写 array.sort( ) 会按照asco码来排序，这就导致了 会出现 134，14,213,这样的情况。
+        如果你要按照 numerical来排序，要写一个比较函数。
+        具体看例子：
+        
+        var arr1 = [122,12,34,4];
+                                                                 
+        var res1 = arr1.sort();
+                                                                 
+        alert(res1);
+        //12,122,34,4
+                                                                 
+        var res2 = arr1.sort(function sortNumber(a,b){
+            return a - b;
+        })
+        
+        alert(res2);
+        
+        //4 ,12, 34 ,122
+                                                                 
+                                                                 
+        如果要从大到小排序，那就把比较函数里的a和b反过来。
+        写成：
+        arr.sort(function sortNumber(a,b){
+          return b - a;
+          //从小到大是a-b;
+        })
+                                                                 
+                                                                
+        ```
+
+    13. 谁谁谁
+

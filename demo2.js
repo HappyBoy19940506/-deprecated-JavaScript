@@ -163,7 +163,7 @@ function sum(){
 ////
 ////
 ///
-function randomNumber( ){
+/* function randomNumber( ){
     var arr = new Array(10);
     for (var i = 0; i < arr.length; i++){
         arr[i] = parseInt(Math.random() * 10);
@@ -174,4 +174,21 @@ function randomNumber( ){
 
 }
 
-randomNumber();
+randomNumber(); */
+/* 
+var arr1 = [1,2,3,4];
+var res = arr1.reverse();
+alert(arr1);
+alert(res); */
+
+var arr1 = [122,12,34,4];
+var res1 = arr1.sort();
+alert(res1);
+//12,122,34,4
+var res2 = arr1.sort(function sortNumber(a,b){
+    return a - b;
+})
+
+alert(res2);
+
+//4 ,12, 34 ,122
