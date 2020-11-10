@@ -180,7 +180,7 @@ var arr1 = [1,2,3,4];
 var res = arr1.reverse();
 alert(arr1);
 alert(res); */
-
+/* 
 var arr1 = [122,12,34,4];
 var res1 = arr1.sort();
 alert(res1);
@@ -191,4 +191,16 @@ var res2 = arr1.sort(function sortNumber(a,b){
 
 alert(res2);
 
-//4 ,12, 34 ,122
+//4 ,12, 34 ,122 */
+
+/* var arr1 = [1,2,3,4,5];
+var arr2 = arr1.slice(0,1);
+alert(arr1);
+//[1,2,3,4,5]
+alert(arr2);
+//[start,end) 
+// [1]; */
+
+ var arr1 = [1,2,3];
+ var res = arr1.join('s');
+ alert(res);
