@@ -201,6 +201,15 @@ alert(arr2);
 //[start,end) 
 // [1]; */
 
- var arr1 = [1,2,3];
+/*  var arr1 = [1,2,3];
  var res = arr1.join('s');
- alert(res);
+ alert(res); */
+
+
+var arr1 = [1,7,3,11];
+var res = arr1.sort(function sortNumber(a,b){
+    return a - b;
+});
+alert(res + 'wocaoinma');
+alert(arr1);
+
