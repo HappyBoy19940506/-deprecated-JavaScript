@@ -43,4 +43,19 @@ function average(){
 
 }
 
-average();
+// average();
+
+function haha(){
+    average();
+
+}
+
+// haha();
+
+
+var arr1 =[1,2,3];
+var arr2 = arr1.concat()
+
+arr2.push(4);
+document.write(arr1+'</br>');
+document.write(arr2+'</br>');
