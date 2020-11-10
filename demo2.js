@@ -206,10 +206,10 @@ alert(arr2);
  alert(res); */
 
 
-var arr1 = [1,7,3,11];
+/* var arr1 = [1,7,3,11];
 var res = arr1.sort(function sortNumber(a,b){
     return a - b;
 });
 alert(res + 'wocaoinma');
-alert(arr1);
+alert(arr1); */
 
