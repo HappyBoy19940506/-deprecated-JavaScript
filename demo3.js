@@ -53,9 +53,22 @@ function haha(){
 // haha();
 
 
-var arr1 =[1,2,3];
+/* var arr1 =[1,2,3];
 var arr2 = arr1.concat()
 
 arr2.push(4);
 document.write(arr1+'</br>');
-document.write(arr2+'</br>');
+document.write(arr2+'</br>'); */
+
+
+
+function sum(n){
+    if(n == 1){
+        return 1 ;
+    }else{
+        return sum(n-1)+n ;
+    }
+}
+
+var res = sum(100);
+alert(res);
