@@ -92,4 +92,15 @@ function tri(){
     }
 }
 
-tri();
+// tri();
+/* var arr1=[1,2];
+var arr2=[3,4];
+arr1 = arr2;
+arr2.push(4);
+alert(arr1);
+alert(arr2); */
+
+var arr1=[1,2];
+var arr2=[1,2];
+var res = (arr1 == arr2);
+document.write(res);
