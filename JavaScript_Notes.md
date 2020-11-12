@@ -2009,11 +2009,11 @@ parseFloat('3.14a');
     >  保证 后面的数一定比前面的大，每一轮，都可以把一个最大数浮到最最后。就可以实现从小到大排序了。
 
     ```js
-    数组长度 - 第 n 轮   =  当前轮的比较次数；//
+    数组长度 - 当前是第 n 轮   =  当前第n轮的比较次数；//因为两两比较，而且每轮会冻住最后一个数，所以比如第三轮，那已经冻住2个数了，所以 该轮下需要比较的数 只有length - 2个， 那length -2个，需要比较几次呢？需要比较 length -2 -1个，比如 6个数，第三轮的时候，就剩4个数要比较了，那4个数要比较几次呢，答案是3次。所以 第三轮，要比较3次。 
     ```
 
     ```js
-    比较轮数 = 数组长度 - 1； //因为每一轮浮出来一个数到最后。
+    要比较多少轮 = 数组长度 - 1； //因为每一轮浮出来一个数到最后。
     ```
 
     
@@ -2038,4 +2038,84 @@ parseFloat('3.14a');
     输出结果 7 8 9。
     ```
 
+3. 实现:
+
+    ```js
+    function bubbleSort(arr){
+        // [9,8,7,6,5,4]
+        for(var i = 0;i < (arr.length - 1);i++){
+            // 循环 arr.length - 1 轮； 比如6个长度，要比较5次。
+            for(var j = 0; j < (arr.length - (i + 1));j++){
+                //第（i+1）轮时，在该轮下要 执行 length - （i+1) 次比较；
+                // 比如： 第 1 轮（i = 0）时，要在第 1轮下， 比较 6 - （ 0+1） =5 次。
+                //也就是说 i =0 时， j =5 ， i =1 时，j =4.
+                if (arr[j] > arr[j+1]){
+                    var temp = arr[j];
+                    arr[j] = arr[j+1];
+                    arr[j+1] = temp;
+                }
+            }
+        }
+        return arr;
+    }
     
+    var arr1 = [9,8,7,6,5,4];
+    bubbleSort(arr1);
+    alert(arr1);
+    // var res = bubbleSort([9,8,7,6,5,4]);
+    // console.log(res);
+    ```
+
+----
+
+## 关于array的函数返回值问题
+
+1.  首先看下，不是 ```引用数据类型```会是什么情况。
+
+    ```js
+    alert(num);
+    var num = 10;
+    alert(num);
+    function ss(a){
+        return a + 100;
+       }
+    alert(ss(num));
+    //首先，根据 预编译的规则。 
+    //第一个alert 报的是 undefined
+    //第二个alert  报的是 10
+    //当然 function 也预编译了，然后 第三个alert报的是 function sb的返回值，也就是 a+100,我们把形参a设置成 实参num，所以a此时为10，返回值就是110，
+    
+    所以三个alert分别是 undefined。 10 ，110.
+    
+    ```
+
+2. 其次，如果是 ```array```会发生什么，为什么我们可以不需要写return.
+
+    ```js
+    alert(arr);
+    //undefined;
+    var arr = [1,2,3];
+    alert(arr);
+    // [1,2,3]
+    sb(arr);
+    function sb(a){
+       a.push(4);
+    }
+    alert(arr);
+    //[1,2,3,4]
+    
+    分析：//因为预编译，所以 function 和 var arr都提前预编译了，那么第一个alert就是undefined
+    //第二个 arr已经赋值了，所以是[1,2,3]
+    // 只要看第三个，首先， 要看这个 sb(arr) 【它可不是预编译的过程】; 也就是这个函数是在什么时候调用的，他在 第二个alert和第三个alert中间调用，那就是说，第三个alert就因为sb()而发生变化了。
+    而且，为什么function可以不写返回值，直接 再输出参数，参数也发生变化了呢？
+    对比 前面的num 。
+    因为 num是简单数据类型， function 过后，改变的不是 num，因为他只是个参数。num无论怎么样，都是个参数，不变的，你最后看的的其实是 return。
+    这里，其实 array也是一个参数，但是 因为 array的操作会直接改变原数组，所以你对参数输入后的，对参数的操作，已经改变了array了，你写return array 写了等于没写。
+    你如果写 return num，那这个函数return啥也没变，输入啥 return啥。
+    但是如果你 输入的是array，你return array。就不一样了。
+    归根结底。还是因为有些array操作会改变原数组，也就是直接会改变输入 的实参。
+    
+    ```
+
+    
+

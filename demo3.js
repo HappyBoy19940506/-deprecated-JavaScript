@@ -100,7 +100,32 @@ arr2.push(4);
 alert(arr1);
 alert(arr2); */
 
-var arr1=[1,2];
+/* var arr1=[1,2];
 var arr2=[1,2];
 var res = (arr1 == arr2);
-document.write(res);
+document.write(res); */
+
+
+function bubbleSort(arr){
+    // [9,8,7,6,5,4]
+    for(var i = 0;i < (arr.length - 1);i++){
+        // 循环 arr.length - 1 轮； 比如6个长度，要比较5次。
+        for(var j = 0; j < (arr.length - (i + 1));j++){
+            //第（i+1）轮时，在该轮下要 执行 length - （i+1) 次比较；
+            // 比如： 第 1 轮（i = 0）时，要在第 1轮下， 比较 6 - （ 0+1） =5 次。
+            //也就是说 i =0 时， j =5 ， i =1 时，j =4.
+            if (arr[j] > arr[j+1]){
+                var temp = arr[j];
+                arr[j] = arr[j+1];
+                arr[j+1] = temp;
+            }
+        }
+    }
+    return arr;
+}
+
+// var arr1 = [9,8,7,6,5,4];
+// bubbleSort(arr1);
+// alert(arr1);
+// var res = bubbleSort([9,8,7,6,5,4]);
+// console.log(res);
