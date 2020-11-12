@@ -129,3 +129,97 @@ function bubbleSort(arr){
 // alert(arr1);
 // var res = bubbleSort([9,8,7,6,5,4]);
 // console.log(res);
+
+// var num = 12345;
+// numCount(num);
+
+// var num = 123456;
+// var count = 0;
+// while( num > 0){
+//     var res = num % 10;
+//     document.write('分别是' + res);
+//     num = parseInt(num / 10);
+//     count++;
+    
+// }
+// document.write(count);
+
+function numCount(num){
+    var arr = new Array;
+    while(num > 0){
+        //任何数 % 10 都可以求到他的 个位数。
+        arr.push(num % 10);
+        // 把原数除以10 再取整数段。
+        num = parseInt(num / 10);
+    }
+    document.write('一共有'+ arr.length+'位'+'</br>'+ '每位分别是' + arr.reverse());
+}
+
+function has(arr,item){
+    for(var i = 0; i < arr.length; i++){
+        if(arr[i] === item){
+            return true;
+        }
+    }
+    return false;
+}
+
+// alert(has([10,20], 30));
+function zhishu(num){
+    for(var i = 2; i < num; i++){
+        if(num % i == 0){
+            return 'heshi';
+        }
+    }
+    return 'zhishu';
+}
+
+// alert(zhishu(4));
+
+// var res = ean13(69123456789);
+// alert(res);
+
+function ean13(num){
+    var numchain = num;
+    var arr = new Array;
+    // extract every number of the code into an array.
+    while( num > 0){
+        arr.unshift(num % 10);
+        num = parseInt(num / 10);
+    }
+    // document.write(arr);
+    // document.write('</br>');
+    var arrOdd = new Array;
+    var arrEven =new Array;
+    for(var i = 0; i <arr.length; i++){
+        if(arr[i] % 2 === 0){
+            arrEven.push(arr[i]);
+        }else{
+            arrOdd.push(arr[i]);
+        }
+    }
+         document.write(arrEven);
+         document.write('</br>');
+         document.write(arrOdd);
+         document.write('</br>');
+    var sumOdd = 0;
+    var sumEven = 0;
+    for(var j = 0; j < arrOdd.length;j++){
+        sumOdd += arrOdd[j];
+    }
+    for(var k = 0; k < arrEven.length;k++){
+        sumEven += arrEven[k];
+    }
+    document.write(sumOdd);
+    document.write('</br>');
+    document.write(sumEven);
+    document.write('</br>');
+    var num13 =  10 - ( ( sumEven + (sumOdd * 3) ) % 10);
+    if(num13 == 10){
+        num13 = 0;
+    }
+    var numchain = (numchain *10) + num13;
+
+    return numchain;
+
+}

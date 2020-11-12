@@ -750,7 +750,7 @@ parseFloat('3.14a');
 ```
 
 
-   
+
 
 ### exp1 ? exp 2 :exp3
 
@@ -1187,9 +1187,9 @@ parseFloat('3.14a');
 
     - ```js
         	function name ( ){
-        
-        		code;
-        
+            
+            		code;
+            
         }
         //无参数无返回值
         
@@ -2162,5 +2162,122 @@ parseFloat('3.14a');
         }
         ```
 
-        
+    ---
+
+## 数组练习
+
+   1. ```js
+      随机给出一个五位以内的数，然后输出有多少位，并且每位分别是什么？
+      var num = 12345;
+      numCount(num);
+      
+      function numCount(num){
+          var arr = new Array;
+          while(num > 0){
+              //任何数 % 10 都可以求到他的 个位数。
+              arr.push(num % 10);
+              // 把原数除以10 再取整数段。
+              num = parseInt(num / 10);
+          }
+          document.write('一共有'+ arr.length+'位'+'</br>'+ '每位分别是' + arr.reverse());
+      }
+      
+      另一种不用array的思路。
+      // var num = 123456;
+      // var count = 0;
+      // while( num > 0){
+      //     var res = num % 10;
+      //     document.write('分别是' + res);
+      //     num = parseInt(num / 10);
+      //     count++;
+          
+      // }
+      // document.write(count);
+      ```
+
+   2. ```js
+      编写一个函数has (arr,60)判断数组中是否存在60这个元素。返回布尔类型。
+      function has(arr,item){
+          for(var i = 0; i < arr.length; i++){
+              if(arr[i] === item){
+                  return true;
+              }
+          }
+          return false;
+      }
+      ```
+
+   3. ```js
+      写一个函数判断是否是质数还是合数（利用return的终止特性）
+      function zhishu(num){
+          for(var i = 2; i < num; i++){
+              if(num % i == 0){
+                  return 'heshi';
+              }
+          }
+          return 'zhishu';
+      }
+      
+      ```
+
+   4. ```js
+      实现一个条形码函数 ean().输入12位条形码，输出一个13位条形码
+      例如： 一个12位 692223361219. Output是 6922233612192
+      第13位算法是：
+      求出前12位的奇数和
+      求出前12位的偶数和
+      将奇数和 偶数和的三倍 相加得到x
+      取x的个位数 为a
+      用10减去a得到的数就是第13位数。
+      
+      function ean13(num){
+          var numchain = num;
+          var arr = new Array;
+          // extract every number of the code into an array.
+          while( num > 0){
+              arr.unshift(num % 10);
+              num = parseInt(num / 10);
+          }
+          // document.write(arr);
+          // document.write('</br>');
+          var arrOdd = new Array;
+          var arrEven =new Array;
+          for(var i = 0; i <arr.length; i++){
+              if(arr[i] % 2 === 0){
+                  arrEven.push(arr[i]);
+              }else{
+                  arrOdd.push(arr[i]);
+              }
+          }
+               //document.write(arrEven);
+               //document.write('</br>');
+               //document.write(arrOdd);
+               //document.write('</br>');
+          var sumOdd = 0;
+          var sumEven = 0;
+          for(var j = 0; j < arrOdd.length;j++){
+              sumOdd += arrOdd[j];
+          }
+          for(var k = 0; k < arrEven.length;k++){
+              sumEven += arrEven[k];
+          }
+          //document.write(sumOdd);
+          //document.write('</br>');
+          //document.write(sumEven);
+          //document.write('</br>');
+          var num13 =  10 - ( ( sumEven + (sumOdd * 3) ) % 10);
+          if(num13 == 10){
+              num13 = 0;
+          }
+          var numchain = (numchain *10) + num13;
+      
+          return numchain;
+      
+      }
+      
+      ```
+
+   5. 
+
+​    
 
