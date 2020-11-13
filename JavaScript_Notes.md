@@ -2224,8 +2224,8 @@ parseFloat('3.14a');
       实现一个条形码函数 ean().输入12位条形码，输出一个13位条形码
       例如： 一个12位 692223361219. Output是 6922233612192
       第13位算法是：
-      求出前12位的奇数和
-      求出前12位的偶数和
+      求出前12位的 所有奇数位置上的和 
+      求出前12位的 所有偶数位置上的和
       将奇数和 偶数和的三倍 相加得到x
       取x的个位数 为a
       用10减去a得到的数就是第13位数。
@@ -2243,7 +2243,7 @@ parseFloat('3.14a');
           var arrOdd = new Array;
           var arrEven =new Array;
           for(var i = 0; i <arr.length; i++){
-              if(arr[i] % 2 === 0){
+              if(i % 2 === 0){
                   arrEven.push(arr[i]);
               }else{
                   arrOdd.push(arr[i]);
@@ -2270,6 +2270,10 @@ parseFloat('3.14a');
               num13 = 0;
           }
           var numchain = (numchain *10) + num13;
+         // or we can do like this:
+          // arr.push(num13);
+          // var numchain = Number( arr.join() );
+      
       
           return numchain;
       
@@ -2277,7 +2281,174 @@ parseFloat('3.14a');
       
       ```
 
-   5. 
+   5. ```js
+      数组变回 数字
+      var arr = [1,2,3];
+      alert(Number(arr.join('')));
+      //先 arr.join(''). 注意 不能写 join() ,一定要带('') 否则无法转换， 报错NaN.
+      ```
+
+   6. 
 
 ​    
+
+---
+
+##  ECMA5 严格模式
+
+1. ```js
+    function sum(){
+    	"use strict";
+    }
+    一般这样用，而且不写在全局里，因为全局会引用很多外部js，不能保证外部js也遵循严格模式，会报很多外部js的错。
+    ```
+
+2. 效果：
+
+    1. ```js
+        不写var会报错。
+        在普通模式下， 不写 var会将 变量强制为 全局变量。 但在 严格模式下，不允许不写var。
+        function c(){
+           num = 10;
+        }
+        alert(num);
+        // 10;
+        
+        但是严格模式下：
+        function sum(){
+           'use strict';
+            num = 10;
+        }
+        alert(num);
+        // 报错，num 为申明。not defined.
+        ```
+
+    2. ```js
+        严格模式下，不允许出现重复命名的参数：
+        show(10,20,30);
+        function show(num1,num1,num2){
+          alert(num1, num2;)
+          //20,30 因为10被后面的20覆盖了。
+        }
+        
+        function show(num1,num1,num2){
+          'use strict';
+          alert(num1, num2;)
+        }
+        // 直接报错，说 num1重复。
+        ```
+
+    3. ```js
+        arguments对象只能用来索引 参数。
+        
+        show(10,20);
+        
+        function show(num1,num2){
+          num1 = 30;
+          alert(num1);
+          alert( arguments[0]);
+        }
+        // 30
+        // 30
+        //在 非严格模式下，num1和 arugments[0]是一回事。
+          
+        function show(num1,num2){
+          'use strict';
+           num1 = 30;
+          alert(num1);
+          alert( arguments[0]);
+        }
+        //30
+        //10
+        //在 use strict模式下， arugments[0]只反应输入的参数影响，不受后续变化赋值影响。
+        
+        ```
+
+    4. 
+
+    5. ```js
+        严格模式下，新增了下列保留字。 这些字不可以给变量取名。
+        implements
+        interface
+        let
+        package
+        private
+        protected
+        public
+        static
+        yield
+        ```
+
+    ----
+
+## ECMA5新增的array方法
+
+   1. ```js
+      array.indexOf()
+      格式：array.idexOf(item, start);
+      参数：items任意数组 ； start开始查找的起始位置下标。可以不写，不写的话默认是0.也就是从第一位开始
+      功能：在数组中 查找*第一次*出现items元素的下标，从arry[start]开始查找
+      返回值： -1 没有找到。  >=0 查找到的*第一个*元素小标
+      例子：
+      var arr = [10,20,30,40,20];
+      var index = arr.indexOf(20);
+      // 1
+      var index = arr.indexOf(20,2);
+      // 4
+      
+      var index = arr.indexOf(120,1);
+      // -1
+      
+      
+      ```
+
+   2. ```js
+      forEach()遍历
+      格式： array.forEach(function(value,index,arr){
+      
+      });
+      功能： 就是遍历和for loop一样。
+      这里 forEach( ) 里面填的是叫一个 callFunction的东西。别人填的参数是一个数，但是他填的是一个function。
+      
+      Current Value (required) - The value of the current array element
+      Index (optional) - The current element's index number
+      Array (optional) - The array object to which the current element belongs
+      
+      其中： value是 必须的。
+            index 和 arr是选填的。
+      
+      例子：
+      var arr = [10 ,20 ,30];
+      arr.forEach(function(value,index,arr){
+      	//就是循环遍历arr
+        //然后每次根据数组元素个数调用多少次Callfunction，这里就是三次。
+        //每次调用 都会返回一个value，一个index，一个arr，当然如果你不填就不会返回该值。
+        //第一次就输出 10，0，【10，20，30】
+        //第二次就输出 20，1，【10，20，30】
+        //第三次就输出 30，2，【10，20，30】
+      });      
+      ```
+
+   3. ```
+      map
+      是
+      ```
+
+   4. ```
+      filter
+      ```
+
+   5. ```
+      some
+      ```
+
+   6. ```
+      every
+      ```
+
+   7. ```
+      reduce
+      ```
+
+   8. 
 

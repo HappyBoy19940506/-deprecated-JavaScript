@@ -176,8 +176,8 @@ function zhishu(num){
 
 // alert(zhishu(4));
 
-// var res = ean13(69123456789);
-// alert(res);
+//  var res = ean13(692223361219);
+//  alert(res);
 
 function ean13(num){
     var numchain = num;
@@ -219,7 +219,13 @@ function ean13(num){
         num13 = 0;
     }
     var numchain = (numchain *10) + num13;
+    // or we can do like this:
+    // arr.push(num13);
+    // var numchain = Number( arr.join() );
 
     return numchain;
-
 }
+
+
+// var arr = [1,2,3];
+// alert(Number(arr.join('')));
