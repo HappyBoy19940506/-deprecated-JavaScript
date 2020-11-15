@@ -2381,14 +2381,14 @@ parseFloat('3.14a');
 
     ----
 
-## ECMA5新增的array方法
+## ECMA5新增的array.方法()
 
    1. ```js
       array.indexOf()
-      格式：array.idexOf(item, start);
-      参数：items任意数组 ； start开始查找的起始位置下标。可以不写，不写的话默认是0.也就是从第一位开始
+      格式：array.indexOf(item, start);
+      参数：items任意数组 ； start开始查找的起始位置下标(optional)。可以不写，不写的话默认是0.也就是从第一位开始
       功能：在数组中 查找*第一次*出现items元素的下标，从arry[start]开始查找
-      返回值： -1 没有找到。  >=0 查找到的*第一个*元素小标
+      返回值： -1 没有找到。  >=0 查找到的*第一个*元素下标
       例子：
       var arr = [10,20,30,40,20];
       var index = arr.indexOf(20);
@@ -2420,6 +2420,7 @@ parseFloat('3.14a');
       例子：
       var arr = [10 ,20 ,30];
       arr.forEach(function(value,index,arr){
+        document.write(value + ',' +index+ ','+arr);
       	//就是循环遍历arr
         //然后每次根据数组元素个数调用多少次Callfunction，这里就是三次。
         //每次调用 都会返回一个value，一个index，一个arr，当然如果你不填就不会返回该值。
@@ -2427,11 +2428,57 @@ parseFloat('3.14a');
         //第二次就输出 20，1，【10，20，30】
         //第三次就输出 30，2，【10，20，30】
       });      
+      
+      ************************************************
+      ************************************************
+      ************************************************
+        
+      说白了 你写
+      arr.forEach(function(items, index,arr){
+        XXX;
+        //items其实就是 arr[index] 或者说arr[i];
+        //index其实就是 i
+        //arr就是arr
+      }
+                  
+      和你写：
+                  
+      for(var i = 0; i < arr.length ; i++{
+                  XX;
+                  
+                  }
+      
+      以及:
+      for (var i in arr){
+        XX;
+      }
+      
+      //这个里面 XX的内容是 没有区别的；
+      //正常用就行。
       ```
 
-   3. ```
-      map
-      是5d
+   3. ```js
+      map映射：
+      格式：arr.map(function(items,index,value){  return xxx； } );参数也是一个function,但是和forEach相比他多了return 值。
+      功能: 遍历之后映射。
+      例子：
+      var arr = [1,2,3];
+      arr.map(function ( value, index, arr){
+        //遍历要做的事情。和for each一样 ,也可以不写。
+        return value * 1.3;  //所有值 变成1.3倍。
+      })
+      
+      注意事项：
+      这个arr.map()和 arr.slice()一样，和 arr.splice()不一样！ 他不改变原数组。
+      返回值是一个新数组。
+      var arr1 = [1,2,3];
+      var arr2 = arr1.map(function(value, index, arr){
+        return value * 2;
+      })
+      alert(arr1);
+      //[1,2,3] 原数组无变化；
+      alert(arr2);
+      //[2,4,6] 变成2倍；
       ```
 
    4. ```
