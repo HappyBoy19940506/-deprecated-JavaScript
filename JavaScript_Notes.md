@@ -2469,7 +2469,7 @@ parseFloat('3.14a');
       })
       
       注意事项：
-      这个arr.map()和 arr.slice()一样，和 arr.splice()不一样！ 他不改变原数组。
+      这个arr.map()和 arr.slice()一样，和 arr.splice()/push()不一样！ 他不改变原数组。
       返回值是一个新数组。
       var arr1 = [1,2,3];
       var arr2 = arr1.map(function(value, index, arr){
@@ -2481,19 +2481,71 @@ parseFloat('3.14a');
       //[2,4,6] 变成2倍；
       ```
 
-   4. ```
-      filter
+   4. ```js
+      filter过滤
+      格式：arr.filter(function(value,index,arr){
+         // xxxx;
+         return 过滤条件；
+      });
+      功能： 返回一个经过过滤的新数组， 并且原数组不变化。
+      例子：
+      var arr1 = [1,2,3,4,5];
+      var arr2 = arr1.filter(function(value,index,arr){
+        //xxx;
+        return value > 3;
+      })
+      alert(arr1);
+      // [1,2,3,4,5]不变化；
+      alert(arr2);
+      // [4,5];
+      
       ```
 
-   5. ```
-      some
+   5. ```js
+      some 在数组中查找是否有符合条件的，如果有，返回true，没有返回false
+      格式：arr.some(function(value,index,arr){
+         // xxxx;
+         return 过滤条件；
+      });
+      功能：在数组中查找是否有符合条件的，如果有，返回true，没有返回false。原数组不变化。
+      例子：
+      var arr1 = [1,2,3,4,5];
+      var arr2 = arr1.some(function(value,index,arr){
+        //xxx;
+        return value > 3;
+      })
+      alert(arr1);
+      // [1,2,3,4,5]不变化；
+      alert(arr2);
+      // true;
+      
+      //注意事项：
+      这是一个shortout短路操作，就是只要找到一个符合条件的，就返回 true。有点像默认return false那种if else里面return true的判断语句。
       ```
 
-   6. ```
-      every
+   6. ```js
+      every 在数组中查找是否*所有*都符合条件的，如果是，返回true，如果不是返回false
+      格式：arr.every(function(value,index,arr){
+         // xxxx;
+         return 过滤条件；
+      });
+      功能：在数组中查找是否*所有*都符合条件的，如果是，返回true，如果不是返回false。原数组不变化。
+      例子：
+      var arr1 = [1,2,3,4,5];
+      var arr2 = arr1.every(function(value,index,arr){
+        //xxx;
+        return value > 3;
+      })
+      alert(arr1);
+      // [1,2,3,4,5]不变化；
+      alert(arr2);
+      // false;
+      
+      //注意事项：
+      这也是一个shortout短路操作，就是只要找到一个*不*符合条件的，就返回 false。有点像默认return true那种if else判断语句里面 return false那种结构。
       ```
 
-   7. ```
+   7. ```js
       reduce
       ```
 
