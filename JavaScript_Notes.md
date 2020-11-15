@@ -2546,8 +2546,75 @@ parseFloat('3.14a');
       ```
 
    7. ```js
-      reduce
+      reduce 归并。
+      功能：每次循环把[i] 和 [i+1] 两个数加起来；
+      返回值： 最终返回的肯定是 数组所有之和。
+      格式： arr.reduce(function(prev,nex,index,arr){
+        
+        return prev + next;
+      })
+      // prev第一次记录 是 下标为0的元素，也就是数组里面第一个元素
+      // 第二次开始，上一次遍历return的值
+      // next 从上标1开始，当前遍历到的元素
+      //arr数组本身
+      
+      var arr=[1,2,3，4，5]
+      var res =  arr.reduce(function(prev,next,index,arr){
+        alert(prev+ ' +'+ next);
+        //每次循环打印的prev 和 next的值分别为：
+        // 1 , 2  。。。第一次 不做加法，直接就是打印第一位和第二位。
+        //1+2=3 and 3 。。。。第二次
+        //3+3=6 and 4 。。。。第三次
+        //6+4=10   and 5 。。。。第四次
+        
+        return  prev+next;
+      });
+      alert(res);
+      // 15; 就是sum();
       ```
 
    8. 
+
+----
+
+## alert()\*doc.write()\*console.log
+
+
+
+```js
+首先，无论用哪个，记住：
+不能用逗号分隔，那是function demo(arg1,arg2)..
+参数采用逗号分隔。
+
+alert();
+doucment.write();
+console.log();
+//他们要展示2个变量，一定要用 a + '+' +b;
+//因为是字符串拼接，你召唤一个 ‘+’，就可以把a，b都变成字符串，加号就是字符串拼接的标志。
+//如果你不写+，那就变成了a+b的值了，所以你要写成 a+'+'+b.才行。
+```
+
+
+
+小区别：
+
+```js
+你如果要在三者里面分别展示：
+a     b
+这种效果的时候，是不一样的，也就是 a和b中间有一段空白。而不是+号之类的。
+那么alert 和console.log 是不能写 &nbsp； </br>这样的，因为这些只能在 docment.write里面识别出来。
+//他们直接写 a + ‘     ’+b，用键盘打空格就行。相反document.write就不行，因为html对空格个数不敏感。
+var a= 10;
+var b =20;
+alert(a +'     '+ b);  // a    b
+document.write(a +'     '+ b);// a b
+console.log(a +'   '+ b);// a    b
+****************
+var a= 10;
+var b =20;
+alert(a +' </br> '+ b);  // a  </br>    b
+document.write(a +' </br>'+ b);// a 
+															//  b
+console.log(a +'</br>  '+ b);// a </br>    b
+```
 
