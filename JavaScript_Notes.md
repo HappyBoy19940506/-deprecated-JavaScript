@@ -2618,3 +2618,75 @@ document.write(a +' </br>'+ b);// a
 console.log(a +'</br>  '+ b);// a </br>    b
 ```
 
+----
+
+## NaN == NaN 为false，NaN != NaN为true.
+
+```js
+ var haha = (NaN != NaN);
+    document.write(haha);
+// true;
+
+ var haha = (NaN == NaN);
+    document.write(haha);
+// false;
+
+//特别诡异，一定要注意。
+```
+
+
+
+```js
+有一个如下需求，判断数组中的数是否全部为 数字。
+
+
+我错误的方法：
+    var arr=[1,2,3,'ww'];
+    var res = arr.every(function(value,index,arr){
+        document.write(Number(value) + '</br>');
+        return Number(value) != NaN;
+      //return isNaN(value) == false; isNaN为false，不是一个number为假，那就是一个number。判断结果return false。
+      
+      //其实every（）什么的都没问题，关键是这一步return的判断 错了。
+      //你如果判断 所有Number(value)都不等于NaN的话。表面上意思是对的， every value都不等于 NaN,那不等于	NaN，肯定就是个number。
+      //但是其实是错的， 因为 存在 NaN != NaN 也为true，所以就导致 全部都为true。arr.every()判断完结果为true，这显然不对。
+    });
+    alert(res);
+
+正确做法一：
+用 isNaN(Number)来判断,注意 isNaN的意思 不是数字。。
+缺点： '3' 会判断成 false，他虽然是string，但是还是纯数字。
+			'NaN'会判断成 true， 因为NaN肯定不是一个number
+      null 会判断称 false，因为null是一个number
+所以，这只是一个纯粹的用来check数组元素是不是 【纯数字】的方法
+
+Number.isNaN(NaN);        // true
+Number.isNaN(Number.NaN); // true
+Number.isNaN(0 / 0);      // true
+isNaN('2005/12/12') //true
+
+// e.g. these would have been true with global isNaN()
+Number.isNaN('NaN');      // false
+Number.isNaN(undefined);  // false
+Number.isNaN({});         // false
+Number.isNaN('blabla');   // false
+
+// These all return false
+Number.isNaN(true);
+Number.isNaN(null);
+Number.isNaN(37);
+Number.isNaN('37');
+Number.isNaN('37.37');
+Number.isNaN('');
+Number.isNaN(' ');
+
+正确做法二： 用正则表达式判断。
+
+```
+
+
+
+----
+
+## ss
+
