@@ -229,3 +229,37 @@ function ean13(num){
 
 // var arr = [1,2,3];
 // alert(Number(arr.join('')));
+
+
+function find(){
+    var str = 'When i was young ,I love a girl in neighoubr class';
+    // search( )  substring()
+
+}
+
+
+function wordTransfer(str){
+    //Input->  HelloMyWorld
+    //Output-> Hello my world
+    var arr = str.split('');
+    arr[0] = arr[0].toUpperCase();
+    // alert(arr);
+    for(var i = 1;  i < arr.length;i++){
+        if (arr[i] >= 'A' && arr[i]  <= 'Z'){
+            arr[i] = arr[i].toLowerCase();
+            arr.splice(i,0,' ');
+        }
+    }
+    // alert(arr);
+    var newStr = arr.join('');
+
+    return newStr;
+}
+// var res = wordTransfer('helloMyWorld')
+// document.write(res);
+document.write(wordTransfer('helloMyWorld'));
+
+function haha(a){
+    return a + 3;
+}
+alert(haha(3));

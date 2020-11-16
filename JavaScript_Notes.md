@@ -2818,7 +2818,9 @@ Number.isNaN(' ');
         总结：
         和array一样，不能用 var str1= str2这种。
         另外，也没法 更改str的内容。
-        
+        如果要改， str.concat() //拼接成新的
+        					str.replace( ) //替换 并生成新的
+        					str.split('') ==> arr.join('') //转换，并生成新的 
         ```
 
     5. ```js
@@ -2974,23 +2976,97 @@ Number.isNaN(' ');
     
     ```
 
-5. ```
-    str.substring( )
-    格式： 
-    功能：
-    参数:
-    返回值：
+5. ```js
+    str.toLowerCase( )
+    str.toLowerCase( )
+    //这个方法也可以用在 arr[i]中。将数组元素转为小写或者大写。
+    格式： str.toLowerCase( )
+    			str.toLowerCase( )
+    功能： 全部转成全小写 全大写
+    参数: 不用写参数
+    返回值：生成的新数组。
     例子：
     ```
 
-6. ```
-    str.substring( )
-    格式： 
-    功能：
-    参数:
-    返回值：
+6. ```js
+    str.concat( )
+    // str1+ 'world' 一样的效果
+    格式： str.concat( )
+    // str1+ 'world' 一样的效果
+    功能： 字符串拼接
+    参数: 任意个，相当于+
+    返回值：生成的新字符串，老的不变
     例子：
+    var str1 = 'hello';
+    var str2 = str1.concat('world',100);
+    alert(str1);
+    //hello
+    alert(str2);
+    //helloworld100
     ```
 
-7. 
+7. ```js
+    数组 变成 字符串：
+        	  var arr = [1,2,3];
+            var res = arr.join(',');  
+            alert(arr);
+    // 1,2,3
+            alert(res); 
+    // 1,2,3
+            alert(typeof(res));
+    //string 样子一样，但是其实数据类型不一样。
+    
+    				var res = arr.join('');  
+    				alert(res);
+    				//123
+    字符串 变成 数组：
+    
+     var str = '123';
+     var arr = str,split('');
+    alert(arr);
+    //[1,2,3]
+    ```
+
+8. 
+
+9. ```js
+    字符串相关练习:
+    1.  将字符串  str = 'When i was young ,I love a girl in neighoubr class'中 提取yong 到girl 生成新字符串，但是不准count。
+    var str = 'When i was young ,I love a girl in neighoubr class';
+    var start =str.indexOf('young');
+    var end = str.indexOf('girl') + 'girl'.length;
+    //但是这个应付不了 girl如果出现一个 在 young前面的情况。
+    var newStr =str.substring(start,end);
+    alert(newStr)
+    
+    2.将字符串中的单词用空格分开
+    已知传入的字符串只有字母，每个单词的首字母大写。现在要求把每个单词用空格隔开，只保留一个单词的首字母大写。
+    Input : HelloMyWorld
+    Output: Hello my world
+    
+    
+    function wordTransfer(str){
+        //Input->  HelloMyWorld
+        //Output-> Hello my world
+        var arr = str.split('');
+        arr[0] = arr[0].toUpperCase();
+        // alert(arr);
+        for(var i = 1;  i < arr.length;i++){
+            if (arr[i] >= 'A' && arr[i]  <= 'Z'){
+                arr[i] = arr[i].toLowerCase();
+                arr.splice(i,0,' ');
+            }
+        }
+        //alert(arr);
+        var newStr = arr.join('');
+    
+        //alert(newStr);
+       return newStr;
+    }
+    var res = wordTransfer('helloMyWorld')
+    document.write(res);
+    
+    ```
+
+10. 
 
