@@ -2688,5 +2688,309 @@ Number.isNaN(' ');
 
 ----
 
-## ss
+## 字符串
+
+1. 带引号的都是字符串
+
+2. ```js
+    字符串的拼接：
+        var a =100;
+        alert(a + 100);
+      // 200 没有字符串，所以就是数字相加
+        alert(a + ' '+ 100);
+     //100 100 ，有字符串，变成拼接
+        alert(a + '100');
+    // 100100 ，有字符串，变成拼接
+    ```
+
+    
+
+3. 三种申明方式：
+
+    1. new
+
+        ```js
+        var str1 = new String(100);
+        //有点像 new Array
+        alert(str1 + 20);
+        // +号 是字符串拼接，所以结果显示为 10020
+        ```
+
+        
+
+    2. 不带new
+
+        ```js
+        var str1 = String(100);
+        //有点像  Array
+        alert(str1 + 20);
+        // +号 是字符串拼接，所以结果显示为 10020
+        ```
+
+        
+
+    3. 直接赋值
+
+        ```js
+        var str1 = '100';
+        alert(str1 + 20);
+        // +号 是字符串拼接，所以结果显示为 10020
+        ```
+
+4. 字符串的一些方法：
+
+    1. ```js
+        字符串.length 
+        功能： 访问字符串中 字符的个数。
+        注意： 编码格式不管是 gbk还是utf-8，汉字都算一个 字符。
+        比如  var str1 = '号'；
+              str1.length = 1;
+        ```
+
+    2. ```js
+        字符串.charAt(index);  或者 字符串[index];
+         --> index从0开始。
+         功能： 访问字符串中 第index位置上的单个字符。
+         比如  var str1 = ' hello'；
+              str1.charAt(4);
+        			str1[4];
+        			//两种表达方式。
+        
+        
+        ....
+        //但是要注意， string类型的字符串 是只读的，一旦被申明，就无法被修改。
+        也就是说，比如 你想把 hello的 o变成 x。
+        你不可以写： str1[4] ='x';
+        这是错误的，没有效果。
+        如果非要改变，只能将原来的字符串销毁，然后重新赋值成新字符串。
+        ```
+
+    3. ```js
+        字符串中的字符也可以loop循环遍历
+        var str1 = 'hellowcoaonima1123';
+        for (var i =0 ; i < str1.length ; i ++){
+          document.write(str[i]+ '</br>');
+        }
+        
+        ```
+
+    4. ```js
+        字符串 是**只读数据类型**。
+        在JS中没有**只读数据类型**这个概念，所以 字符串他又是**基本数据类型***，又是**引用数据类型***
+        所以，你在typeof一个string的时候就会出现：
+        
+        var arr =[1,2,3];
+        alert(typeof(arr));
+        //object 引用数据类型的type是object
+        //也就是说，你如果 arr1= arr2,然后更改arr1的话，arr2也会发生变化，因为他们指向 堆结构里面的一个地址。
+        var str1 = new String(hello);
+        typeof(str1);
+        //object --引用数据类型
+        var str2 = String(hello);
+        typeof(str2);
+        //string --基本数据类型
+        var str3 ='hello';
+        typeof(str3);
+        //string ---基本数据类型
+        
+        
+        why?
+          为什么一会儿是引用数据类型，一会儿又是基本数据类型。
+        那是因为 其实内存区域 分为三块：   程序运行段  |  堆 | 只读数据段
+        
+        程序允许段  存各种基本数据类型比如数字 var a =1以及 存var arr的地址，以及 var str的地址。
+        而且存的内容是不会临时变化的， 要变化只能重新赋值。比如 我想让1变成2，那就重新赋值 var a= 2;
+        堆 就是来存数组的， 因为数组长度不确定，会随时变化。
+        只读数据段： 就是用来存 string的，因为string是只读的。
+        var str1 = 'hello';
+        var str2 = str1;
+        //str2 也是hello了。
+        //但是 因为是引用数据类型，其实 str2 和 str1都指向一个 只读数据段的 一个地址编码
+        //也就是说
+        var str2[4]='x';
+        //没效果
+        var str1[3]='x';
+        //没效果
+        但是我如果再写一个 var str2 ='www';
+        str2就相当于重新赋值了，又和 基本数据类型的性质很像。
+        
+        
+        总结：
+        和array一样，不能用 var str1= str2这种。
+        另外，也没法 更改str的内容。
+        
+        ```
+
+    5. ```js
+        charCodeAt( index)
+        格式： 字符串.charCodeAt(index);
+        功能： 对应下表字符的ASCII码值
+        var str = 'hdle';
+        str.charCodeAt(1);
+        ```
+
+    6. ```js
+        String.fromCharCode(  ASCII, ASCII.....);
+        功能： 将传入的ASCII码值转成对应的字符
+        返回值：组成的字符串。
+        
+        例子:
+        var str = String.fromCharCode(97,98,99,100);
+        alert(str);
+        //abcd
+        
+        ```
+
+    7. ```js
+        indexOf()
+        格式： str.indexOf(value， start）;
+        功能： 查找value在这个str中第一次出现的位置。
+        参数： 第一个参数就是要查找的字符串，第二个是 起始的index，很像array.indexOf
+        不写start，默认从0来时。
+         返回值： -1 没有查找到
+                 不是-1， 第一个查找到的index
+                        
+        例子：
+           var supStr = 'abcabcabc';
+           var subStr = 'abc';
+           var index = supStr.indexOf(substr,1);
+        ```
+
+    8. ```js
+        lastIndexOf()
+        格式：Supstr.lastIndexOf( substr);
+        //只有一个参数哦
+        功能：在supStr中查找 最后一次出现 sUbstr的位置。
+        返回值： -1没有找到
+        
+          var supStr = 'abcabcabc';
+           var subStr = 'abc';
+           var index = supStr.lastIndexOf(substr);
+        // 6 也就是最后一个ABC的a所在位置。
+        ```
+
+    9. ```js
+        search( )
+        格式： supStr.search(subStr);
+        //只有一个参数哦、
+        功能: 在sup查找第一次出现substr的位置，但是和indexof相比，不能指定start的位置！一定是从0开始查找，但是好处是 可以使用 正则表达式。
+        而且最大的差别是：
+        search( subStr / 正则表达式)
+        比如 i-忽略大小写， g 全局匹配
+        比如 我想 找出 abc或者 ABC。。。那就是 写 /abc/i
+        ```
+
+        
+
+    10. ---
+
+
+
+##  更多字符串相关的方法
+
+1. ```js
+    str.substring( ) // == str.slice( ) 
+    格式： string.substring(start , end ) ;
+      和 str.slice( )是一样的、
+    功能： 将字符串中[start,end)部分的字符串提取出来
+    参数:  start ,end左开右闭。 取不到end
+    返回值： 生成新的字符串。。 原先字符串不变（肯定不变，因为是只读数据类型）
+    例子：
+    var str = 'hello';
+    var newstr = str.substring(1,4);
+    alert(str);
+    // hello
+    alert(newstr);
+    // ell
+    ```
+
+2. ```js
+    str.substr( )
+    格式： string.substr(start , length );
+    功能：将字符串中start开始，length长度的部分的字符串提取出来
+    参数:start起始位置，length截取长度
+    返回值：生成新的字符串。。 原先字符串不变（肯定不变，因为是只读数据类型）
+    例子：
+    var str = 'hello';
+    var newstr = str.substr(1,4);
+    alert(str);
+    // hello
+    alert(newstr);
+    // ello
+    ```
+
+3. ```js
+    replace( )
+    格式： Str.replace(oldStr,newStr);
+    功能： 把原先在 str里的 出现的第一个 oldstr 替换成 newStr，并且生成一个新的字符串
+    参数: oldstr 在str里面。 newstr替换oldstr；
+    //但是要注意， 如果oldstr是字符串的话，他只能替换第一个出现的oldstr，如果你要替换全部的oldstr的话，要用正则表达式。
+    返回值：替换成的新字符串。
+    例子：
+    var str = ' how are you';
+    var newStr = str.replace(are, old are);
+    alert(str);
+    //how are you 不变，因为是 只读
+    alert(newStr);
+    // how old are you 替换成功并且生成。
+    
+    但是如果 var str =' how are are are you'
+    而你想替换 var newStr = str.replace('are' ,'old are'）的话就不行，因为他只会替换第一个are，这时就需要用正则表达式。
+                                   
+     var newStr = str.replace( /are/g , 'old are' );
+     全局匹配所有are
+     再比如你要 你要把 所有 aRe 替换成 are。
+     你可以写：
+     var newStr = str.replace( /are/ig, 'old are');
+    ```
+
+4. ```js
+    str.split( )
+    格式： str.split(分隔符 ， length)
+    功能：用分隔符对原字符串进行分割，将分割完的字符串放在一个数组里
+    参数: 第一个参数，用这个分隔符 对原字符串进行分割。 第二个参数，（一般不用），控制返回的数组的元素的个数。一般不写的。
+    返回值： 返回一个数组
+    例子：
+    var str =' how are you';
+    var arr = str.split('');
+    alert(arr);
+    //[how,are,you]
+    alert(str);
+    // 不变 how are you
+    
+    //注意事项：
+    1、 相邻的两个分隔符，中间会产生于一个空字符串。
+    比如你多打了一个空格，
+    var str =' how【空格】【空格】 are you';
+    var arr = str.split('');
+    alert(arr);
+    //这里就会变成
+    //[how, , ,are,you]
+    alert(str);
+    // 不变 how are you
+    2、 分隔符 split('') 和 split (' ')，一个带空格，一个不带空格是有区别的。
+    	--> 带’空格‘的split，意思是按照 空格划分，也就是划分单词
+      --> 不带空格的’‘的split，是把每一个单独的字符全部分出来，包括空格，所以'how are you'如果是split(''),就会变成 [ ,h,o,w, ,a,r,e, ,y,o,u].
+    
+    ```
+
+5. ```
+    str.substring( )
+    格式： 
+    功能：
+    参数:
+    返回值：
+    例子：
+    ```
+
+6. ```
+    str.substring( )
+    格式： 
+    功能：
+    参数:
+    返回值：
+    例子：
+    ```
+
+7. 
 
