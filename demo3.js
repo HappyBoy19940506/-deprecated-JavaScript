@@ -405,3 +405,20 @@ function containIllegalChar(str){
 // }
 
 // show(8);
+
+function clearContext(){
+    alert('your mom  has been clean');
+    document.getElementById('inputTxt').value ='';
+}
+
+function submitContext(){
+    var tranTxt = document.getElementById('inputTxt').value;
+    var arr = [/wocao/ig,/nimabi/ig,/wori/ig];
+    for(var i = 0; i < arr.length;i++){
+        tranTxt = tranTxt.replace(arr[i],'*');
+    }
+    
+    document.getElementById('chatBox').innerHTML = tranTxt;
+
+    document.getElementById('inputTxt').value = '';
+}

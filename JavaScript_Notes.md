@@ -3405,11 +3405,36 @@ Number.isNaN(' ');
 17. ```js
      敏感词屏蔽功能：
      达到效果： 在输入框中输入一串字，点击提交后，显示在下方的聊天框中，并且输入框的字消失。聊天框中显示刚刚发送的内容，但是屏蔽掉了 敏感词。
+     
+     function clearContext(){
+         alert('your mom  has been clean');
+         document.getElementById('inputTxt').value ='';
+     }
+     
+     function submitContext(){
+         var tranTxt = document.getElementById('inputTxt').value;
+         var arr = [/wocao/ig,/nimabi/ig,/wori/ig];
+         for(var i = 0; i < arr.length;i++){
+             tranTxt = tranTxt.replace(arr[i],'*');
+         }
+         
+         document.getElementById('chatBox').innerHTML = tranTxt;
+     
+         document.getElementById('inputTxt').value = '';
+     }
      ```
 
      ```html
      <body>
-       
+       <body>
+         <br>
+         <div id="chatBox"></div>
+         <div class="chatBoxBtn">
+         <textarea name="" id="inputTxt" cols="30" rows="10"></textarea>
+         <button onclick="clearContext();">clear</button>
+         <button onclick="submitContext();">submit</button>
+         </div>
+     
      </body>
      ```
 
