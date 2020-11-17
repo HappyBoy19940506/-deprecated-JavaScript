@@ -346,3 +346,52 @@ function countStrNumber(str){
 
 // alert(countStrNumber("Yes, she*is&my@love!haha@wocaoinmabi whart"));
 
+function countSubStr(supStr,subStr){
+    //input abcabcabc  abc
+    //output 3
+    var arr = supStr.split(subStr);
+    // alert(arr);
+    return arr.length - 1;
+}
+
+// alert(countSubStr('abcabcabcabca1bc2abc','abc'));
+
+function mailCheck(str){
+    // fxy456_0_654@gmail.com
+    var index = str.indexOf('@');
+    // alert(index);
+    //4 
+    if(index == -1){
+        return false;
+    }
+    var endStr = str.substring(str.length-4 ,str.length);
+    // alert(endStr);
+    if(endStr != '.com'){
+    return false;
+    }
+
+    var startStr = str.substring(0, index);
+    for( i = 0 ; i < startStr.length; i++){
+        if ( containIllegalChar(startStr[i])){
+            return false;
+        }
+        }
+    return true;
+    }
+
+ 
+
+function containIllegalChar(str){
+    if( str <= 'Z' && str >= 'A' || str <='z' && str >= 'a' || str <=9 && str >= 0 || str == '_'){
+        return false;
+    }
+    return true;
+}
+
+
+
+alert(mailCheck('sadadasdasdasdasda.com')); //false
+alert(mailCheck('ssdsada@gmail.comp')); //false
+alert(mailCheck('$sada@gmail.com'));//false
+alert(mailCheck('sada@gmail.com'));//true
+

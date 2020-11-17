@@ -2876,15 +2876,16 @@ Number.isNaN(' ');
         search( )
         格式： supStr.search(subStr);
         //只有一个参数哦、
+        返回值： -1没有找到
         功能: 在sup查找第一次出现substr的位置，但是和indexof相比，不能指定start的位置！一定是从0开始查找，但是好处是 可以使用 正则表达式。
         而且最大的差别是：
         search( subStr / 正则表达式)
         比如 i-忽略大小写， g 全局匹配
-        比如 我想 找出 abc或者 ABC。。。那就是 写 /abc/i
+    比如 我想 找出 abc或者 ABC。。。那就是 写 /abc/i
     ```
     
     
-    
+        
     10. ---
 
 
@@ -3293,12 +3294,99 @@ Number.isNaN(' ');
      alert(countWordNumber('"Yes, she*is&my@love"'));
      ```
 
-15. ```
+15. ```js
      字符串练习：
      实现一个函数，查找子串出现的次数，返回字符串str中出现substring的次数。
      input: 'abcabcabc' , 'abc'
      output: 3
+     
+     //规律：  用 split 分隔 substring，得到的数组由空白组成，数组的个数-1，就是substring的个数。(因为第一个匹配的abc开头 和 最后一个匹配的abc末尾的空格也算)
+     split(''):
+     			1个abc，分成a,b,c 三个， split出来数组长度为3，那有几个''呢？数一下，是4个。
+     split('abc')
+            1个abc   2个空（也就是arr长度）
+            2个abc   3个空
+            3个abc   4个空
+            n个abc   n+1个空
+            所以 n个abc  = arr.length - 1
+     //       求index 用 indexof和 search
+     function countSubStr(supStr,subStr){
+         //input abcabcabc  abc
+         //output 3
+         var arr = supStr.split(subStr);
+         // alert(arr);
+         return arr.length - 1;
+     }
+     
+     alert(countSubStr('abcabcabcabca1bc2abc','abc'));
      ```
 
-16. 
+16. ```js
+     字符串练习：
+     已知用户名只能有数字字母下划线组成，判断邮箱是否符合格式。
+     e.g.  1212_fxy@gmail.com true
+     			$sada@gmail.com false
+     			dnadas@gasasa.comp false
+     
+     function mailCheck(str){
+         // fxy456_0_654@gmail.com
+         var index = str.indexOf('@');
+         // alert(index);
+         //4 
+         if(index == -1){
+             return false;
+         }
+         var endStr = str.substring(str.length-4 ,str.length);
+         // alert(endStr);
+         if(endStr != '.com'){
+         return false;
+         }
+     
+         var startStr = str.substring(0, index);
+         for( i = 0 ; i < startStr.length; i++){
+             if ( containIllegalChar(startStr[i])){
+                 return false;
+             }
+             }
+         return true;
+         }
+     
+     
+     function containIllegalChar(str){
+         if( str <= 'Z' && str >= 'A' || str <='z' && str >= 'a' || str <=9 && str >= 0 || str == '_'){
+             return false;
+         }
+         return true;
+     }
+     
+     
+     
+     alert(mailCheck('sadadasdasdasdasda.com')); //false
+     alert(mailCheck('ssdsada@gmail.comp')); //false
+     alert(mailCheck('$sada@gmail.com'));//false
+     alert(mailCheck('sada@gmail.com'));//true
+     
+     //这里我想额外谈一谈 if 和if-else的区别。
+     if( 条件 ){
+       
+     }
+     if( 条件 ){
+       
+     }
+     这样写的话，两个if没有互补的关系，他们判断的 样本总量互不影响，比如都是数组。
+     
+     但是如果写：
+     if( tiaojian ){
+       
+     }else{
+     	exe2;  
+     }
+     这里的exe2其实是 规避了tiaojian里的情况，也就是说， 是tiaojian的反方向，比如tiaojian是大于1，这里就是 小于等于1才执行。 如果exe都是return，从判断数量上来说，要比上面一个if一个if要节约时间，因为第一个判断不过，我就return终止function了不会再运行下去，而第一种一定要每个都跑完才行。
+     
+     
+     
+     
+     ```
+
+17. 
 
