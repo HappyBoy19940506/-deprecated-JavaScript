@@ -280,3 +280,32 @@ function NumberCode(n){
 }
 
 // alert(NumberCode(6));
+
+function verifyCode(n){
+    // parameter n is the digital numbers of the verifcation code;
+    // input : 6 
+    // output : 5A4c6z  / 5w4R9q / ....
+   // a - z ASCII  65 - 90
+   // A - Z ASCII  97 - 122
+   // 0 - 9  ASCII 0 - 9
+   var arr = new Array(n);
+   for(var i = 0 ; i < n; i++){
+       var temp =  parseInt((Math.random() * 123));
+       if(temp >= 0 && temp <= 9){
+           arr[i] = temp;
+       }else if(temp <= 90 && temp >= 65){
+           arr[i] = String.fromCharCode(temp);
+       }else if(temp >= 97 && temp <= 122){
+           arr[i] = String.fromCharCode(temp);
+       }else{
+           i = i - 1;
+           //i--;
+           //omit this time, i goes back to last value, restart this time's pick.
+       }
+   }
+//    alert(arr);
+   var str = arr.join('');
+   return str;
+}
+
+// alert(verifyCode(6));
