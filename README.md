@@ -1,2 +1,2 @@
 # JavaScript
-JSJSJSJSJSJSJS
+Hi, i'm learning JavaScript.
