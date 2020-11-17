@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="./demo.css">
     <script src="./demo1.js"></script>
     <script src="./demo2.js"></script>
     <script src="./demo3.js"></script>
@@ -98,9 +99,25 @@
     <script >
         alert('worinima3');
     </script> -->
+    <script>
+    // var temp = document.getElementById('div1');
+    // alert(temp);
+    function btnClick(){
+        // var  oDiv = document.getElementById('div1');
+        // var  temp = oDiv.innerHTML;
+        // // alert(temp);
+        // oDiv.innerHTML='sss';
+        // alert(temp);
+        // alert(oDiv.innerHTML);
+       document.getElementById('div1').innerHTML = verifyCode(6);
+
+    }
+    </script>
 
 </head>
 <body>
-    
+    <div id='div1'> 123456</div>
+    <br>
+    <button onclick="btnClick();"> click me</button>
 </body>
 </html>

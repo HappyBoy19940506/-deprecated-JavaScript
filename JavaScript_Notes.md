@@ -3121,5 +3121,112 @@ Number.isNaN(' ');
     alert(verifyCode(6));
     ```
 
-11. 
+11. ```html
+    DOM操作 配合 验证码功能：
+    点击button，展示随机的验证码。
+    
+    <body>
+      <div id = 'div1'>
+        123456
+      </div>
+      <button onclick = 'verif()'>
+        click me
+      </button>
+    </body>
+    ```
+
+    ```js
+    //事件驱动函数。
+    // <button onclick = 'verif()'>
+    //   click me
+    //</button>
+    // 点击button 就会执行 onclick里面字符串的 代码，注意是字符串，要带引号。
+    
+    
+    verif(){
+      //在script的js文件中，拿到 html文件中的拿到div标签
+      // 用document.getElementByID(id)
+      //通过 这个id查找 锁定到该id
+      var temp = doucment.getElementByID('div1');
+      // 如果输出temp的话，是 [object  HTMLDivElement]
+      那拿到标签了之后，怎么改变div内的内容呢？
+      // 通过node.innerHTML获取
+      //比如我想获取上面的123456
+      // ** 看下面的注意点3.
+      那就 
+      alert(temp.innerHTML)  --> 123456;
+      
+      或者 // ** 看下面的注意点3.
+      你写 var res = temp.innerHTML;
+      然后 alert(res)； 也可以
+      
+      但是后面，你想改变内容的话，那就只能改变：
+      temp.innerHTML = 'change this data plz';
+      同理，如果想通过函数改变的话，那就：
+      temp.innerHTML = testCode(6);
+      //不可以改变 var res，原因看 下面的注意点3。
+    }
+    
+    //最后再通过改变css样式。把验证码改为奇奇怪怪的font和样式。
+    
+    ********************
+    ****注意点1 ：*******
+    ********************
+    onclick('');
+    document.getElementByID('');
+    这后面都要写 ''， 不能直接写变量名字的。
+    
+    ********************
+    ****注意点2 ：*******
+    ********************
+    不能直接在 script标签里面写  事件驱动函数。
+    比如
+    <script>
+    var temp = document.getElementById('div1');
+    alert(temp);
+    </script>
+    你这么写，temp是取不到值的。
+    也就是说 事件驱动函数，必须放在一个function里面来驱动。比如 button的 onclick= ’ function(_);‘
+    然后再在js文件里面调用。
+    
+    
+    ********************
+    ****注意点3 ：*******
+    ********************
+    https://stackoverflow.com/questions/8196240/setting-innerhtml-why-wont-it-update-the-dom
+    
+    为什么不能写 var temp = oo.innerHTML;
+    但是可以写  var oo = document.getElementById('div');
+    且 更改内容时候，写的是 document.getElementById('div').innerHTML = 'xxx ';或者var temp= document.getElementById('') 然后 temp.InnerHTML = 'sss';
+    
+    说白了就是， innerHTML赋值只能写在左边。 直接 = 赋值就行。
+    
+    看如下代码：
+     function btnClick(){
+            var  oDiv = document.getElementById('div1');
+            var  temp = oDiv.innerHTML;
+            alert(temp);
+       			// 首先要更新一个观念，就是node.innerHTML是一个变量，就行var a， var b一样，你取他的时候虽然有值，但也是赋上去的。所以你 var temp = o.innerHTML  就相当于在做 var a = b的操作，也就是把 o.innerHTML当前的值赋给temp，所以此时 alert（temp） 输出为 本来在div里就存在的值也就是上题中的123456
+            oDiv.innerHTML='sss';
+       // 此时，你改变了innerHTML变量的值，那innerHTML的值就从123456变成了sss
+       //但是 temp的值没有发生任何变化，因为他两都是简单数据类型，又不是array那种一改全改的。
+       //所以
+            alert(temp);
+       // 123456
+            alert(oDiv.innerHTML);
+       ///sss
+        }
+    
+    *********************
+      一行解决：
+     function btnClick(){
+       
+           document.getElementById('div1').innerHTML = verifyCode(6);
+    
+        }
+    ```
+
+    
+
+12. 
 
