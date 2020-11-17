@@ -390,8 +390,18 @@ function containIllegalChar(str){
 
 
 
-alert(mailCheck('sadadasdasdasdasda.com')); //false
-alert(mailCheck('ssdsada@gmail.comp')); //false
-alert(mailCheck('$sada@gmail.com'));//false
-alert(mailCheck('sada@gmail.com'));//true
+// alert(mailCheck('sadadasdasdasdasda.com')); //false
+// alert(mailCheck('ssdsada@gmail.comp')); //false
+// alert(mailCheck('$sada@gmail.com'));//false
+// alert(mailCheck('sada@gmail.com'));//true
 
+
+// function show(b){
+//     if( b > 0){
+//         alert('worinima');
+//     }else if( b > 1){
+//         alert('hahahaha');
+//     }
+// }
+
+// show(8);

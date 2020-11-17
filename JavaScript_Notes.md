@@ -3358,7 +3358,10 @@ Number.isNaN(' ');
          }
          return true;
      }
-     
+     //小bug： 无法判断 fxy@4560654@gmail.com 是否合法。
+     //做法： 做一个count，count在str里面'@'的个数，不等于1的都为false。
+     //然后 @所在的index之前判断是否是合法字符。  从@的index往后，到 .com的index 再判断一次。也就是 到 arr[str.length-4]这一位。
+     //最后判断最后四位 是不是.com就可以了。
      
      
      alert(mailCheck('sadadasdasdasdasda.com')); //false
@@ -3383,10 +3386,34 @@ Number.isNaN(' ');
      }
      这里的exe2其实是 规避了tiaojian里的情况，也就是说， 是tiaojian的反方向，比如tiaojian是大于1，这里就是 小于等于1才执行。 如果exe都是return，从判断数量上来说，要比上面一个if一个if要节约时间，因为第一个判断不过，我就return终止function了不会再运行下去，而第一种一定要每个都跑完才行。
      
+     再例如：
      
+     function show(b){
+         if( b > 0){
+             alert('worinima');
+         }else if( b > 1){
+             alert('hahahaha');
+         }
+     }
      
+     show(8);
+     // wornima
+     不会走下面一个else if，因为else if的意思是 否则+如果， else if所判断的样本容量只有 b <= 0那一块，是永远取不到 b>1的，所以永远走不到alert('hahahaha');
      
      ```
 
-17. 
+17. ```js
+     敏感词屏蔽功能：
+     达到效果： 在输入框中输入一串字，点击提交后，显示在下方的聊天框中，并且输入框的字消失。聊天框中显示刚刚发送的内容，但是屏蔽掉了 敏感词。
+     ```
+
+     ```html
+     <body>
+       
+     </body>
+     ```
+
+     
+
+18. 
 
