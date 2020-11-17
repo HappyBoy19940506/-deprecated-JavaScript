@@ -3068,5 +3068,31 @@ Number.isNaN(' ');
     
     ```
 
-10. 
+10. ```js
+    字符串练习：
+    
+    短信验证码： 随机生成一个n位的由0-9数字组成的短信验证码。
+    function NumberCode(n){
+        // parameter n is the digital numbers of the verifcation code;
+        // input : 6 
+        // output : 564561  / 554897 / ....
+        // most used in SMS verify
+        var arr = new Array(n);
+        for(var i = 0; i < arr.length;i++){
+            var temp = parseInt(10 * Math.random());
+            arr[i] = temp;
+        }
+        var str = arr.join('');
+        return str;
+    }
+    
+    alert(NumberCode(6));
+    
+    
+    随机验证码生成： 随机生成一个n位的由a-z和A-Z以及0-9组成的验证码。
+    
+    
+    ```
+
+11. 
 

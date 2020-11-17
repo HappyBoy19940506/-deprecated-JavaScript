@@ -257,9 +257,26 @@ function wordTransfer(str){
 }
 // var res = wordTransfer('helloMyWorld')
 // document.write(res);
-document.write(wordTransfer('helloMyWorld'));
+// document.write(wordTransfer('helloMyWorld'));
 
-function haha(a){
-    return a + 3;
+// function haha(a){
+//     return a + 3;
+// }
+// alert(haha(3));
+
+
+function NumberCode(n){
+    // parameter n is the digital numbers of the verifcation code;
+    // input : 6 
+    // output : 564561  / 554897 / ....
+    // most used in SMS verify
+    var arr = new Array(n);
+    for(var i = 0; i < arr.length;i++){
+        var temp = parseInt(10 * Math.random());
+        arr[i] = temp;
+    }
+    var str = arr.join('');
+    return str;
 }
-alert(haha(3));
+
+// alert(NumberCode(6));
