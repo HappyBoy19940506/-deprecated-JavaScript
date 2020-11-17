@@ -2829,8 +2829,9 @@ Number.isNaN(' ');
         功能： 对应下表字符的ASCII码值
         var str = 'hdle';
         str.charCodeAt(1);
-        ```
-
+        //返回 'd'这个字符的 ASCII码值。
+```
+        
     6. ```js
         String.fromCharCode(  ASCII, ASCII.....);
         功能： 将传入的ASCII码值转成对应的字符
@@ -2841,8 +2842,8 @@ Number.isNaN(' ');
         alert(str);
         //abcd
         
-        ```
-
+    ```
+    
     7. ```js
         indexOf()
         格式： str.indexOf(value， start）;
@@ -2856,8 +2857,8 @@ Number.isNaN(' ');
            var supStr = 'abcabcabc';
            var subStr = 'abc';
            var index = supStr.indexOf(substr,1);
-        ```
-
+    ```
+    
     8. ```js
         lastIndexOf()
         格式：Supstr.lastIndexOf( substr);
@@ -2869,8 +2870,8 @@ Number.isNaN(' ');
            var subStr = 'abc';
            var index = supStr.lastIndexOf(substr);
         // 6 也就是最后一个ABC的a所在位置。
-        ```
-
+    ```
+    
     9. ```js
         search( )
         格式： supStr.search(subStr);
@@ -2880,10 +2881,10 @@ Number.isNaN(' ');
         search( subStr / 正则表达式)
         比如 i-忽略大小写， g 全局匹配
         比如 我想 找出 abc或者 ABC。。。那就是 写 /abc/i
-        ```
-
-        
-
+    ```
+    
+    
+    
     10. ---
 
 
@@ -3228,5 +3229,76 @@ Number.isNaN(' ');
 
     
 
-12. 
+12. ```js
+     字符串练习：
+     将字符串 按照单词进行逆序，空格作为划分单词的唯一条件。
+     input : Welcome  to Beijing
+     Output : Beijing to Welcome
+     
+     function reverseStr(str){
+         var arr =  str.split(' ');
+         //[welcome,to,beijing]
+         var newArr  = arr.reverse();
+         //[beijing,to,welcome]
+         var newStr = newArr.join(' ');
+         return newStr;
+     }
+     
+     alert(reverseStr('welcome to beijing'));
+     ```
+
+13. ```js
+     字符串练习：
+     input： 一个数组，起始元素和个数 都未知
+     outout： 一个新生成的数组，由原数组的元素正序反序拼接而成。
+     e.g.
+     input : [one, two, three]
+     output: [one , two, three, three, two ,one]
+     
+     function duplicateArr(arr){
+         var arr1 = arr.concat().reverse();
+         var newArr = arr.concat(arr1);
+         return newArr;
+       //这题就是考察 array引用数据类型的 性质。
+     }
+     
+     alert(duplicateArr(['one','two','three']));
+     ```
+
+14. ```js
+     字符串练习：
+     已知一个字符串对象中，英语单词用各种非字母字符分隔，统计单词个数。
+     input: "Yes, she*is&my@love"
+     output: 5
+     
+     //规律： 当前面一个字符是字母，而后面一个字符是非字母时候，前面就会有一个单词。
+     
+     function isWord(str){
+       if(str >= 'a' && str <= 'z' || str >= 'A' && str <= 'Z' ){
+          return true;
+          }
+       
+       return false;
+     }
+     
+     function countWordNumber(str){
+       var count = 0;
+       for(var i = 0 ; i <  str.length -1 ; i++){
+         if(isWord(str[i] && !isWord(str[i+1])  ){
+            count++;
+            }
+       
+       return count;
+     }
+     alert(countWordNumber('"Yes, she*is&my@love"'));
+     ```
+
+15. ```
+     字符串练习：
+     实现一个函数，查找子串出现的次数，返回字符串str中出现substring的次数。
+     input: 'abcabcabc' , 'abc'
+     output: 3
+     ```
+
+16. 
 

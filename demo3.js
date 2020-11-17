@@ -309,3 +309,40 @@ function verifyCode(n){
 }
 
 // alert(verifyCode(6));
+
+function reverseStr(str){
+    var arr =  str.split(' ');
+    //[welcome,to,beijing]
+    var newArr  = arr.reverse();
+    //[beijing,to,welcome]
+    var newStr = newArr.join(' ');
+    return newStr;
+}
+
+// alert(reverseStr('welcome to beijing'));
+
+function duplicateArr(arr){
+    var arr1 = arr.concat().reverse();
+    var newArr = arr.concat(arr1);
+    return newArr;
+}
+
+// alert(duplicateArr(['one','two','three']));
+
+function countStrNumber(str){
+    //input: "Yes, she*is&my@love"
+    //output: 5
+    var arr = str.split('');
+    var count = 0;
+    for(var i = 0; i < arr.length -1 ;i++){
+        // alphebt + non-alphbet = a word.
+        if(arr[i].charCodeAt(0) >= 65 && arr[i].charCodeAt(0) <= 90 || arr[i].charCodeAt(0) >= 97 && arr[i].charCodeAt(0) <= 122 && arr[i+1].charCodeAt(0) < 65 || arr[i+1].charCodeAt(0) > 90 && arr[i+1].charCodeAt(0) < 97 || arr[i+1].charCodeAt(0) > 122){
+            count++;
+        }
+    }
+
+    return count;
+}
+
+// alert(countStrNumber("Yes, she*is&my@love!haha@wocaoinmabi whart"));
+
