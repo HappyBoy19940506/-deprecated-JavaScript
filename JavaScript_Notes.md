@@ -3716,3 +3716,42 @@ Number.isNaN(' ');
 > ----> NaN..
 >
 > 不是undefined
+
+----
+
+
+
+## Math对象的一些方法
+
+```js
+更多方法，查阅Math文档。
+1. Math.random();
+//返回0-1之间的随机数。。
+2. Math.max(num1,num2，num3,num4,num5);
+// 返回最大数。。
+3. Math.min(num1,num2,num3,num4,num5);
+//  返回最小数
+4. Math.abs(num)
+// 绝对值
+5.Math.ceil(10.3)
+//向上取整 11
+6.Math.floor(11.9)
+//向下取整 11
+7.Math.pow(x,y)
+// x的y次方
+8.Math.sqrt(num)
+//num的开根号
+9.Math.round(num)
+//四舍五入成整数，但是只看小数点后面的一为。
+//所以 3.49，Math.round之后是3.
+10. Math.sin( )
+		Math.cos( )
+		参数： 弧度
+    Math.PI = 180弧度 = 1弧度 * 180
+    1弧度 = Math.PI/180;
+		所以求sin30° 应该算的是 Math.sin( 30* (Math.PI/180));
+
+```
+
+
+
