@@ -123,11 +123,31 @@
     <br>
     <br>
     <div id="chatBox"></div>
-    <div class="chatBoxBtn">
+    <div class="chatBoxBtn"></div>
     <textarea name="" id="inputTxt" cols="30" rows="10"></textarea>
     <button onclick="clearContext();">clear</button>
     <button onclick="submitContext();">submit</button>
+    <br> 
+    <br>
+    <br>
+    <br>
+    <br> 
+    <br>
+    <br>
+    <br>
+    <div class="register">
+        <div class="username">
+            <span>Username</span>
+            <input type="text" id="usernameInput" onblur="usernameCheck();" placeholder="input your username">
+            <span id="usernameCheckInfo">Must be 6 -18 chars and the first char can not be a number ， can only contain 0-9,a-Z,'_' </span>
+        </div>
+        <div class="password">
+            <span>Password</span>
+            <input type="text">
+            <span>12211</span>
+        </div>
     </div>
+    
     
 </body>
 </html>

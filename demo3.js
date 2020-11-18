@@ -418,7 +418,23 @@ function submitContext(){
         tranTxt = tranTxt.replace(arr[i],'*');
     }
     
-    document.getElementById('chatBox').innerHTML = tranTxt;
+    document.getElementById('chatBox').innerHTML =  document.getElementById('chatBox').innerHTML + tranTxt;
 
     document.getElementById('inputTxt').value = '';
 }
+
+
+function usernameCheck(){
+    var str = document.getElementById('usernameInput').value;
+    if(str.length > 18 ||  str.length < 6){
+        document.getElementById('usernameCheckInfo').innerHTML = 'length must be 8-18';
+    }else if(str[0] <= '9' && str[0] >= '0'){
+        document.getElementById('usernameCheckInfo').innerHTML = 'the first letter can not be a number';
+    }else if(containIllegalChar(str)){
+        document.getElementById('usernameCheckInfo').innerHTML = 'can only contain 0-9 a-Z and _';
+    }else{
+        document.getElementById('usernameCheckInfo').innerHTML = 'congrats, you can use this username';
+    }
+}
+
+

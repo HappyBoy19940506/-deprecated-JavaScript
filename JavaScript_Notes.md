@@ -3418,7 +3418,7 @@ Number.isNaN(' ');
              tranTxt = tranTxt.replace(arr[i],'*');
          }
          
-         document.getElementById('chatBox').innerHTML = tranTxt;
+            document.getElementById('chatBox').innerHTML =  document.getElementById('chatBox').innerHTML + tranTxt;
      
          document.getElementById('inputTxt').value = '';
      }
@@ -3440,5 +3440,110 @@ Number.isNaN(' ');
 
      
 
-18. 
+18. ```html
+     用户名注册验证：
+     1.必须只能由数字，字母，下划线组成
+     2.长度不能超过6-18
+     3.首字母不可以是数字
+     html + css + js
+     
+       <div class="register">
+             <div class="username">
+                 <span>Username</span>
+                 <input type="text" id="usernameInput" onblur="usernameCheck();" placeholder="input your username">
+                 <span id="usernameCheckInfo">Must be 6 -18 chars and the first char can not be a number ， can only contain 0-9,a-Z,'_' </span>
+             </div>
+             <div class="password">
+                 <span>Password</span>
+                 <input type="text">
+                 <span>12211</span>
+             </div>
+         </div>
+     
+     
+     
+     ```
+
+     ```css
+     .register{
+         width: 200px;
+         height: 300px;
+         background-color: cadetblue;
+         margin: 0 auto;
+         border: 1px solid black;
+         overflow: hidden;
+     }
+     
+     .register .username{
+       
+        margin: 0 auto;
+        margin: 50px 20px 50px 20px;
+     }
+     .register .username input{
+         width: 100%;
+         display: block;
+     }
+     .register .username span{
+         display: block;
+         width: 100%;
+         font-size: 14px;
+     }
+     
+     .register .password{
+         
+         margin: 0 auto;
+         margin: 50px 20px 50px 20px;
+     }
+     .register .password input{
+         display: block;
+         width: 100%;
+     }
+     .register .password span{
+         display: block;
+         width: 100%;
+         font-size: 14px;
+     
+     }
+     ```
+
+     ```js
+     function usernameCheck(){
+         var str = document.getElementById('usernameInput').value;
+         if(str.length > 18 ||  str.length < 6){
+             document.getElementById('usernameCheckInfo').innerHTML = 'length must be 8-18';
+         }else if(str[0] <= '9' && str[0] >= '0'){
+             document.getElementById('usernameCheckInfo').innerHTML = 'the first letter can not be a number';
+         }else  if(containIllegalChar(str)){
+             document.getElementById('usernameCheckInfo').innerHTML = 'can only contain 0-9 a-Z and _';
+           //containIllegalChar use a str loop to check every char in the str if contain a unwanted char.
+           // for (var i in str){
+           // if containIllegal(str[i])
+           // return true
+         }
+         }else{
+             document.getElementById('usernameCheckInfo').innerHTML = 'congrats, you can use this username';
+         }
+     }
+     ```
+
+     ```js
+     总结：
+     1.onblur： 失去焦点， 又一个事件驱动函数，
+     2. input/textarea这种标签的都是 .value
+     3. span/div内直接写内容的这些，都是.innerHTML
+     4.但是他们都是一个变量，而不是一个值，注意赋值左右顺序。
+     5.else if里面写的是  报错的条件， 而不是 不报错的条件。全程else if下来，用 input里的内容做验证，进而改变span里面的内容。
+     
+     6. document.getElementById 这是一个地址。所以 var var = document.getElementById ('ss')得到的是一个地址，所以可以用var.value或者 document.getElementById.value是一样的效果。类似于引用数据类型,他们指向同一个地址。 但是 var.value是一个变量。你用  var temp = var.value，然后更改temp不会改变var.value。
+     ```
+
+     
+
+
+
+---
+
+## Object对象
+
+
 
