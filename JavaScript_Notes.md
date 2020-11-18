@@ -3545,5 +3545,170 @@ Number.isNaN(' ');
 
 ## Object对象
 
+1. 面向过程编程：只考虑抽离实体后的数学逻辑。
+
+2. 面向对象编程：考虑其生活逻辑。
+
+    1. 每个实体都是一个对象。
+    2. 每个对象都有 属性，方法。
+    3. 用面向对象的思想考虑问题，设计逻辑。
+
+3. 面向对象的语法。
+
+    1. 类：
+
+        > ​	一种人为制造的抽象的相同事物特征的一类东西
+
+    2. 对象
+
+        > ​	某个类下面，**唯一**的 特殊的一个实例子。
+        >
+        >  狗 是一个类，但是你路上遇到那个是一个特殊的 对象实例。
+
+4. ECMA6之前的 对象的语法
+
+    ```js
+    1.申明对象。
+     (1).通过new 运算符
+     		var obj1 = new Object(); 
+     		//注意 ( )不能写东西。
+     (2).省略new 运算符
+     		var obj2 = Object( );
+     (3).对象常量赋值 
+     		var obj3 = { };
+    
+    2. 给对象新增属性。
+      obj3.username = 'worinima';
+      obj2.age = '18';
+    // attribute和变量 使用起来没有什么区别。用法没区别。
+    // 但是， attribute必须署名在一个object后面使用，和变量名一样，名字是固定的，但是值可以重新修改或者复制。
+    // 属性值可以变，但是属性名是不会变的。
+    
+     方法二：
+     你可以写成这样： 
+     obj['username'] = 'haha';
+     obj['age'] = '18';
+    //注意，用[]这种方法写属性的话，属性名字要加‘’.
+    
+    3.给对象新增方法。
+     //使用起来和函数一样。用法一样。
+    // 唯一的区别就是， 方法必须署名在一个object后面使用。但是方法名是顶死的。
+    
+    3.1申明方法。
+    
+    var obj = new Object;
+    obj.show = function(){
+      obj.username =' 18';
+    }
+    
+    3.2调用方法。
+    
+    obj.show();
+    
+     方法二：
+     你可以写成这样： 
+     var obj = {};
+     obj['show'] = function (){
+       xxx;
+     }
+     obj['show']();
+    //注意，用[]这种方法写方法名的话，要加‘’.
+    
+    方法三：
+    var obj = {};
+    //原先的。
+    
+    var  obj = {
+      'username' : 'ss',
+      age : 'what',
+      clickOnBtn : function (){
+        alert('s');
+      }
+    };
+    
+    
+    ---delete关键字---
+      删除 对象的方法或者属性
+      
+      var obj = {};
+      obj.username ='ss',
+      obj.show = function(){
+        sxx;
+      }
+     delete obj.username; 
+     delete obj.show;
+     
+    ```
+
+5. 对象的 数据结构。
+
+    1. 简单数据类型
+
+    2. 引用数据类型（数组）
+
+    3. 只读数据类型
+
+    4. 对象---一种新的数据类型
+
+        > ​	既可以存储数据（单个数据，或者数组） 又可以存储函数
+
+6. 小例子:
+
+    ```js
+    一辆车 时速60，一座桥1000km，求开过去要多久。
+    var car = {
+        speed : 60,
+        run : function(km){
+            var hours = km.length / car.speed;
+            return  hours;
+        },
+    };
+    
+    var road = {
+        lengsth : 1000,
+        splahs : function(){},
+    
+    };
+    
+    var hours = car.run(road);
+    alert(hours.toFixed(2));
+    
+    // 对比 var hours = run(road);
+    //之前 function run()直接就写在外面，这些我的理解就是相当于 把run函数封装起来，
+    //封装成一个只有car能够使用的函数，并且，他可以直接使用car对象里面现成的属性来为其所用。
+    //这里的road可以是一个 变量，比如 我 var road = 1000;
+    //这里的road也可以是一个对象。对象就有属性和方法。
+    //road是一个实参，名字是框死的。你根据这个框死的名字来把他变成对象，然后设置他的属性。
+    //car.run里面的km是一个形参，形参的名字无所谓的，叫什么都行，主要功能就是要把形参的属性对应上
+    //实参的属性。
+    //正常理解逻辑应该是： 1， 我要什么？我要一个car.run(road) 的返回值。也就是说我需要car和road这两个对象的相互作用，这两个名字是框死的。
+    // 2.这里面三个都是框死的，那我就要去写car写car的run，以及写road。。
+    //3. 因为我意识到road也是一个对象object，所以road的属性和car的属性都可以在run里面使用。
+    //4.所以我在写run函数的时候，road.attribute就会用到。但是我不一定要用road，我可以变成任意的字
+    //因为毕竟在 function run里我写的参数只是 申明阶段的形参，叫什么无所谓的。
+    
+    1. number.toFix(2) --> 保留两位小数。
+    2. undefined / 2 --> NaN ,比如我这里 car对象 属性和功能都不变。但是我在road对象中不写 length属性，那么当我call car.run(road)的时候，我发现run里面要用到的 road.length属性没有写，那 road.length的值就是undefined
+    3.一个对象的方法的写的时候 可以 使用该对象的属性。
+    4.一个对象的方法在写的时候 可以把另一个对象当做参数使用，当把对象当成参数使用的时候。该参数对象的属性也可以在此对象的方法中使用。 但是申明函数的时候的参数，是形参，所以名字不重要，比如 我写一个对象叫obj,他有一个function，参数是 temp，那如果temp是一个对象，那么temp.属性，我可以直接在function里面用。--> 最终在调用这个obj对象的function的时候，我参数无论填什么，这个参数 必须有和 当时temp相同的属性才行，否则就是undefined。
+    //就好比你 写一个函数，他的形参是 str，然后你里面有str.length
+    //但是你 调用的时候你写 func( 3 );这明显就不对，因为3是number，3没有length这个属性，如果你写的自己设置的对象的话，他就会报undefined的错误，因为对于3这个实参，他没有你str形参里面的属性。
+    //我们以前调用函数，参数填的要么是number，要么是str，要么是arr，现在还有可能是object。
+    
+    ```
+
+    
 
 
+
+
+
+---
+
+## alert( undefined / 3);
+
+> alert( undefined / 3) 
+>
+> ----> NaN..
+>
+> 不是undefined

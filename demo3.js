@@ -437,4 +437,38 @@ function usernameCheck(){
     }
 }
 
+// var obj = new Object;
+// obj.show = function(){
+
+// }
+// obj.show();
+var car = {
+    speed : 60,
+    run : function(km){
+        var hours = km.length / car.speed;
+        return  hours;
+    },
+};
+
+var road = {
+    lengsth : 1000,
+    splahs : function(){},
+
+};
+
+var hours = car.run(road);
+// 对比 var hours = run(road);
+//之前 function run()直接就写在外面，这些我的理解就是相当于 把run函数封装起来，
+//封装成一个只有car能够使用的函数，并且，他可以直接使用car对象里面现成的属性来为其所用。
+//这里的road可以是一个 变量，比如 我 var road = 1000;
+//这里的road也可以是一个对象。那是对象就有属性和方法。参数如果是对象，那参数的属性就必须有
+//对应的对象的属性名称一样的来对应。比如我 形参.length 我如果这么写，那肯定参数是一个对象，那么
+//我后面无论实参叫什么，都必须有一个相同的属性名与之对应，xxx.length;
+
+// var hours = road.length /  car.speed;
+
+
+
+alert(hours.toFixed(2));
+
 
