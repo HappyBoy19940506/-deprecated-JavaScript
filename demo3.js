@@ -472,3 +472,25 @@ var hours = car.run(road);
 // alert(hours.toFixed(2));
 
 
+function countDays(date1,date2){
+    var d1 = new Date(date1);
+    var d2 = new Date(date2);
+    var dd1 = d1.getTime();
+    var dd2 = d2.getTime();
+    var seconds = Math.abs(dd1 - dd2)
+    var days = parseInt(seconds /1000/3600/24);
+
+    return days;
+}
+
+// alert(countDays('2020-1-1','2020-1-3'));
+
+function daysAfterN(n){
+    var date = new Date();
+    var ddate = date.getDate() + n;
+    date.setDate(ddate);
+
+    return date;
+}
+
+alert(daysAfterN(3));

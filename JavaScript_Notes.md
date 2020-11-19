@@ -3772,6 +3772,8 @@ Number.isNaN(' ');
     var date = new Date('2000/01/01');
     var date = new Date('2000-01-01');
     这2种也可以。
+    但是： 一定要写 引号，否则会出错，！！！
+    其次： 只能写 年月日，后面不能再写了，比如'2020-1-1-1-1-1'这样是错的。
     
     
     最后一种是直接输入毫秒数。
@@ -3806,26 +3808,64 @@ Number.isNaN(' ');
     关于日期对象的方法：
     
     var date = new Date( );
+    // 证明我这个date赋的值是当前系统的时间
     alert(....)--->
       date.toDateString()
-    	// 显示系统时间的 年月日
+    	// 只显示date值中的 年月日
       date.toTimeString()
-     // 显示系统时间的 时分秒
+     // 只显示date值中的 时分秒
      date.toLocalDateString( )
-     //取消时区，国际文，只显示 当地习惯的表达方式的日期
+     //取消时区，国际文，只显示 当地习惯的方式来表达date值中的 年月日
      date.toLocalTimeString()
-    //取消时区，国际文，只显示 当地习惯的表达方式的 时间
+    //取消时区，国际文，只显示 当地习惯的表达方式的 date值中的 时分秒
      所以 稍微好一点表达的方式是：
      alert(date.toLocalDateString() + ' ' + date.tOLOcalTimeString);
     
     ----自定义方式 输出当前时间----
     
-    -1- 取出 当前时间里年月日的值
+    ***用getXXX( ) ，取出 当前date里面的值, 括号里没有参数，返回值就是取出来的值，date不变。
     var date = new Date( ); 
-    var year = date.getFullYear( ); //    get/set
-    var month = date.getMonth( ) + 1;   //    get/set
-    //这里提取出来的值是0-11.实际上的月份是 month的value 值+1.
-    var date =date.getDate( );   //    get/set
+    // date值是当前系统时间。
+    var year = date.getFullYear( ); 
+    alert(date);  //不变，比如还是2020/11/11
+    alert(year);  //2020
+    //    用get方法时， 没有参数，
+    //date的值不变，
+    //返回值year就是取出来的值。
+    
+    ***但是用setXXX( ),括号里 必须写参数！ 因为他的本意就是 用括号里的参数设置到对应的位置。
+    date发生改变，返回值是 【你改变过后的date 相当于1970-1-1 的毫秒差】
+    var date = new Date( ); 
+    // date值是当前系统时间。
+    
+    var year = date.setFullyear( );
+    //报错，set必须带参数。
+    
+    
+    var year = date.setFullyear( 1 );
+    //语义就是 我要把我现在date的值的这个日期里面hours这一栏 改为 1.
+    alert(date); // 0001 /11/18/21 / 59/59;
+    alert(year); // 也就是返回值。 值是 0001年11月18号相当于 1970年1月1号的毫秒差。
+    
+    
+    var month = date.getMonth( ) + 1;   
+    //    get/set不同的参数，不同的返回值，改变/不改变date
+    
+    //这里提取出来的值是0-11. 这里你的 var month是用来显示现实中的month的，所以要 把提取出来的值+1
+    
+    如果是set的话。
+    var month = date.setMonth( 10 );
+    // 参数可以设置成 0 - 11.
+    // 比如把参数设置为10.那么他 改变了 date，date的月份的值是10.如果你打印他，他会显示月份为11
+    //如果参数设置的是12，他会默认进一位，年份+1，月份的值为12，相当于在0号位，1号位，2号位...一直到11号位都走完了，重新开始，所以12号位上的值和0号位的值是一样的，所以12号位的值就是1月份。
+    
+    alert(date); //发生改变。  2020/11/22/12/12/2 输入10，打印的是arr[10] ,也就是11月份
+    alert(year); //返回值是 该日期 和 1970-1-1的毫秒差
+    
+    
+    
+    var date =date.getDate( );   
+    //    get/set不同的参数，不同的返回值，改变/不改变date
     //看清楚 是 date
     
     var week =date.getDay( );
@@ -3835,8 +3875,11 @@ Number.isNaN(' ');
     
     
     var hour =date.getHours( );
+    //    get/set不同的参数，不同的返回值，改变/不改变date
     var min =date.getMinutes( );
+    //    get/set不同的参数，不同的返回值，改变/不改变date
     var sec =date.getSeconds( );
+    //    get/set不同的参数，不同的返回值，改变/不改变date
     
     ---最后直接用字符串拼接----
     
@@ -3869,16 +3912,80 @@ Number.isNaN(' ');
     1.  Date.parse( 日期对象 )
     
     格式： Date.parse( date);
-    功能：可以将日期对象转化成毫秒数。 基准是1970-1-1开始算。
+    功能：可以将日期对象转化成与基准的 毫秒差。 基准是1970-1-1开始算。
+    date不变；
+    2.  date.getTime( ) 
+    格式： date.getTime( ) 没有参数
+    功能： 和 Date.parse(date) 一样，获得与基准的毫秒差。
+    date不变；
     
-    2.  date.getTime( ) / date.setTime( );
+    
+    var date = new Date();
+    
+    var temp  = date.getTime();
+    
+    alert(date); // Thu Nov 19 2020 19:13:30 GMT+1100 
+    alert(temp); // 1605773610493 理解为ascii码值也可以
+    
+    3.  date.setTime(必须写参数);
+    功能： 类似于 其他的set方法。比如sethorus setMotnhs setFullyears，只是这次是全部set了。;
+    格式：	date.setTime( 毫秒差，一串编号)
+    功能：	把date的值 完全改变成 以参数转化而来的 值 。
+    date改变。
+    返回值是 新的date 与 1970-1-1的毫秒差。其实就是 【参数】了。
+    
+          
+    
+    var date = new Date();
+    //此时 date的值就是目前系统的时间
+    var temp  = date.setTime(1000);
+    //我把系统的时间全部摸出，设置成编号为1000，其实就是把和1970年1月1号的毫秒差
+    alert(date); //那时间就完全变成了 1970/1/1/1/0/0
+    alert(temp); //返回值是 1970/1/1/1/0/0 和 1970/1/1/0/0/0的毫秒差，其实就是参数。
+    
+    
     
     
     
     
     ```
 
-5. 
+5. ```js
+    计算2个日期之间相距多少天。
+    
+    Input : date1 ,date2
+    Output: XX days;
+    
+    function countDays( date1,date2){
+      	// 取的他们2个日期相当于1970年的毫秒差。
+     date1 和 date2目前是 字符串，我们要把他 实例化为 date对象的实例：
+        var d1 = new Date(date1);
+        var d2 = new Date(date2);
+        var dd1 = d1.getTime();
+        var dd2 = d2.getTime();
+        var seconds = Math.abs(dd1 - dd2)
+        var days = parseInt(seconds /1000/3600/24);
+    
+        return days;
+    }
+    ```
+
+6. ```js
+    输入n。输出n天后的时间。
+    function daysAfterN(n){
+        var date = new Date();
+        var ddate = date.getDate() + n;
+        date.setDate(ddate);
+    
+        return date;
+    }
+    
+    alert(daysAfterN(3));
+    
+    //而且不用担心 n如果大于30会怎么样，他会自动进1位的。
+    ```
+
+7. 
 
 
 
