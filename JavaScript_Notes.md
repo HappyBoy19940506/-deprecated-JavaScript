@@ -3755,3 +3755,54 @@ Number.isNaN(' ');
 
 
 
+-----
+
+## 日期对象
+
+1. ```js
+    申明一个日期对象：
+    var date =  new Date( );
+    //如果( )不写参数，那就是 系统自带的时间，和外界时间无关。
+    
+    var date =  new Date( 2000,1,1,8,30,50 );
+    //year, month,date,hours,mins,second,m-second.
+    //但是注意这里的month是从0开始数的，0-11.
+    //也就是说如果你month位置写的是1的话，他其实会显示是二月份。
+    
+    var date = new Date('2000/01/01');
+    var date = new Date('2000-01-01');
+    这2种也可以。
+    
+    
+    最后一种是直接输入毫秒数。
+    var date = new Date(1000);
+    //alert会是 GMT当地时间 1970-1-1 +1000ms。为参照时间基础往上加换算时间。
+    ```
+
+2. ```js
+    Math对象. Date对象，Array对象，String对象的区别
+    --- 是不是一个构造器 constructor
+    //我的个人理解
+    为什么
+    Date对象 可以 var date = new Date( ); 
+    Array对象 可以 var arr = new Array( ); //[]
+    String对象 可以 var str = new String( );// ''
+    Object 对象可以写成 var obj = new Object( ); // { }
+    而 Math 不可以写成 var num = new Math( ); //报错说 Math不是一个constructor
+    只能直接调用方法 写成 var num = Math.random( )
+    
+    
+    为什么math方法不一样，为什么math方法不是一个构造器，我的理解就是math这个对象无法实例化！
+    他是一个抽象的对象。 number对象，我可以实例化成1，2，3.array对象我可以实例化成[1] [1,2]但是 math对象我无法实例化出来任何一个实力，因为math是一个抽象的概念。
+    
+    所以math对象无法申明，也不需要申明，直接调用就行了：
+     var num = Math.random( ); 
+     var num1 = Math.pow(3,4);
+    
+    
+    ```
+
+3. 
+
+
+

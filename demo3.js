@@ -469,6 +469,6 @@ var hours = car.run(road);
 
 
 
-alert(hours.toFixed(2));
+// alert(hours.toFixed(2));
 
 
