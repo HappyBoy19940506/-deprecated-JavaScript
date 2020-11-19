@@ -3802,7 +3802,83 @@ Number.isNaN(' ');
     
     ```
 
-3. 
+3. ``` js
+    关于日期对象的方法：
+    
+    var date = new Date( );
+    alert(....)--->
+      date.toDateString()
+    	// 显示系统时间的 年月日
+      date.toTimeString()
+     // 显示系统时间的 时分秒
+     date.toLocalDateString( )
+     //取消时区，国际文，只显示 当地习惯的表达方式的日期
+     date.toLocalTimeString()
+    //取消时区，国际文，只显示 当地习惯的表达方式的 时间
+     所以 稍微好一点表达的方式是：
+     alert(date.toLocalDateString() + ' ' + date.tOLOcalTimeString);
+    
+    ----自定义方式 输出当前时间----
+    
+    -1- 取出 当前时间里年月日的值
+    var date = new Date( ); 
+    var year = date.getFullYear( ); //    get/set
+    var month = date.getMonth( ) + 1;   //    get/set
+    //这里提取出来的值是0-11.实际上的月份是 month的value 值+1.
+    var date =date.getDate( );   //    get/set
+    //看清楚 是 date
+    
+    var week =date.getDay( );
+    //显示周数，但是只有getDay方法,只可以get到周几,但是无法像其他的有setDay方法，也就是说
+    //周几 只能get，不可以主动设置，是根据你的年月日判断出来的。
+    // 值为 0- 6. 0为周日。
+    
+    
+    var hour =date.getHours( );
+    var min =date.getMinutes( );
+    var sec =date.getSeconds( );
+    
+    ---最后直接用字符串拼接----
+    
+     var str = year + '年' +month +'月'+ date +'日'+ hours+ ':'+ mins+ ':'+ secs+ ':' + ' 星期' + week；
+    
+    // 2000年 11月3日  2:22:12; 星期3.
+    
+    1. 一般来说 ，我们不喜欢用星期3，喜欢写成星期三，那我们就：
+      function changeWeekNumber(week){
+        arr=['日'，’一‘，’二‘，’三‘，’四‘，’五‘，’六‘]；
+        return arr[week];
+        //week 取值 0-6，返回 arr[week]正好返回对应的str值。
+      }
+    然后 var week = changeWeekNumber(date.getDay());
+    
+    2.一般来说， 我们 不习惯 8:30:1. 而喜欢写成 08:30:1.那我们就：
+    function doubleNum( hour){
+      if(hour < 10 ){
+        return '0' + hour;
+      }else{
+        return hour;
+      }
+    }
+    然后 var hours= doubleNumber(date.getHours());
+    ```
+
+4. ```js
+    日期对象更多方法：
+    
+    1.  Date.parse( 日期对象 )
+    
+    格式： Date.parse( date);
+    功能：可以将日期对象转化成毫秒数。 基准是1970-1-1开始算。
+    
+    2.  date.getTime( ) / date.setTime( );
+    
+    
+    
+    
+    ```
+
+5. 
 
 
 
