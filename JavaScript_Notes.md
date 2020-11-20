@@ -4063,22 +4063,108 @@ if (){
     setInterval(function(){
         var date = new Date();
         document.getElementById('timer').innerHTML = date;
-    },1000);
+    },10);
     
     
     
     //或者复杂一点的写法
     
-    var timer = setInterval(haha,1000);
+    var timer = setInterval(haha,10);
     
+    // 这里为什么setInterval的间隔设置为10，而不是之前的1000.首先要明确，这个值是执行function的间隔，我如果设置的值为1s，会造成的效果是 第一次执行，要等1秒钟才显示。第二次，再隔一秒显示，每次显示的是当前，这就会导致我第一次生成的时候会延迟1秒，也就是时钟会比html文件晚1秒钟生成，影响用户体验。
+    所以，这里我们应该直接设置间隔小1点，需要注意的是，我就算间隔的是10ms，但是我1秒钟之内就算执行10次查询日期，但是日期在这个1秒的十次内查询的值是不变的，所以不受影响，但是用户体验会好很多很多。
     
     function haha(){
             var date = new Date();
             document.getElementById('timer').innerHTML = date;
     }
     
+    ************************
+     **********************
+      ********************
+      
     
-    ///这里先显示111，然后再发生变化，变成js里面的date，也可以说明 浏览器是先运行htmlcss再运行js的。
+    ///这里先显示111，然后再发生变化，变成js里面的date，是因为，虽然浏览器是根据自上而下顺序运行的,也就是说 先js 再html 再css。但是这里由于function预编译，他提取取得了。具体来看下面。
+    这里有一个很confusing的地方就是：
+    在 script标签里面 document.getElementById('time').innerHTML 会出现在四种地方。
+    我们逐一分析：
+    
+    首先第一种：直接写在script标签里面：
+    <script>
+      	 document.getElementById('time').innerHTML
+      </script>
+    这里你如果alert 他会显示为 null.innterHTML 报错，因为差不多node.'time'这个节点。为什么？因为他是自上而下运行的，当他运行js的时候还没看到下面的html，自然也就不知道'time' 的存在。
+    //Uncaught TypeError: Cannot read property 'innterHTML' of null
+     
+    
+    第二种： 写在 script标签的 function里面：
+    <script>
+      	 function change(){
+      	alert( document.getElementById('time').innerHTML);
+    }
+    
+    	change( );
+    
+      </script>
+    这里你的document.getElementById('time').innterHTML也是无法取到值的，他自上而下的时候还没有看到html里面的内容，虽然有function预编译的功能，他的预编译时间比运行js和html都要早，所以在预编译的时候，他就发现有个变量名字叫 document.getElementById('time').innterHTML。但是这时他还不知道'time'是谁，所以这种方式也会报错。
+    //Uncaught TypeError: Cannot read property 'innterHTML' of null
+     
+    第三种：
+      ***事件驱动函数 配合 document.getElementById('time')****
+        这种情况下，首先有点类似于情况二，因为他也是有一个function来触发js执行语句，但是区别是这个function的驱动不是写在script里的'show();'，而是 在html标签里面的驱动函数。
+        在后面也会把事件函数写在window.onload里面，这里说的是写在html标签里面的情况。
+    这种情况下，document.getElementById('time')这个函数本来是取不到值的，但是这个函数的触发 并不是在扫描js时候触发的，而是在点击触发时间函数时候才执行function语句，也就是说 当你能够触发时间函数的时候，才会执行show();此时，html肯定已经渲染好了，不然你也 点不到那button，所以他当然可以获取到document.getElementById('time')的值。
+    
+     <button id="haha" onclick="haha();">haha</button>
+    //js里面写有一个function haha( ){
+    		***document.getElementById('time')****
+    }
+     //但是要读到button的时候才会运行。
+    
+    第四种： 写在script标签里面的 window.onload里面：
+    <script>
+      	 window.onload = function (){
+      alert( document.getElementById('time').innterHTML);
+      执行语句。
+    }
+    }
+      </script>
+    这种可以获取 ( document.getElementById('time').innterHTML);因为有widow.onload在这些所有js的文件放在html css渲染完成之后执行。
+    
+    第五种特殊情况：
+    系统内置的 SetInterval默认是 window.load的，也就是默认是后置的。所以他可以直接调用doc,getelementbyID('ss');
+    
+    
+    iwww = 0;
+    setInterval(function(){
+        iwww ++;
+        document.getElementById('hahacao1').innerHTML = document.getElementById('hahacao1').innerHTML + iwww;
+    
+    },1000)
+    
+    // 这个js文件里面的setInterval虽然提前想取 hahacao1的值，但是还是可以取到的。
+    
+    
+    
+    实际参考代码：
+    alert(document.getElementById('hahacao').innerHTML);
+    //baocuo 
+    
+    function wori(){
+        alert(document.getElementById('hahacao').innerHTML);
+    }
+    wori();
+    //baocuo
+    
+    function haha(){
+        var temp = document.getElementById('hahacao').innerHTML;
+        alert(temp);
+    }
+    /// 'sss'
+    
+    window.load ......
+    // 'sss'
+    // 系统内置的 SetInterval默认是 window.load的，也就是默认是后置的。所以他可以直接调用doc,getelementbyID('ss');
     ```
 
 
@@ -4114,10 +4200,38 @@ if (){
 
 ## 秒表
 
-1.  ```html
-    <div class="secondTimer">
+
+
+1. ```
+    业务逻辑：
+    首先，在这个div里面有四大块， 第一块 显示的是 00：00：00
+    第二快到第四块显示分别是 三个按钮： 开始， 暂停 和 复位。
+    开始： 按下开始后，开始计时，每秒一跳。 
+    暂停： 按下暂停后，停止当前的计时。 
+    暂停+开始： 按下开始后，从暂停的时间开始计时。
+    复位： 按下复位后，如果当前是开始状态，也就是正在跑，就停下来然后归零。
+    								如果当前是暂停状态，就直接归零。
+    
+    *****
+    隐藏的bug:  因为开始是一个setInterval()，如果你点完开始以后，他开始计时之后。如果你又点了一次“开始”，那么就相当于启动了2个setInterval，这样第一秒的计时就会加速一倍。
+    
+    
+    
+    
+    ```
+
+    
+
+2. 
+
+     ```html
+        <div class="secondTimer">
             <div id="readMeter" class="readMeter">
-                00:00:00
+                <span id="readMeterHours">00</span>
+                <span>:</span>
+                <span id="readMeterMins">00</span>
+                <span>:</span>
+                <span id="readMeterSeconds">00</span>
             </div>
             <div class="btns">
                 <button id="start">start</button>
@@ -4127,7 +4241,7 @@ if (){
         </div>
      ```
 
-2. ```css
+3. ```css
     
     .secondTimer{
         width: 100px;
@@ -4157,9 +4271,9 @@ if (){
     }
     ```
 
-3. ```js
+4. ```js
     js
     ```
 
-4. 
+5. 
 

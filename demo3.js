@@ -495,21 +495,44 @@ function daysAfterN(n){
 
 // alert(daysAfterN(3));
 
-var timer = setInterval(function (){
+setInterval(function (){
     var date = new Date();
     document.getElementById('timer').innerHTML = date;
-},1000);
+},10);
 
+
+// function haha(){
+//         var date = new Date();
+//         document.getElementById('timer').innerHTML = date;
+// }
+
+// 
+// 
+// 
+// window.onload = function( ){
+//     alert(document.getElementById('readMeter').innerHTML);
+// }
+
+// alert(document.getElementById('hahacao').innerHTML);
+// //baocuo 
+
+// function wori(){
+//     alert(document.getElementById('hahacao').innerHTML);
+// }
+// wori();
+// //baocuo
 
 function haha(){
-        var date = new Date();
-        document.getElementById('timer').innerHTML = date;
+    var temp = document.getElementById('hahacao').innerHTML;
+    alert(temp);
 }
 
-// 
-// 
-// 
-window.onload = function( ){
-    alert(document.getElementById('readMeter').innerHTML);
-}
+// iwww = 0;
+// setInterval(function(){
+//     iwww ++;
+//     document.getElementById('hahacao1').innerHTML = document.getElementById('hahacao1').innerHTML + iwww;
+
+// },1000)
+
+
 
