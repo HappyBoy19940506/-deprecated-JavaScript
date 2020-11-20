@@ -493,4 +493,23 @@ function daysAfterN(n){
     return date;
 }
 
-alert(daysAfterN(3));
+// alert(daysAfterN(3));
+
+var timer = setInterval(function (){
+    var date = new Date();
+    document.getElementById('timer').innerHTML = date;
+},1000);
+
+
+function haha(){
+        var date = new Date();
+        document.getElementById('timer').innerHTML = date;
+}
+
+// 
+// 
+// 
+window.onload = function( ){
+    alert(document.getElementById('readMeter').innerHTML);
+}
+

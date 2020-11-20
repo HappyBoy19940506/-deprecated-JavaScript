@@ -2830,6 +2830,7 @@ Number.isNaN(' ');
         var str = 'hdle';
         str.charCodeAt(1);
         //返回 'd'这个字符的 ASCII码值。
+        ```
 ```
         
     6. ```js
@@ -2842,8 +2843,8 @@ Number.isNaN(' ');
         alert(str);
         //abcd
         
-    ```
-    
+```
+
     7. ```js
         indexOf()
         格式： str.indexOf(value， start）;
@@ -2883,9 +2884,10 @@ Number.isNaN(' ');
         比如 i-忽略大小写， g 全局匹配
     比如 我想 找出 abc或者 ABC。。。那就是 写 /abc/i
     ```
-    
-    
-        
+
+
+​    
+​        
     10. ---
 
 
@@ -3246,7 +3248,7 @@ Number.isNaN(' ');
      }
      
      alert(reverseStr('welcome to beijing'));
-     ```
+    ```
 
 13. ```js
      字符串练习：
@@ -3264,7 +3266,7 @@ Number.isNaN(' ');
      }
      
      alert(duplicateArr(['one','two','three']));
-     ```
+    ```
 
 14. ```js
      字符串练习：
@@ -3292,7 +3294,7 @@ Number.isNaN(' ');
        return count;
      }
      alert(countWordNumber('"Yes, she*is&my@love"'));
-     ```
+    ```
 
 15. ```js
      字符串练习：
@@ -3319,7 +3321,7 @@ Number.isNaN(' ');
      }
      
      alert(countSubStr('abcabcabcabca1bc2abc','abc'));
-     ```
+    ```
 
 16. ```js
      字符串练习：
@@ -3400,7 +3402,7 @@ Number.isNaN(' ');
      // wornima
      不会走下面一个else if，因为else if的意思是 否则+如果， else if所判断的样本容量只有 b <= 0那一块，是永远取不到 b>1的，所以永远走不到alert('hahahaha');
      
-     ```
+    ```
 
 17. ```js
      敏感词屏蔽功能：
@@ -3422,7 +3424,7 @@ Number.isNaN(' ');
      
          document.getElementById('inputTxt').value = '';
      }
-     ```
+    ```
 
      ```html
      <body>
@@ -3462,7 +3464,7 @@ Number.isNaN(' ');
      
      
      
-     ```
+    ```
 
      ```css
      .register{
@@ -3985,7 +3987,130 @@ Number.isNaN(' ');
     //而且不用担心 n如果大于30会怎么样，他会自动进1位的。
     ```
 
-7. 
 
 
+
+----
+
+## 定时器
+
+```js
+定时器：
+ 格式： var timer = setInterval( 参数1， 参数2)
+ 参数： 参数1是 function， 参数2是毫秒。 
+ 功能: 每隔对应的毫秒数，执行1次函数。
+ 返回值： 系统创建该定时器的编号。
+ 
+ 拿到该返回值后，我可以通过clearInterval(返回值)来取消定时器。
+ 
+ 例子：
+ var timer = setInterval( show, 1000);
+//这里一定不能写().因为你写了 (),意思就是 调用了show函数，那么参数1就变成了show()的返回值，而不是
+//show函数本身
+//每间隔1s，执行一次show()函数
+if (){
+    clearInterval(timer);
+//终止timer的运行。
+    }
+    
+  //感觉他本质上有点像一个无限次数的loop循环。
+    
+    
+    关于这个show。
+    
+    你可以写成 function show(){
+      
+    }
+
+
+   或者 直接 把function写在里面：
+   var timer = setInterval(function(){}    , 1000);
+		//这种情况下 这个function连名字都没有，所以一般叫做 匿名函数。
+
+	但是无论如何， 你的参数1 不能写 show(),因为这个代表的是函数返回值，而不是函数本身。
+	这里要么写匿名函数，要么就function show(){},这样。
+
+```
+
+
+
+----
+
+## 实时动态时间
+
+1. ```css
+    date对象方法 获得  当前系统时间
+    setInterval 设置一个1s间隔
+    然后每1s去获得一次当前时间，并且打印出来。
+    
+    .timer{
+        width: 600px;
+        height: 100px;
+        border:1px solid black;
+        overflow: hidden;
+        margin: 0 auto;
+        font-size: 30px;
+        text-align: center;
+        line-height: 100px;
+    }
+    
+     <div class="timer">
+           121212
+        </div>
+    ```
+
+2. ```js
+    setInterval(function(){
+        var date = new Date();
+        document.getElementById('timer').innerHTML = date;
+    },1000);
+    
+    
+    
+    //或者复杂一点的写法
+    
+    var timer = setInterval(haha,1000);
+    
+    
+    function haha(){
+            var date = new Date();
+            document.getElementById('timer').innerHTML = date;
+    }
+    
+    
+    ///这里先显示111，然后再发生变化，变成js里面的date，也可以说明 浏览器是先运行htmlcss再运行js的。
+    ```
+
+
+
+
+
+----
+
+## 谈谈迭代iteration
+
+> ​	有些时候会突然对 
+>
+> ```js
+> document.getElementByID().innerHTML = document.getElementByID().innerHTML + txt;
+> 
+> 或者
+> 
+> document.getElementByID().value = document.getElementByID().value.replace(arr[i],'**')
+> 
+> 这种犯迷糊。
+> 
+> 其实很好理解， 他就是一个 i++ ，也就是 i = i+1是一样的。
+> 
+> 
+> //只要出现
+> 同一个东西 需要经过同一个filter若干次的话，那一定是迭代。i 经过一个每次减一的filter要经过若干次，那本次的i肯定是上次的i算后的结果，所以 i =i -1; 
+> //array很特殊，很多时候array可以直接在原数组上改变，连迭代都不需要。
+> ```
+>
+> 
+
+----
+
+## 秒表
 
