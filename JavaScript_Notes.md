@@ -4022,6 +4022,16 @@ if (){
       
     }
 
+   然后调用：var timer = setInterval( show, 1000);
+
+	或者 写
+  window.onload = function (){
+  var show = functinon(){
+  xxxx;
+    }
+    };
+ var timer = setInterval( show, 1000);
+//这种 var 变量名 = 匿名函数的写法，必须在 window.onload里面用，否则取不到elementid的值。
 
    或者 直接 把function写在里面：
    var timer = setInterval(function(){}    , 1000);
@@ -4132,7 +4142,7 @@ if (){
     这种可以获取 ( document.getElementById('time').innterHTML);因为有widow.onload在这些所有js的文件放在html css渲染完成之后执行。
     
     第五种特殊情况：
-    系统内置的 SetInterval默认是 window.load的，也就是默认是后置的。所以他可以直接调用doc,getelementbyID('ss');
+    系统内置的 SetInterval默认是 window.load的，也就是默认是后置的。所以他可以直接调用doc,getelementbyID('ss');其实底层原理是 setinterval全称应该是 window.load.setinterval()他肯定是window.onload的方法只是简写了。
     
     
     iwww = 0;
@@ -4202,7 +4212,7 @@ if (){
 
 
 
-1. ```
+1. ```js
     业务逻辑：
     首先，在这个div里面有四大块， 第一块 显示的是 00：00：00
     第二快到第四块显示分别是 三个按钮： 开始， 暂停 和 复位。
@@ -4212,12 +4222,58 @@ if (){
     复位： 按下复位后，如果当前是开始状态，也就是正在跑，就停下来然后归零。
     								如果当前是暂停状态，就直接归零。
     
-    *****
-    隐藏的bug:  因为开始是一个setInterval()，如果你点完开始以后，他开始计时之后。如果你又点了一次“开始”，那么就相当于启动了2个setInterval，这样第一秒的计时就会加速一倍。
+    **********
+    隐藏的bug:  因为开始是一个setInterval()，如果你点完开始以后，他开始计时之后。如果你又点了一次“开始”，那么就相当于启动了2个setInterval，这样就有2个计时器在+1，所以这样第一秒的计时瞬间就会加速一倍，瞬间数了2个数。
+    **********
     
+    **********
+    小知识点:setInterval()是window.onload类的，会自动后置。
+    				setInterval(function ,1000ms)。第0秒是不运行函数的， 第1000ms才允许第一次函数。
+    **********
     
+    关键知识点：
+    1.如何给 开始 暂停 复位 来添加事件驱动函数。
+    	以前是写在html标签里面的比如 <button onclick='funct ();'> 
+    	现在我们可以 把onclick写在js里面。
+      直接可以在js写成：
+      document.getElementById('id').onclick = function (){
+        //onclick后面跟的函数的执行代码，名字就不写了。
+        //这就是一个匿名函数。
+        //我不在乎函数取什么名字，我要的是里面执行的内容。
+        
+         show( );
+        
+         function show( ){
+          xxxx;
+        }
+        
+        与直接写 function (){
+        		xxxx;
+      };
+        
+        是一样的。但是不用取一个叫show的名字了。
     
+    2. 如何让 document.getelementsbyID('')在html之前就可以获取到：
     
+    		window.onload = function(){
+          。。该处代码 在渲染完html后运行。 //比写在body标签后面的script标签加载还要晚。
+        };
+        
+        但是 记住： window.onload只能通篇写一个，第二个会覆盖第一个的代码, 只会执行最后一个。
+        
+    3.document.getElementById('id') 太长了，如何简写？
+    	function $ (id){
+        return document.getElementById(id);
+      }
+    ...这样的话 document.getElementById('id') 就可以写成 $('id');
+    
+    4.使用document.write输出覆盖HTML问题：
+        如果document.write在整个html文档流渲染完之后执行，就会重写页面。
+        比如在 window.onload里面写document.write. //window.onload就代表整个window已经加载完了。
+        或者 在 onclick 的function 里写 document.write.
+        这两种情况下，html都已经是渲染好的状态了。所以再写document.write就会覆盖。
+        document.write不想重写，只能写在html之前。
+    		https://www.jianshu.com/p/718928a842ac
     ```
 
     

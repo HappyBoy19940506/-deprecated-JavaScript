@@ -495,10 +495,20 @@ function daysAfterN(n){
 
 // alert(daysAfterN(3));
 
-setInterval(function (){
-    var date = new Date();
-    document.getElementById('timer').innerHTML = date;
-},10);
+// setInterval(function (){
+//     var date = new Date();
+//     document.getElementById('timer').innerHTML = date;
+// },2000);
+
+
+
+// window.onload = function(){
+//     var cp = function(){
+//         var date = new Date();
+//         document.getElementById('timer').innerHTML = date;
+//     };
+//     setInterval( cp , 1000);
+// }
 
 
 // function haha(){
@@ -522,10 +532,10 @@ setInterval(function (){
 // wori();
 // //baocuo
 
-function haha(){
-    var temp = document.getElementById('hahacao').innerHTML;
-    alert(temp);
-}
+// function haha(){
+//     var temp = document.getElementById('hahacao1').innerHTML;
+//     alert(temp);
+// }
 
 // iwww = 0;
 // setInterval(function(){
@@ -535,4 +545,47 @@ function haha(){
 // },1000)
 
 
+
+//  var cn =  function(){
+     
+//      return 1;
+//  }
+
+//  function cn(){
+//      return console.log('1');
+//  }
+
+// var cn =function(){
+//     return console.log('1');
+// }
+
+
+// setInterval(function(){
+//          return console.log('1');
+//      } , 1000);
+
+// function haha(){
+//     document.write('1111111');
+// }
+
+window.onload = function(){
+    setInterval(function(){
+        var date = new Date;
+        $('timer').innerHTML = date;
+    } , 100);
+
+    function $( id ){
+        return document.getElementById(id);
+    }
+    $('start').onclick = function(){
+        alert('start');
+    };
+    $('pause').onclick = function(){
+        alert('pause');
+    };
+    $('restart').onclick = function(){
+        alert('restart');
+    };
+
+};
 
