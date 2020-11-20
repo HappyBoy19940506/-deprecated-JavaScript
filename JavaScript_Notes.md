@@ -4114,3 +4114,52 @@ if (){
 
 ## 秒表
 
+1.  ```html
+    <div class="secondTimer">
+            <div id="readMeter" class="readMeter">
+                00:00:00
+            </div>
+            <div class="btns">
+                <button id="start">start</button>
+                <button id="pause">pause</button>
+                <button id="restart">restart</button>
+            </div>
+        </div>
+     ```
+
+2. ```css
+    
+    .secondTimer{
+        width: 100px;
+        height: 200px;
+        background-color: yellow;
+        border: 1px black solid;
+        margin: 0 auto;
+        margin-top: 100px;
+    }
+    
+    .secondTimer .readMeter{
+        border: 1px black solid;
+        margin: 20px 20px 20px 20px;
+        text-align: center;
+        font-size: 16px;
+        line-height:18px;
+    
+    }
+    
+    .secondTimer .btns{
+        border:1px solid black;
+    }
+    .secondTimer .btns button {
+        display: block;
+        background-color: grey;
+        margin: 10px auto 10px auto;
+    }
+    ```
+
+3. ```js
+    js
+    ```
+
+4. 
+
