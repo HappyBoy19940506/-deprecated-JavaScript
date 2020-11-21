@@ -567,9 +567,21 @@ function daysAfterN(n){
 // function haha(){
 //     document.write('1111111');
 // }
+// var huhongying  = setInterval(function(){
+//     return console.log('1')},1000);
+
+// alert(huhongying);
+// var huhongying2  = setInterval(function(){
+//     return console.log('2')},1000);
+
+// alert(huhongying2);
+
 
 window.onload = function(){
-    setInterval(function(){
+    var i = 0;
+    var temp = 0;
+    // var arr = [];
+    temp = setInterval(function(){
         var date = new Date;
         $('timer').innerHTML = date;
     } , 100);
@@ -577,15 +589,63 @@ window.onload = function(){
     function $( id ){
         return document.getElementById(id);
     }
+
+    function changeNumber(num){
+        if(num < 10){
+            return '0'+num;
+        }else if (num >= 10){
+            return num;
+        }else{
+            return 0;
+        }
+    }
+
+
     $('start').onclick = function(){
-        alert('start');
-    };
-    $('pause').onclick = function(){
-        alert('pause');
-    };
-    $('restart').onclick = function(){
-        alert('restart');
+        temp = setInterval(function(){
+            i++;
+            //set hours;
+            $('readMeterHours').innerHTML = changeNumber(parseInt(i / 3600));
+            //set mins;
+            $('readMeterMins').innerHTML = 
+            changeNumber(parseInt((i /60)% 60));
+            //set seconds;
+            $('readMeterSeconds').innerHTML = 
+            changeNumber(i % 60);
+        } , 1000);
+        // arr.push(temp);
+        $('start').setAttribute('disabled','disabled');
+        $('pause').removeAttribute('disabled');
     };
 
+    $('pause').setAttribute('disabled','disabled');
+
+    $('pause').onclick = function(){
+        // for(i in arr){
+        //     clearInterval(arr[i]);
+        // };
+        clearInterval(temp);
+        $('start').removeAttribute('disabled');
+        $('pause').setAttribute('disabled','disabled');
+        
+    };
+
+    $('restart').onclick = function(){
+        $('pause').setAttribute('disabled','disabled');
+        $('start').removeAttribute('disabled');
+        i = 0;
+        $('readMeterHours').innerHTML = changeNumber(parseInt(i / 3600));
+        //set mins;
+        $('readMeterMins').innerHTML = 
+        changeNumber(parseInt((i /60)% 60));
+        //set seconds;
+        $('readMeterSeconds').innerHTML = 
+        changeNumber(i % 60);
+    };
 };
 
+// var miao = 5000;
+// var xiaoshi = parseInt(miao /3600);
+// var fenzhong = (parseInt(miao / 60)) % 60;
+// var miaoshu = miao % 60;
+// alert(xiaoshi + '+' +fenzhong + '+' +miaoshu);
