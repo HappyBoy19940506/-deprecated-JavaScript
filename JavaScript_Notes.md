@@ -3883,6 +3883,12 @@ Number.isNaN(' ');
     var sec =date.getSeconds( );
     //    get/set不同的参数，不同的返回值，改变/不改变date
     
+    
+    ----注意----:
+    
+    setTime( 1000 ) 会自动 加上时区。
+    所以使用 setTime( ms )后 getHours()取得的值是带 时区的，比如会+10.
+    
     ---最后直接用字符串拼接----
     
      var str = year + '年' +month +'月'+ date +'日'+ hours+ ':'+ mins+ ':'+ secs+ ':' + ' 星期' + week；
@@ -3901,13 +3907,13 @@ Number.isNaN(' ');
     function doubleNum( hour){
       if(hour < 10 ){
         return '0' + hour;
-      }else{
+  }else{
         return hour;
       }
     }
     然后 var hours= doubleNumber(date.getHours());
     ```
-
+    
 4. ```js
     日期对象更多方法：
     
@@ -4217,10 +4223,15 @@ if (){
     首先，在这个div里面有四大块， 第一块 显示的是 00：00：00
     第二快到第四块显示分别是 三个按钮： 开始， 暂停 和 复位。
     开始： 按下开始后，开始计时，每秒一跳。 
+    
     暂停： 按下暂停后，停止当前的计时。 
-    暂停+开始： 按下开始后，从暂停的时间开始计时。
+    
     复位： 按下复位后，如果当前是开始状态，也就是正在跑，就停下来然后归零。
     								如果当前是暂停状态，就直接归零。
+    ----进阶---
+      暂停+开始： 按下开始后，按钮的字变成 暂停。
+      					按下暂停后， 按钮的字变成 开始。
+                相当于 把开始和暂停2个按钮整合成1个按钮。
     
     **********
     隐藏的bug:  因为开始是一个setInterval()，如果你点完开始以后，他开始计时之后。如果你又点了一次“开始”，那么就相当于启动了2个setInterval，这样就有2个计时器在同时+1，所以这样每一秒的计时速率就会加速一倍，一秒 数 2个数， 启动n个计时器，每一秒数的速度就提高n倍。
@@ -4290,14 +4301,18 @@ if (){
       ---> 小时数 =  parseInt(总秒数 / 3600);
       ---> 分钟数 =  parseInt(（总秒数 /  60）% 60);
       ---> 秒数 =  总秒数 % 60;
-        
-     ===或者也许的另一个思路==
-       1.申明一个date 对象，设置 date为 00：00：00
-       2.给他设置一个setinterval每秒加1000毫秒
-       3.把总毫秒再转回 日期的值 显示在页面。
        
     
         
+    ```
+
+    ```js
+    题外话：
+    1.  <button id='startAndPause'>开始</button>
+    		<button id='startAndPause'> 开始 </button>
+     看起来一样，其实差别很大，写的时候别随意加空格。
+     因为你如果要取'开始'的值的话，要调用$('startAndPause').innerHTML 这里他取到的是字符串类型的
+     '[空格]开始[空格]'，这样不注意的话，如果你后面要 比较这个innerHTML或者做判断的话，就会出错，因为你没注意那个空格。
     ```
 
     
@@ -4352,7 +4367,105 @@ if (){
     ```
 
 4. ```js
-    js
+    js -基础班-
+      
+    window.onload = function(){
+        var i = 0;
+        var temp = 0;
+        // var arr = [];
+        temp = setInterval(function(){
+            var date = new Date;
+            $('timer').innerHTML = date;
+        } , 100);
+    
+        function $( id ){
+            return document.getElementById(id);
+        }
+    
+        function changeNumber(num){
+            if(num < 10){
+                return '0'+num;
+            }else if (num >= 10){
+                return num;
+            }else{
+                return 0;
+            }
+        }
+    
+    
+        $('start').onclick = function(){
+            temp = setInterval(function(){
+                i++;
+                showTimer(i);
+            } , 200);
+            // arr.push(temp);
+            $('start').setAttribute('disabled','disabled');
+            $('pause').removeAttribute('disabled');
+        };
+    
+        $('pause').setAttribute('disabled','disabled');
+    
+        $('pause').onclick = function(){
+            // for(i in arr){
+            //     clearInterval(arr[i]);
+            // };
+            clearInterval(temp);
+            $('start').removeAttribute('disabled');
+            $('pause').setAttribute('disabled','disabled');
+            
+        };
+    
+        function showTimer(i){
+            //set hours;
+            $('readMeterHours').innerHTML = changeNumber(parseInt(i / 3600));
+            //set mins;
+            $('readMeterMins').innerHTML = 
+            changeNumber(parseInt((i /60)% 60));
+            //set seconds;
+            $('readMeterSeconds').innerHTML = 
+            changeNumber(i % 60);
+        }
+    
+        $('restart').onclick = function(){
+            $('pause').setAttribute('disabled','disabled');
+            $('start').removeAttribute('disabled');
+            i = 0;
+            showTimer(i);
+        };
+    };
+    
+    
+    js---进阶版-- 暂停开始按钮整合起来--
+    $('restart').onclick = function(){
+            $('pause').setAttribute('disabled','disabled');
+            $('start').removeAttribute('disabled');
+            i = 0;
+            showTimer(i);
+        };
+    
+        // $('startAndPause').innerHTML = 'ssss';
+        // when click first time, start changed to pause
+        //click again ,pause will change to start;
+        $('startAndPause').onclick = function(){
+            var prompt = $('startAndPause').innerHTML;
+            // get current value is start or pause;
+            if(prompt == '开始'){     
+                 $('startAndPause').innerHTML = '暂停';
+                 //start a timer;
+                 i = 0 ;
+                 temp = setInterval(function (){
+                    i++;
+                    showTimer(i);
+                 },1000);
+            }else if(prompt == '暂停'){
+                 $('startAndPause').innerHTML = '开始';
+                 //pause this timer;
+                 clearInterval(temp);
+            };
+        }
+    
+      
+      
     ```
 
 5. 

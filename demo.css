@@ -101,3 +101,12 @@
     background-color: grey;
     margin: 10px auto 10px auto;
 }
+
+#loadingbar{
+    width: 1px;
+    height: 50px;
+    margin: 20px 50px 120px 50px;
+    border:1px black solid;
+    background-color: lightskyblue;
+    
+}

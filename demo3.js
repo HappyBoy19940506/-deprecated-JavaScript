@@ -604,15 +604,8 @@ window.onload = function(){
     $('start').onclick = function(){
         temp = setInterval(function(){
             i++;
-            //set hours;
-            $('readMeterHours').innerHTML = changeNumber(parseInt(i / 3600));
-            //set mins;
-            $('readMeterMins').innerHTML = 
-            changeNumber(parseInt((i /60)% 60));
-            //set seconds;
-            $('readMeterSeconds').innerHTML = 
-            changeNumber(i % 60);
-        } , 1000);
+            showTimer(i);
+        } , 200);
         // arr.push(temp);
         $('start').setAttribute('disabled','disabled');
         $('pause').removeAttribute('disabled');
@@ -630,10 +623,8 @@ window.onload = function(){
         
     };
 
-    $('restart').onclick = function(){
-        $('pause').setAttribute('disabled','disabled');
-        $('start').removeAttribute('disabled');
-        i = 0;
+    function showTimer(i){
+        //set hours;
         $('readMeterHours').innerHTML = changeNumber(parseInt(i / 3600));
         //set mins;
         $('readMeterMins').innerHTML = 
@@ -641,7 +632,55 @@ window.onload = function(){
         //set seconds;
         $('readMeterSeconds').innerHTML = 
         changeNumber(i % 60);
+    }
+
+    $('restart').onclick = function(){
+        $('pause').setAttribute('disabled','disabled');
+        $('start').removeAttribute('disabled');
+        i = 0;
+        showTimer(i);
     };
+
+    // $('startAndPause').innerHTML = 'ssss';
+    // when click first time, start changed to pause
+    //click again ,pause will change to start;
+    $('startAndPause').onclick = function(){
+        var prompt = $('startAndPause').innerHTML;
+        // get current value is start or pause;
+        
+        if(prompt == '开始'){     
+             $('startAndPause').innerHTML = '暂停';
+             //start a timer;
+            
+             temp = setInterval(function (){
+                i++;
+                showTimer(i);
+             },1000);
+        }else if(prompt == '暂停'){
+             $('startAndPause').innerHTML = '开始';
+             //pause this timer;
+             clearInterval(temp);
+        };
+    }
+    $('startBar').onclick = function(){
+        var width = $('loadingbar').style.width;
+        //'1px' 
+        var arr = width.split('');
+        arr.pop();
+        arr.pop();
+        widthNumber = Number(arr.join(''));
+        // 1;
+        var temp =  setInterval(function( ){
+            widthNumber += 10;
+            if (widthNumber == 400){
+                clearInterval(temp);
+            }else{
+            $('loadingbar').style.width = widthNumber + 'px';}
+        },50);
+    
+    };
+
+
 };
 
 // var miao = 5000;
