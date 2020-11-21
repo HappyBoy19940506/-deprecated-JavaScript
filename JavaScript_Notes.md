@@ -4468,5 +4468,31 @@ if (){
       
     ```
 
-5. 
+
+
+---
+
+## 进度条
+
+```js
+$('startBar').onclick = function(){
+        var width = $('loadingbar').style.width;
+        //'1px' 
+        var arr = width.split('');
+        arr.pop();
+        arr.pop();
+        widthNumber = Number(arr.join(''));
+        // 1;
+        var temp =  setInterval(function( ){
+            widthNumber += 10;
+            if (widthNumber == 400){
+                clearInterval(temp);
+            }else{
+            $('loadingbar').style.width = widthNumber + 'px';}
+        },50);
+  
+  //当然我写的比较复杂，不需要提取原先css里width的数字值，直接在function内部 写一个 var width = 0；就可以了。
+```
+
+
 
