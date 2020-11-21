@@ -4492,6 +4492,9 @@ $('startBar').onclick = function(){
         },50);
   
   //当然我写的比较复杂，不需要提取原先css里width的数字值，直接在function内部 写一个 var width = 0；就可以了。
+  
+  
+  如果这个div写的 margin是 0 auto，两边自适应，那width增加的时候会导致 两边从中间同时扩展，正常的加载条，应该固定左右间距。
 ```
 
 
