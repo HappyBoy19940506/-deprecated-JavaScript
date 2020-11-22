@@ -4626,7 +4626,42 @@ $('startBar').onclick = function(){
 5. ```js
     window.location对象
     
+    url的组成
+     https://www.baidu.com:5050/sdaa.html/?username=haha&value=3#ss
+     协议 / 域名 （或者IP） / 端口号 / 路径 / ？查询字符 #锚点
+     protocol / hostname / port /
+       
+     挨个访问：
     
+    location.protcol
+    alert( ) --> //https:
+      
+    location.hostname
+    alert( ) --> //www.baidu.com 或者 61.212.211.3
+      // 主机一个固定ip，客户一个固定ip，然后连接起来。
+      
+    location.port
+    alert( ) ---> //默认隐藏
+      //每个ip地址下可能运行了很多软件，所以 系统就给当前系统下正在使用ip的软件分配端口号
+      // 0 ~ 65535
+      //浏览器默认 8080，有些本地服务器也喜欢把服务器端口设成8080， https 80， http 443.
+      
+      //所以应该是 服务器:80端口  朝---> 客户端的8080端口 精准投递 html 文件
+      //localhost：8080 意思就是 这个ip的地址下 8080端口显示的内容是啥。
+      //有些时候显示端口被占了，那就说，比如你有一个服务器的sql软件已经提前和 客户端的8080端口绑定了，
+      //所以你现在这个sql绑不上去
+      
+    location.pathname
+    alert( )--> //sdaa.html
+      
+    location.search 
+    alert( )--> //?username=haha&value=3
+      					//? key = value & key = value
+      //通过url里面键值对的信息来访问 查询【服务器】上的信息。
+      
+      
+     
+      
     ```
 
 6. 
