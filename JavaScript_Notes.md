@@ -4626,6 +4626,9 @@ $('startBar').onclick = function(){
 5. ```js
     window.location对象
     
+    
+      ------------location对象的属性---------------
+    
     url的组成
      https://www.baidu.com:5050/sdaa.html/?username=haha&value=3#3-1
      协议 / 域名 （或者IP） / 端口号 / 路径 / ？查询字符 #锚点
@@ -4683,7 +4686,39 @@ $('startBar').onclick = function(){
     alert(location.href )--> //https://www.baidu.com:5050/sdaa.html/?username=haha&value=3#3-1
        //返回的是string类型
       
+      
+      ------------location对象的方法---------------
+    
+      1.  window.location == window.document.location
+    		//没有区别
+    
+    	2.location.assign(url)
+    	  onlick = "location.assign('https://baidu.com')";
+    //注意 单双引号交替使用 ，不然报错。
+       当前页面跳转到 百度 ， 并且产生一条历史记录。也就是 浏览器上可以点击【返回】。
+       
+    	3.location.replace(url)
+    	onlick = "location.replace('https://baidu.com')";
+    	   当前页面跳转到 百度 ， 但是不产生历史记录。也就是 浏览器上不可以点击【返回】，
+         直接把当前url替换了。
+         
+         
+    	4.location.reload( )
+    		刷新当前页面
+        
+        
+    	5.location.reload(true)
+    	 跳过浏览器缓存，重新向服务器申请一次数据，强制刷新
+      
     ```
 
-6. 
+
+
+
+
+----
+
+## DOM
+
+
 
