@@ -4627,7 +4627,7 @@ $('startBar').onclick = function(){
     window.location对象
     
     url的组成
-     https://www.baidu.com:5050/sdaa.html/?username=haha&value=3#ss
+     https://www.baidu.com:5050/sdaa.html/?username=haha&value=3#3-1
      协议 / 域名 （或者IP） / 端口号 / 路径 / ？查询字符 #锚点
      protocol / hostname / port /
        
@@ -4658,9 +4658,30 @@ $('startBar').onclick = function(){
     alert( )--> //?username=haha&value=3
       					//? key = value & key = value
       //通过url里面键值对的信息来访问 查询【服务器】上的信息。
+      // 这里就涉及 全后端交互了。你之前所有操作都是相当于更改url拿到对应的样式的html文件。
+      //但是这里拿到html文件后，还可以配到拿到一些向服务器上查询到的数据来修改本地的html文件，比如修改某个node下的innerHTML，形成交互。
       
       
+     不改变url下的交互： 点击一个btn，修改url里面的获得键值对，发送给服务器，服务器返回查询数据，修改本地DOM
+     改变url的交互：服务器端要返回一个完整包 ，里面包含了新的生成的DOM，因为是一个全新的url。
      
+     location.hash
+    alert() -->#3-1
+    改写location.hash属性的值，相当于在 地址栏后面改，一样的。
+    如果你重新赋值，他会自动跳转。
+    也就是 location.hash的 原本值就是 地址栏的内容。
+    但是如果改写，那就会直接发生跳转。
+    ***************************
+    这就是如何用js的button实现 在地址栏更改url的功能 来获取服务器的返回值。和a标签功能很像。
+    ***************************
+    
+    
+    alert(location)--> //https://www.baidu.com:5050/sdaa.html/?username=haha&value=3#3-1
+     //返回的是object类型
+     
+    
+    alert(location.href )--> //https://www.baidu.com:5050/sdaa.html/?username=haha&value=3#3-1
+       //返回的是string类型
       
     ```
 
