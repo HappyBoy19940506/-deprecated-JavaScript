@@ -2888,7 +2888,7 @@ Number.isNaN(' ');
 
 ​    
 ​        
-    10. ---
+​    10. ---
 
 
 
@@ -3907,7 +3907,7 @@ Number.isNaN(' ');
     function doubleNum( hour){
       if(hour < 10 ){
         return '0' + hour;
-  }else{
+    }else{
         return hour;
       }
     }
@@ -4497,5 +4497,137 @@ $('startBar').onclick = function(){
   如果这个div写的 margin是 0 auto，两边自适应，那width增加的时候会导致 两边从中间同时扩展，正常的加载条，应该固定左右间距。
 ```
 
+---
 
+## BOM
+
+1. ```
+    一个BOM 就是一个 打开的浏览器窗口
+    一个 browser object model
+    浏览器的树形结构。
+    每一个结点都是一个object：
+    
+    Window --- document------links/elements/forms/anchors
+    				---frames
+    				---history
+    				---location
+    				---navigation
+    				---screen
+    ```
+
+2. ```js
+    window对象的方法：
+    window下的包括他子对象下的所有属性、变量、方法都属于window。
+    -window.alert()  一般简写alert()
+    -window.confirm()  一般简写confirm()
+     var res  = confirm('sss');
+     // 如果点击了确定，返回true
+     //如果点击了 取消，返回值是 false
+    -window.prompt( )一般简写prompt('please take a number','here input' );
+    // 触发一个输入框；
+    // 2个参数： 第一个参数：提示输入的信息。 第二个参数（可以不填）：输入框的预先设置的字符，placeholder
+    var res  = ('please take a number','here input' );
+    //如果点了确定，返回值是 刚刚输入的内容的字符串
+    //如果点了取消，返回值是null
+    ```
+
+3. ```js
+    open( );
+    https://www.w3schools.com/jsref/met_win_open.asp
+    
+    比如: --button--onlick--myfunc
+    
+    js- myfunction(){
+      open('www.baidu.com','xxxx','left:100,top:200,scrollbar:yes');
+      //生成一个新窗口，url是百度，所以会跳转百度，然后我该窗口命名name为xxx，后面可以配合close使用。
+      open('www.baidu.com','_self','left:100,top:200,scrollbar:yes');
+      //name填_self,那点击后，当前页面跳转成baidu。有点像a标签里面的target属性的写法，但是区别是一个是a标签触发，这里是点击button触发。
+      open('www.baidu.com','_blank','left:100,top:200,scrollbar:yes');
+      //name填_blank,那点击后，生成新页面跳转成baidu。有点像a标签里面的target属性。
+      但是区别是一个是a标签触发，这里是点击button触发。
+      open('','xxxx','left:100,top:200,scrollbar:yes');
+      //url不填，那就是生成空白页，该窗口 name设置为xxx的话，相当于把url地址与这个该窗口的name绑定，后面任何关于xxx的操作，都会锁定到这个叫xxx的窗口来操作，比如操作url。
+      
+    }
+      
+      
+    Parameter	Description
+    
+    *URL	//给新建窗口设置url
+    Optional. 
+    Specifies the URL of the page to open. If no URL is specified, a new window/tab with about:blank is opened
+    
+    *name	 //给新建窗口起名字
+    Optional. 
+    Specifies the target attribute or the name of the window. The following values are supported:
+    
+    _blank - URL is loaded into a new window, or tab. This is default
+    _parent - URL is loaded into the parent frame
+    _self - URL replaces the current page
+    _top - URL replaces any framesets that may be loaded
+    name - The name of the window (Note: the name does not specify the title of the new window)
+    
+    *specs	//给新建窗口设置样式
+    Optional. 
+    A comma-separated list of items, no whitespaces. The following values are supported:
+    
+    channelmode=yes|no|1|0	Whether or not to display the window in theater mode. Default is no. IE only
+    directories=yes|no|1|0	Obsolete. Whether or not to add directory buttons. Default is yes. IE only
+    fullscreen=yes|no|1|0	Whether or not to display the browser in full-screen mode. Default is no. A window in full-screen mode must also be in theater mode. IE only
+    height=pixels	The height of the window. Min. value is 100
+    left=pixels	The left position of the window. Negative values not allowed
+    location=yes|no|1|0	Whether or not to display the address field. Opera only
+    menubar=yes|no|1|0	Whether or not to display the menu bar
+    resizable=yes|no|1|0	Whether or not the window is resizable. IE only
+    scrollbars=yes|no|1|0	Whether or not to display scroll bars. IE, Firefox & Opera only
+    status=yes|no|1|0	Whether or not to add a status bar
+    titlebar=yes|no|1|0	Whether or not to display the title bar. Ignored unless the calling application is an HTML Application or a trusted dialog box
+    toolbar=yes|no|1|0	Whether or not to display the browser toolbar. IE and Firefox only
+    top=pixels	The top position of the window. Negative values not allowed
+    width=pixels	The width of the window. Min. value is 100
+    
+    *replace	
+    Optional. 
+    Specifies whether the URL creates a new entry or replaces the current entry in the history list. 
+    The following values are supported:
+    
+    true - URL replaces the current document in the history list
+    false - URL creates a new entry in the history list
+    ```
+
+4. ```js
+    history对象
+    window.history对象， 记录当前window的每次url变化产生的历史记录。
+    注意，这里是当前窗口而不是 整个浏览器，只要url发生变化就会记录下来。
+    
+    history对象的属性
+    history.length 历史记录的条数
+    //自己手动输入的url也算
+    
+    
+    history对象的方法
+    
+    history.back()
+    //返回上一条记录
+    
+    // e.g.: onclick='history.back()'
+    
+    
+    history.forward()
+    //前进到下一条记录
+    
+    history.go(parameter)
+    //参数取值：
+    // 如果取0 ，刷新当前页面
+    // 如果取 正整数， 前进n条记录
+    // 如果取 负整数，后退n条记录
+    ```
+
+5. ```js
+    window.location对象
+    
+    
+    ```
+
+6. 
 

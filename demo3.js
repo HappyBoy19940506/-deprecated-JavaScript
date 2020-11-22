@@ -637,7 +637,9 @@ window.onload = function(){
     $('restart').onclick = function(){
         $('pause').setAttribute('disabled','disabled');
         $('start').removeAttribute('disabled');
+        $('startAndPause').innerHTML = '开始';
         i = 0;
+        clearInterval(temp1);
         showTimer(i);
     };
 
@@ -652,14 +654,14 @@ window.onload = function(){
              $('startAndPause').innerHTML = '暂停';
              //start a timer;
             
-             temp = setInterval(function (){
+             temp1 = setInterval(function (){
                 i++;
                 showTimer(i);
              },1000);
         }else if(prompt == '暂停'){
              $('startAndPause').innerHTML = '开始';
              //pause this timer;
-             clearInterval(temp);
+             clearInterval(temp1);
         };
     }
     $('startBar').onclick = function(){
