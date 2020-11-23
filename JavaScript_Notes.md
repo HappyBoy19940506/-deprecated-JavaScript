@@ -4762,9 +4762,58 @@ $('startBar').onclick = function(){
     //如果是background-color这种css属性的话，也成 backgroundColor。
     	3.所以修改的话要这么写 document.getElementById(id).style.width = ’300px‘;
     // document.getElementById(id).style.backgroundColor = 'white';
+    
+    5. ********************非常重要***************************
+      ********************非常重要***************************
+      ********************非常重要***************************
+      	原生的 .documentElement.style只能获取内联属性的值
+       虽然这种方式取不到宽度值。但却可以设置元素的宽度值。比如：设置p元素宽度为200px:
+    		就算之前不存在（没写） 宽度值，也可以凭空给他 设置出 宽度出来。
+        
+    	综上，所以，只有将元素的样式设置成内嵌式的，才可以通过 			                     document.getElementById("id").style.width 来获取宽度值；
+      
+      结论：
+      一般来说，如果你想 ：改值 或者 新赋值，你就用 .documentElement.style. XXX = 'xxx';这个无论你是 外部样式还是内部样式，都一样的。它就跟给你写进去了。
+      但是，你如果要 取值，查看原先的值， 就要用 offsetWidth方法或者 computedStyle()，而【不能】直接就说是 alert(.documentElement.style)就完事了.
+      具体方法是： 比如你现在有一个写在css文件里面的样式，你想取他的width，你就写:
+    						var temp = document.getELementByid(id).style.offsetWith
+                或者：
+     						window.getComputedStyle(element, pseudoElement)
+    																		元素   该元素的伪元素
+                         说白了就是一个tag标签   如果要查该标签的伪元素就写，不然写null
+         具体来说:
+      1-1 var temp = window.getComputerStlye(documnent.getElementById('id'),null)
+    			//相当于取到 它的style这个 属性节点 
+      1-2 temp.width
+         //取到他的width。  
+         // 
+    	1-3 没有写的属性， 他返回的不是null 也不是 undefined，而是 0，比如 没有写border，但是你   去查询 temp.border ，返回值是 0px none rgb（0，0，0）
+      ********************非常重要***************************
+    
+        function getCSStyle(id ,arg){
+            if(arguments[1] == undefined){
+            return window.getComputedStyle($(id),null);
+                
+            }else{
+                return window.getComputedStyle($(id),arg);
+     
+            }
+        } 
+    
+     		 alert(getCSStyle('test'));
+         
+         alert(getCSStyle('test').height);
+    
+         alert(getCSStyle('test','::before').height);
+    
+                           
+    6. 伪元素 和 伪类 不存在于dom tree中，所以无法 通过js来修改其值，只能通过 computedStyle来查询到其值。
+    
     ```
 
-3. 
+3. > 自定义函数的名字，如果和系统内置函数的名字重复，那么不会生效。
+    >
+    > 比如你自己function了一个 什么 open 什么close，他不会走你写的那段function的。
 
 4. 
 

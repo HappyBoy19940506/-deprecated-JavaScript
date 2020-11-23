@@ -682,6 +682,28 @@ window.onload = function(){
     
     };
 
+    var Ostyle = window.getComputedStyle($('test'),null).width;
+    // alert(Ostyle);
+
+     alert(getCSStyle('test'));
+     
+     alert(getCSStyle('test').height);
+
+     alert(getCSStyle('test','::before').height);
+
+    function getCSStyle(id ,arg){
+        if(arguments[1] == undefined){
+        return window.getComputedStyle($(id),null);
+            
+        }else{
+            return window.getComputedStyle($(id),arg);
+ 
+        }
+    }
+
+    // alert(getCSStyle('test',':hover'));
+ 
+    
 
 };
 
