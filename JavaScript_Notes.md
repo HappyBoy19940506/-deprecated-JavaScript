@@ -4720,5 +4720,51 @@ $('startBar').onclick = function(){
 
 ## DOM
 
+1. ```js
+    DOM - Dcument Object Model 文档对象模型
+    代表的是window下面的 document的， 也就是html标签内的内容。
+    
+    dom的数中 节点 分为三种：
+    
+    	标签节点 -各种标签  
+    	// 注意：数据类型是对象
+      
+      属性节点 -标签里的各种属性 
+    	// 注意：数据类型是对象
+      
+      文本节点 -属性里面的值 数据类型是字符串
+      // 注意：数据类型是字符串
+    
+    ```
 
+2. ```js
+    元素节点的操作：
+    1. document.getElementById(id);
+    //通过id查找元素节点，id必须唯一，返回特定的一个元素节点。
+    
+    
+    2.访问特定元素节点的属性的值。
+    	document.getElementById(id).atrributeName;
+    //  访问title属性，就是document.getElementById(id).title
+    //	访问value属性，就是document.getElementById(id).value
+    //	但是！ 访问class属性，是document.getElementById(id).className。 因为class是一个关键字不可以写。
+    
+    3.修改特定元素节点的属性的值。
+    	document.getElementById(id).atrributeName = 'Box';
+      //  修改title属性，就是document.getElementById(id).title= 'Box';
+    	//	修改value属性，就是document.getElementById(id).value= 'Box';
+    	//	但是！ 修改class属性，是document.getElementById(id).className = 'Box';。 因为class是一个关键字不可以写。
+    
+    4.访问 / 修改 特定元素节点的 style属性下面的值。
+       document.getElementById(id).style 
+    	1.直接访问的话，返回的是一个 对象类型。既然是对象那就说，还有方法和属性在里面。也就意味着还可以往后加.
+      2.所以访问的话要这么写 document.getElementById(id).style.width
+    //如果是background-color这种css属性的话，也成 backgroundColor。
+    	3.所以修改的话要这么写 document.getElementById(id).style.width = ’300px‘;
+    // document.getElementById(id).style.backgroundColor = 'white';
+    ```
+
+3. 
+
+4. 
 
