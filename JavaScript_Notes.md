@@ -4813,7 +4813,31 @@ $('startBar').onclick = function(){
 
 3. > 自定义函数的名字，如果和系统内置函数的名字重复，那么不会生效。
     >
-    > 比如你自己function了一个 什么 open 什么close，他不会走你写的那段function的。
+    > 比如你自己function了一个 什么 open 什么close，他是不会走你写的那段function的。
 
-4. 
+4. ```js
+    获取元素节点的方法：
+    1. getElementById('id')
+    
+    
+    2. node.getElementsByTagName(tagName)
+    // 输入标签名字， 可以获取批量的 元素节点，因为往往这个标签不止一个。
+    // 并且 可以把提取到的 tags批量成一个数组， 按照index 0 开始排列
+    //使用时，可以直接 [0], [1]这样调用。
+    //为什么填node呢，就是 这个如果写document的话就是整个html里面扫描，如果填node，那你node节点对象
+    //就可以在该节点对象开始往下面的子元素节点开始查找（不包括该元素节点本身）
+    	--------Html 片段-------
+    	<div id="eleTest">
+            <div>haha</div>
+            <div>hoho</div>
+        </div>
+      --------Html 片段-------
+        
+      var tesTrestul = document.getElementById('eleTest').getElementsByTagName('div')[1].innerHTML;
+        
+        alert(tesTrestul);
+    
+    ```
+
+5. 
 

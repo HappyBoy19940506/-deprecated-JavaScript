@@ -685,11 +685,11 @@ window.onload = function(){
     var Ostyle = window.getComputedStyle($('test'),null).width;
     // alert(Ostyle);
 
-     alert(getCSStyle('test'));
+    //  alert(getCSStyle('test'));
      
-     alert(getCSStyle('test').height);
+    //  alert(getCSStyle('test').height);
 
-     alert(getCSStyle('test','::before').height);
+    //  alert(getCSStyle('test','::before').height);
 
     function getCSStyle(id ,arg){
         if(arguments[1] == undefined){
@@ -702,8 +702,13 @@ window.onload = function(){
     }
 
     // alert(getCSStyle('test',':hover'));
- 
     
+    var tesTrestul = document.getElementById('eleTest').getElementsByTagName('div')[1].innerHTML;
+    
+    alert(tesTrestul);
+
+
+
 
 };
 
