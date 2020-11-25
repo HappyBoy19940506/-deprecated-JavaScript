@@ -703,12 +703,30 @@ window.onload = function(){
 
     // alert(getCSStyle('test',':hover'));
     
-    var tesTrestul = document.getElementById('eleTest').getElementsByTagName('div')[1].innerHTML;
+    // var tesTrestul = document.getElementById('eleTest').getElementsByTagName('div')[1].innerHTML;
     
-    alert(tesTrestul);
+    // alert(tesTrestul);
 
+    function getEleByClassName(node,classStr){
+        //input: node name ; class name
+        //output node.getElementsByClassName('class')
+       // but you can not use node.getElementsByClassName('class')
 
+       var oTag = node.getElementsByTagName('*');
+       //最关键的一点，tag写*的话可以取到所有节点。
+       var arr = [];
+       //存放符合条件的节点
+       for(var i = 0 ; i < oTag.length;i++){
+           if(oTag[i].className == classStr){
+               arr.push(oTag[i]);
+           }
+       }
+       return arr;
+    }
 
+    // alert(getEleByClassName($('eleTest'),'btn').length);
+
+    // alert($('eleTest').getElementsByClassName('btn').length);
 
 };
 

@@ -4817,7 +4817,9 @@ $('startBar').onclick = function(){
 
 4. ```js
     获取元素节点的方法：
-    1. getElementById('id')
+    1.document.getElementById('id')
+    只可以写 document。因为是唯一的，所以写node也没什么意义。
+    因为 Since IDs are supposed to be unique, there's no need for a method that finds an element by ID relative to any other element
     
     
     2. node.getElementsByTagName(tagName)
@@ -4835,9 +4837,153 @@ $('startBar').onclick = function(){
         
       var tesTrestul = document.getElementById('eleTest').getElementsByTagName('div')[1].innerHTML;
         
-        alert(tesTrestul);
+        alert(tesTrestul); //hoho
+    
+    
+    3. //和2类似的，
+    	node.getElementsByClassName('classname');
+    	//2，3一般肯定是 node，因为如果写document，那查询到的元素节点液体太多了。
+    alert （ document.getElementById('eleTest') ）/
+      //输出这种批量的元素节点 他返回的是一个 叫 object collection的东西，也就是对象集合。
+      //我们把这种对象集合叫做【伪数组】， 他使用起来和数组类似。但是他本质上是对象，不是数组。
+      // IE8以下不兼容
+    
+    4. document.getElementsByName( 'name ');
+    // 通过name属性的值 来查找整个html文件，批量查找出所有 name属性的值 和参数一样的 元素， 所以是elements。
+    document.getElementsByName( 'name '); 不存在node一说，也就是byname的情况下，只能全局查找
+    document.getElementsByName( 'name '); 不存在node一说，也就是byname的情况下，只能全局查找
+    document.getElementsByName( 'name '); 不存在node一说，也就是byname的情况下，只能全局查找
+    document.getElementsByName( 'name '); 不存在node一说，也就是byname的情况下，只能全局查找
+    document.getElementsByName( 'name '); 不存在node一说，也就是byname的情况下，只能全局查找
+    document.getElementsByName( 'name '); 不存在node一说，也就是byname的情况下，只能全局查找
+    document.getElementsByName( 'name '); 不存在node一说，也就是byname的情况下，只能全局查找
+    但是其实name属性只有表单元素才有，别的元素可以设置，但没有意义。
+    所以这个方法， 只会用在【表单元素】里。
+    
+    
+    5. 所以一定要区别来。 element 和 elements在返回值的差别。
+    前者 出现在 getelelmentbyid里面 返回的是一个单一的 node对象。
+    后者 出现在很多 getelements相关的方法里，返回的是一个伪数组，所以往后面node查找的时候要附上index值。不然就不对。就算就一个节点，你还是要写 node[0],这样拿出来。
+    //而且要注意!!!!!
+    之前 单一对象 查询/修改 值的时候 直接再后面.style什么的就好了，但是如果是伪数组，你是不可以直接再后面.style，这是单个node对象的属性，不是nodes对象组的属性，所以你要单个用index提出来以后再改，如果要批量改，那就用 【数组循环loop】 就 循环改变！！
+     for(var i =0;i<nodes.length ;i++){
+       nodes[i].style.backgroundColor = 'red';
+     }
+    
+    6.总结： document.getElementByID -唯一id -必须document -直接调用
+    				document.getElementsByTagName   -可写node. -批量带s -伪数组调用
+    				document.getElementsByClassName -可写node.-批量带s -伪数组调用
+    				document.getElementsByName -批量带s -必须document -伪数组调用
+    
+    -------------------------另外2种获取元素节点的方法----------------------
+    
+    document.querySelector() 
+    //不存在node.querySelector的情况，原因是因为我参数就是css选择器，直接定位了！
+    参数： 字符串。 css选择器格式的 字符串。 
+    返回值： 符合条件的 第一个 【单个】元素节点。
+    例子： 比如我要搜一个 带id元素节点的，因为id是唯一的，然后想想他在css里写成什么样子。
+    		document.querySelector('#id').style.width;
+    			比如我要 定位一个 普通的元素节点，那在css选择器里写就是
+         document.querySelector('div ul li').style.width
+    			比如我要 定位一个 带class的节点，那在css选择器里写就是
+         document.querySelector('div ul li .class').style.width
+    			比如我要获取表单元素：
+         document.querySelector('[name=hello]').style.width
+    
+    document.querySelectorAll()
+    //不存在node.querySelector的情况，原因是因为我参数就是css选择器，直接定位了！
+    参数： 字符串。 css选择器格式的 字符串。 比如
+    返回值： 复合条件的所有元素节点 组成的 伪数组。
+    例子(修改）： 比如我要搜一个 带id元素节点的，因为id是唯一的，然后想想他在css里写成什么样子。
+    		document.querySelector('#id')[0].style.width;
+    			比如我要 定位一个 普通的元素节点，那在css选择器里写就是
+         document.querySelector('div ul li')[1].style.width
+    			比如我要 定位一个 带class的节点，那在css选择器里写就是
+         document.querySelector('div ul li .class')[2].style.width
+    			比如我要获取表单元素：
+         document.querySelector('[name=hello]').style.width
+    
+    例子(查询) ：  getComputedStyle(document.querySelector('[name=hello]')[0],null);
+    
+    
     
     ```
 
-5. 
+5. ```js
+    由于IE8不兼容getClassName方法。
+    
+    我们如何自定义实现 node.getElementsByClassName( );
+    
+    也就是不用官方的 node.getElementsByClassName( );如何是用原生实现 一样的功能：
+    
+       function getEleByClassName(node,classStr){
+            //input: node name ; class name
+            //output node.getElementsByClassName('class')
+           // but you can not use node.getElementsByClassName('class')
+    
+           var oTag = node.getElementsByTagName('*');
+           //最关键的一点，就是这里：利用tag写*的话可以取到node下面的所有节点。
+           var arr = [];
+           //存放符合条件的节点
+           for(var i = 0 ; i < oTag.length;i++){
+               if(oTag[i].className == classStr){
+                   arr.push(oTag[i]);
+               }
+           }
+           return arr;
+        }
+    
+        alert(getEleByClassName($('eleTest'),'btn').length);
+    
+    ```
+
+6. ```js
+    如何获取当前有效样式：
+    
+    1. node.style.xxx 只能定位到 node元素节点的内联样式。如果css是外部的，或者是头部的，就不可以通过style.xxx直接查询到的。而且一般都是外链样式。
+    
+    2. 如何查询到有效样式： 两种：
+     document.getElementById('id').currentStyle['height']
+    
+    //IE 兼容
+    
+    getComputedStyle(document.getElementById('id'), null)['height']
+    //其他兼容
+    也可以写成：
+    getComputedStyle(document.getElementById('id'), null).height
+    //区别是[string]里填的是字符串，直接写的是属性名，遇到background-color要写驼峰式。
+    
+    封装一个函数测试兼容性？
+    
+    function getCssStyle(node , style){
+      if(node.currentStyle){
+         			return node.currentStyle[style];
+         }else{
+        			return getComputedStyle(node,null)[style];
+      }
+    }
+    
+    我想查询一个node的有效样式的话：
+    getCssStyle($('id'),'height');
+     返回值： ’20px‘
+    
+    //这里写带[]的形式，因为style形参输入后肯定是字符串类型的，那你就无法写 xxx.style这种形式，因为这种形式下的style不是字符串，而是属性名，你不能把参数的值写成属性名。
+    
+     查询的时候，如果是 查询的是 node.style.xxx,如果他没写行内样式，你自然是查不到的。要用getComputedStyle(node,null) 或者 node.currentStyle['style']来查询他的样式。
+     
+     设置不需要，因为设置的时候写的是 node.style.xxx ='xxx';这相当于直接在元素标签后面添加属性，也就是相当于直接写了一个行内样式，因为行内样式优先级最高，所以肯定可以更改。
+    ```
+
+7. ```js
+    案例： 改变字体颜色大小
+    
+    写一个定时器，每一秒改变一次div内的文本的字体大小和颜色。（随机颜色）
+    最开始 是原始大小， 然后每一秒增大一次，增大6次后，开始缩小，缩小6次后，回到原样。
+    
+    //颜色随机 rgb（0-255，0-255，0-255）
+    
+    
+    ```
+
+8. 
 
