@@ -775,8 +775,7 @@ window.onload = function(){
     }
 
 
-    alert($('testFile').innerHTML);
-
+    
 };
 
 // var miao = 5000;

@@ -5034,15 +5034,32 @@ elementNode.getAttribute('xxx');
 
 普通操作：  node.attribute-name = '';
  区别：
- 一个只是用 空字符串覆盖
+ node.attribute-name = '';  // 只是用 空字符串覆盖
  
- 真正的把 attribute从行间 抹去。直接看不到了。
+ removeAtrribute('attribute-name') //真正的把 attribute从行间 抹去。直接看不到了。
 
 
 ```
 
+
+
+
+
+
+
+-----
+
+
+
+## ElementNode 元素节点 的属性
+
+
+
 ```js
 ElementNode 元素节点 的一些属性：
+
+任何元素节点都有的三个属性。
+
 1. innerHTML 只可以用在双标签里面。比如div。
 //会把tag内所有写着的内容都输出， 包括子标签。
 //比如 <div> wo <em>cao</em>    </div>  他的innerHTML是：  wo <em>cao</em>  是带着标签的。
@@ -5066,5 +5083,86 @@ node.innerHTML ='<h1> sss </h1>'.//标签会被解析
 他与innerHTML的差别就是， outerHTML 包括了父标签，
 比如：  <div> wo <em>cao</em> </div>
  他的 node.innerHTML 是：  '<div> wo <em>cao</em> </div>' //包括了div标签。
+```
+
+```
+
+```
+
+-----
+
+##  DOM节点回顾&如何获取子节点
+
+```js
+                   Element    node 
+             /              |               \
+          AtrrNode   SubElementNode   TextNode
+          								  |
+             /              |               \
+          AtrrNode   SubElementNode   TextNode
+          
+          
+ 前情回顾： 一共有三种节点。 
+ 					DOM元素节点    DOM元素节点的属性节点  DOM元素节点的文本节点 
+          
+ 他们之间是怎么样的结构关系呢？
+ 1. 整个html结构靠着 ElementNode来连接形成 树形 结构. EleNode - SubEleNode-SubSubEleNode
+
+ 2. 每个ElementNode都连接着三部分。 一是 他的 属性节点。 二是 他的文本节点。三是他的 子节点。
+ //所以 是 父节点、父节点的属性节点、父节点的文本节点、父节点的子节点。
+ 
+ 3.这四种是如何互相关联，以及要如何访问呢？
+ 	
+ 	3.1 如何访问 【任意】【一个】父元素节点。
+  		-getElementbyXX系列一套
+			-doc.QuerySelector系列一套
+	3.2 如何访问一个元素节点的 属性节点？
+  		-elemNode.getAttributes
+			-elemNode.setAttributes
+			-elemNode.removeAttrbute
+			三大件
+  3.3 如何访问一个元素节点的 文本节点？
+ 					通过elemNode的子节点来获取:
+      -elemNode.childNodes[1] //这样来获取一个 object Text
+
+			（下面的方法可获取文本元素，但是不一定对，因为并不一定是【此单个】元素节点的文本节点。
+      	这些只是【元素节点】的属性，并不是直接 获取元素节点的【文本节点】。
+			-elemNode.innerHTML //坏处是 所有子标签的的文本和标签都写进去了
+			-elemNode.value //坏处是 是能提取表单元素输入的内容
+			-elemNode.innerText //坏处是 所有子标签的的文本 都写进去了
+      ）
+	3.4 如何访问一个父元素的子元素，或者子元素的父元素，或者兄弟元素呢？
+  		看下面。
+			
+      //除了 document.queryselector('   ')方法。
+       
+```
+
+```js
+如何获取子元素节点。
+//除了 document.queryselector('   ')方法。
+//因为这种方法，就是把 css样式里面如何 找到子标签的选择器 写进去就可以了。
+
+如何用原生NodeJS的方法去访问子元素节点？
+  -elemNode.childNodes[index]  访问当前节点下所有的子节点
+  //返回一个伪数组对象集，记得用[index]
+  // 输出的是各种节点，包括了子元素节点 【还包括了其文本节点】，所以可以使用此法来找到此elemNode的文本节点
+  -elemNode.firstChild  访问当前节点下第一个的子节点
+  //返回的是一个对象
+	-elemNode.lastChild 	访问当前节点下最后的一个子节点
+   //返回的是一个对象
+
+```
+
+```
+ 三种节点通用的属性。
+ 
+ 					node.nodeType       node.nodeName        node.nodeValue
+
+elemNode
+
+AttrNode
+
+TextNode
 ```
 
