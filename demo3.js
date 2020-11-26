@@ -728,6 +728,55 @@ window.onload = function(){
 
     // alert($('eleTest').getElementsByClassName('btn').length);
 
+    document.getElementById('changeColor2').onclick = function(){
+        var colorR =  parseInt((Math.random() * 256));
+        var colorG =  parseInt((Math.random() * 256));
+        var colorB =  parseInt((Math.random() * 256));
+        // alert(colorR+'+'+colorG+'+'+colorB);
+        // document.querySelectorAll('#testFile2')[0].style.height = '100px';
+        document.querySelectorAll('#testFile2')[0].style.color = 'rgb('+ colorR +','+ colorG+','+ colorB +')';
+    };
+
+    document.getElementById('changeColor').onclick = function(){
+        var count = 0;
+        var veloctiy = 10;
+        setInterval(function(){   
+            //change  color every sec 
+            var colorR =  parseInt((Math.random() * 256));
+            var colorG =  parseInt((Math.random() * 256));
+            var colorB =  parseInt((Math.random() * 256));
+            document.querySelectorAll('#testFile')[0].style.color = 'rgb('+ colorR +','+ colorG+','+ colorB +')';
+
+            //change font every sec / up to 6 times
+            var fontSize = getComputedStyle($('testFile')  ,null).fontSize;
+            // '18px'
+            var fontSizeNumber = parseInt(fontSize);
+            // 18 
+
+            var newFontSizeNumber = fontSizeNumber + veloctiy;
+            $('testFile').style.fontSize = newFontSizeNumber + 'px';
+
+            
+            ////////
+            //////  这个往上就是 每一秒， 做的事情，比如每一秒，更新一次fontsize
+            ///////
+            //// 这个往下是 count在 count++之前是 当前的秒数，比如 第五秒的时候，一开始count的值为5
+            //count++之后变为6
+            // 用这个6来 做整除比较，其实这个6代表是的下一秒，用他去做整除比较，其实是为了判定下一步是乘正一还是负一。
+            count++;
+            $('testFile').innerHTML = '第' + count+ '次';
+            if(count % 6 == 0){
+                veloctiy *= -1;
+            }
+            
+            
+
+        },1000);
+    }
+
+
+
+
 };
 
 // var miao = 5000;

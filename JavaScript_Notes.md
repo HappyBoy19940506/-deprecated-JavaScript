@@ -4718,7 +4718,7 @@ $('startBar').onclick = function(){
 
 ----
 
-## DOM
+## DOM以及元素节点的方法
 
 1. ```js
     DOM - Dcument Object Model 文档对象模型
@@ -4980,10 +4980,37 @@ $('startBar').onclick = function(){
     写一个定时器，每一秒改变一次div内的文本的字体大小和颜色。（随机颜色）
     最开始 是原始大小， 然后每一秒增大一次，增大6次后，开始缩小，缩小6次后，回到原样。
     
+    解决点 一：
     //颜色随机 rgb（0-255，0-255，0-255）
+    所以 取random [0,256)
     
-    
-    ```
 
-8. ssskks
+    ```
+    
+8. 
+
+
+
+---
+
+## DOM中attribute节点的方法
+
+```js
+直接用.操作，比如：
+elementNode.style
+elementNode.id
+elementNode.name //name属性这种只能在表单元素中。如果用在别的元素中会找不到，显示undefined
+elementNode.className //注意。class是关键字，要查找class属性必须写成className
+```
+
+```
+1.getAttribute
+
+
+2.setAttribute
+
+
+
+3.removeAtrribute
+```
 
