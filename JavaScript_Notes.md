@@ -4996,21 +4996,75 @@ $('startBar').onclick = function(){
 ## DOM中attribute节点的方法
 
 ```js
+访问 行间 元素节点的各种属性。 attribute肯定是行间的，他有不存在什么外链的情况。只有style属性比较特殊，可能会来自外部，所以才要把获取和修改 分开讨论，这里肯定就不用分开了，赋值和取值都是一样的。比如value. innerHTML等等
 直接用.操作，比如：
-elementNode.style
-elementNode.id
-elementNode.name //name属性这种只能在表单元素中。如果用在别的元素中会找不到，显示undefined
-elementNode.className //注意。class是关键字，要查找class属性必须写成className
+elementNode.style //继续.下去
+elementNode.id //直接取得 id名字的字符串
+element表单Node.name //name属性这种只能在表单元素中。如果用在别的元素中会找不到，显示undefined
+elementNode.className //注意。class是关键字，要查找class属性必须写成className，//直接取得 class名字的字符串
 ```
 
+```js
+1.getAttribute('attribute-name')
+
+elementNode.getAttribute('style')
+//如果没写 要查询的属性，返回的是 null。不是undefined。
+
+
+
+//这种 get方法获取 属性节点，相比较传统的直接.的优势有两个：
+
+第一：class不需要写className了，直接字符串就行
+elementNode.getAttribute('class');
+
+第二：如果你自定义了行间属性， 用.的方法是查询/修改不到的。
+必须通过 node.getAttribute('xxx');来访问。
+elementNode.getAttribute('xxx');
+
+2.setAttribute('attribute-name','attribue-value')
+设置一个attribute和他对应的值。
+与  node.attribute-name = nattibute-value;  这种赋值有什么区别呢？
+第一：  node.xxx =‘wori’；
+			//如果你要自定义行间属性，你必须用setAttribute方法，因为  node.attr=value的这种自定义方法不会显示在行内
+
+第二：设置class的时候，不写className。直接写class
+
+
+3.removeAtrribute('attribute-name')
+
+普通操作：  node.attribute-name = '';
+ 区别：
+ 一个只是用 空字符串覆盖
+ 
+ 真正的把 attribute从行间 抹去。直接看不到了。
+
+
 ```
-1.getAttribute
+
+```js
+ElementNode 元素节点 的一些属性：
+1. innerHTML 只可以用在双标签里面。比如div。
+//会把tag内所有写着的内容都输出， 包括子标签。
+//比如 <div> wo <em>cao</em>    </div>  他的innerHTML是：  wo <em>cao</em>  是带着标签的。
+而且标签在HTML文档里是可以解析出来的。这也就意味着：
+alert(innerHTML); ...// 会带着标签符号一起输出,因为alert解析不了html标签。
+docment.write(innerHTML); //标签会被解析
+node.innerHTML ='<h1> sss </h1>'.//标签会被解析
 
 
-2.setAttribute
+2.相比较于innnerHTML, innerText就是输出 纯文本标签（包括子节点的）。
 
-
-
-3.removeAtrribute
+比如上面的题目，如果换成 innerText的话， 
+ <div> wo <em>cao</em>    </div>  他的innerText是：  wo cao。//所有标签都被忽略，只提取文本
+ 也就是说，如果是查询， 会 查询出 纯文本。
+ 如果是赋值。 那
+ node.innerText ='<h1> sss </h1>'.//标签不会被解析， 页面直接 带着 标签一起显示。
+ 
+ 
+3.还有一种叫 outer.HTML
+ 
+他与innerHTML的差别就是， outerHTML 包括了父标签，
+比如：  <div> wo <em>cao</em> </div>
+ 他的 node.innerHTML 是：  '<div> wo <em>cao</em> </div>' //包括了div标签。
 ```
 

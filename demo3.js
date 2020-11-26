@@ -775,7 +775,7 @@ window.onload = function(){
     }
 
 
-
+    alert($('testFile').innerHTML);
 
 };
 
