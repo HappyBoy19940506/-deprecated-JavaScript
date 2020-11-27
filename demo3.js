@@ -774,7 +774,8 @@ window.onload = function(){
         },1000);
     }
 
-
+    var oDivv =  $('testFile');
+    alert(oDivv.firstElementChild.innerHTML);
     
 };
 

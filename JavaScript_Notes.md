@@ -4996,7 +4996,13 @@ $('startBar').onclick = function(){
 ## DOM中attribute节点的方法
 
 ```
-通过 元素节点.属性名 的方法 来访问 该元素节点的属性节点。
+通过 元素节点.属性名 或者 getAtrributes方法 的方法 来访问 该元素节点的属性节点的值。
+
+-获取元素节点属性的值  node.getAttributes('style')  //
+
+通过node.attributes获得 属性节点。注意是属性节点，不是属性节点的值。
+-获取元素节点的属性节点 node.attributes
+
 ```
 
 
@@ -5015,6 +5021,9 @@ elementNode.className //注意。class是关键字，要查找class属性必须�
 
 elementNode.getAttribute('style')
 //如果没写 要查询的属性，返回的是 null。不是undefined。
+但是，
+($('testFile').style);
+//这种情况下 没写style，alert出来的是 空字符串。既不是null也不是undefined。
 
 
 
@@ -5157,12 +5166,23 @@ node.innerHTML ='<h1> sss </h1>'.//标签会被解析
   //返回的是一个对象
 	-elemNode.lastChild 	访问当前节点下最后的一个子节点
    //返回的是一个对象
+  -elementNode.nextSibling
+  -elementNode.previousSibling
+	-elementNode.parentNode; 
   
  ****但是要注意， 以上这三种都会受到 代码缩减的影响：也就是 输入的空格回车换行都会变成【文本节点】
  **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** ****
  **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** ****
  **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** ****
  **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** ****
+   
+   另一套方法 只获取 子【元素】节点： -IE8以下不兼容
+   -elementNode.children			获取elementNode的所有子【元素】节点
+	 -elementNode.firstElementChild
+	 -elementNode.lastElementChild
+   -elementNode.nextElementSibling	获取elementNode的下一个兄弟节点
+   -elementNode.previousElementSibling 获取elementNode的上一个兄弟节点
+	 -elementNode.parenElementtNode;     只获取elementNode的父【元素】节点
 ```
 
 ```
@@ -5177,3 +5197,26 @@ AttrNode			2								属性名										属性值
 TextNode			3								#text										文本内容
 ```
 
+---
+
+## 如何获取属性节点
+
+```js
+ElementNode.attributes;
+//输出的是一个 attributes的map
+//map叫集合
+//map 的特点是：   无序 且 不重复
+如何获取特定的attributes
+ElementNode.attributes['attribteName'];
+//注意，这里拿到的是 一个 属性节点，而不是属性的值，也就是拿到的是 完整的 title= 'ssss'这样的一个【数学节点】
+我们可以通过：
+ElementNode.attributes['attribteName'].nodeType;   // 2
+ElementNode.attributes['attribteName'].nodeName;   // title
+ElementNode.attributes['attribteName'].nodeValue; // hello
+```
+
+-----
+
+## DOM节点操作
+
+s
