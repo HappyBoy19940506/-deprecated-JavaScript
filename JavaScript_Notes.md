@@ -5219,4 +5219,6 @@ ElementNode.attributes['attribteName'].nodeValue; // hello
 
 ## DOM节点操作
 
-sssshabi hhy
+sssshabi hhy2
+
+2
