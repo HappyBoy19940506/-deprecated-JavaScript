@@ -5219,14 +5219,4 @@ ElementNode.attributes['attribteName'].nodeValue; // hello
 
 ## DOM节点操作
 
-sssshabi hhy2
-
-2sss
-
-sssssssssss谁谁谁谁谁谁
-
-
-
-1， 国服 + fxy4Gmail —— wow1
-
-2. 外服wow
+2. 
