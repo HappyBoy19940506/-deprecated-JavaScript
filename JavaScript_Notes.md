@@ -5219,4 +5219,4 @@ ElementNode.attributes['attribteName'].nodeValue; // hello
 
 ## DOM节点操作
 
-2. dom的节点操作
+2. dom的节点操作杀完好的死
