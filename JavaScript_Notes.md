@@ -5223,6 +5223,6 @@ ElementNode.attributes['attribteName'].nodeValue; // hello
 
 1
 
-杀死
+杀死111
 
 问我
