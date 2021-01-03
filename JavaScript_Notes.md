@@ -5224,3 +5224,5 @@ ElementNode.attributes['attribteName'].nodeValue; // hello
 1
 
 杀死
+
+问我
