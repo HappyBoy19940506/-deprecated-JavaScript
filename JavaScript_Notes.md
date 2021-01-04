@@ -5219,10 +5219,4 @@ ElementNode.attributes['attribteName'].nodeValue; // hello
 
 ## DOM节点操作
 
-2. 遗失的义肢 666ss1
-
-1
-
-杀死111222wwwss
-
-问我
+2. 
