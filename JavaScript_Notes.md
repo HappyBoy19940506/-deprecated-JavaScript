@@ -5222,3 +5222,5 @@ ElementNode.attributes['attribteName'].nodeValue; // hello
 2. 111ß
 
 如何获取2
+
+22
