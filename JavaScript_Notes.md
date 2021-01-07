@@ -5219,10 +5219,4 @@ ElementNode.attributes['attribteName'].nodeValue; // hello
 
 ## DOM节点操作
 
-2. 111ß
-
-如何获取2
-
-22
-
-camping 
+2. planning to go for a camping, chill when come back, lets go for React!
