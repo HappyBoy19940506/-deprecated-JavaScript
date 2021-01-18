@@ -5221,6 +5221,3 @@ ElementNode.attributes['attribteName'].nodeValue; // hello
 
 2. 
 
-222ss122www1212sss221
-
-12122
