@@ -5221,4 +5221,3 @@ ElementNode.attributes['attribteName'].nodeValue; // hello
 
 2. 
 
-1212222问我12211
