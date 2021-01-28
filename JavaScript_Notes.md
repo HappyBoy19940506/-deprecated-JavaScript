@@ -5221,4 +5221,4 @@ ElementNode.attributes['attribteName'].nodeValue; // hello
 
 2. 
 
-共1212
+共1212问我
