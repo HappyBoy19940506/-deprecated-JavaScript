@@ -5219,6 +5219,4 @@ ElementNode.attributes['attribteName'].nodeValue; // hello
 
 ## DOM节点操作
 
-2. 
-
-共1212问我我问问ww
+745
