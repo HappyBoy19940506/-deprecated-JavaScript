@@ -5228,4 +5228,4 @@ ElementNode.attributes['attribteName'].nodeValue; // hello
 
 ## DOM节点操作
 
-getElementsByAttributes问我
+getElementsByAttributes问我www
