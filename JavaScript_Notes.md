@@ -5230,10 +5230,23 @@ ElementNode.attributes['attribteName'].nodeValue; // hello
 ## DOM节点操作
 
 ```
-script标签运行的顺序
+---script标签运行的顺序
 先运行 -html内部的，---再运行 head标签里面外联的js文件
 
-css运行的优先级
+----css运行的优先级
 标签行内的 优先级最大，   再到 head标签里面的css， 最后到 外联的css，
+
+--- 变量的链式作用域
+
+
+---- 函数预解析-
+ num(); //报错。
+ var num = function(){
+ xxxxx;
+ }
+ 
+ 变量函数 匿名函数 这种类型时候 一定要要 把调用写在下面。2
+ 
+
 ```
 

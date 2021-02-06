@@ -702,7 +702,7 @@ window.onload = function(){
     }
 
     // alert(getCSStyle('test',':hover'));
-    
+    //alert(getCSSStyle)('test',':hover'));
     // var tesTrestul = document.getElementById('eleTest').getElementsByTagName('div')[1].innerHTML;
     
     // alert(tesTrestul);
@@ -776,6 +776,15 @@ window.onload = function(){
 
     var oDivv =  $('testFile');
     alert(oDivv.firstElementChild.innerHTML);
+
+    var temper = function(){
+        alert('wirniamawcacas');
+    }
+    temper();
+    var funcc = function(arg1){
+        alert('wwadasdccccccc'+arg1);
+    }
+    funcc('bibibibi');
     
 };
 
