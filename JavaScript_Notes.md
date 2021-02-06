@@ -564,42 +564,41 @@ parseFloat('3.14a');
     >
     > ```js
     > alert(! '');
-    > // true
+    > // true ---- 1
     > alert(!'ss');
-    > //false
+    > //false ----0
     > alert(!0);
-    > //true;
+    > //true; ----1
     > alert(!10);
-    > //false;
+    > //false; ----0
     > alert(!NaN);
-    > //true;
+    > //true; ---- 1
     > alert(!null);
-    > //true;
+    > //true; ---- 1
     > alert(!undefined);
-    > //true;
+    > //true; -----1
     > alert(!Infinity);
-    > //false;
-    > 
+    > //false;  -----0
     > 
     > alert(!'0');
-    > //false;
+    > //false; -----
     > 
     > alert(Boolean('0'));
     > //true;
     > 
     > //总之一句话：   先转化成布尔值 再取！
-    > //  NaN， null ， undefined , 0 他们取布尔值 都是 0，也就是 false；
+    > //  NaN， null ， undefined , 0, '空' ,他们取布尔值 都是 0，也就是 false；
     > // 但是 ’0’ 取boolean（），不是0，是1.
     > ```
-    >
     > 
-
+    >
+    
 +  注意 短路操作：在 &&中，如果 exp1已经判为false了，那后面不管咋样都是无所谓了，直接出false结果。同理在 ||中，如果 exp1已true了，后面无所谓了，直接出true。
 
     ```js
     alert( 1 > 2 && num);
     
-    //此时num没有初始化，如果直接写 alert（num）肯定会报错，但是因为 短路操作机制的存在，
+    //此时num没有初始化，如果直接写 alert（num）肯定会报undefined，但是因为 短路操作机制的存在，
     //系统允许 1>2时，就已经判断是false，并且跳出 && 了
     //所以不会运行后面的 num;
     // 因此 最终 他alert显示为   false; 而不是 undefined；  
@@ -4257,7 +4256,7 @@ if (){
     
     **********
     小知识点:setInterval()是window.onload类的，会自动后置。
-    				setInterval(function ,1000ms)。第0秒是不运行函数的， 第1000ms才允许第一次函数。
+    				setInterval(function ,1000ms)。第0秒是不运行函数的， 第1000ms才运行第一次函数。
     **********
     
     关键知识点：
@@ -4376,7 +4375,7 @@ if (){
     ```
 
 4. ```js
-    js -基础班-
+    js -基础版-
       
     window.onload = function(){
         var i = 0;
@@ -4413,7 +4412,7 @@ if (){
         };
     
         $('pause').setAttribute('disabled','disabled');
-    
+    	
         $('pause').onclick = function(){
             // for(i in arr){
             //     clearInterval(arr[i]);
@@ -5227,4 +5226,12 @@ ElementNode.attributes['attribteName'].nodeValue; // hello
 -----
 
 ## DOM节点操作
+
+```
+script标签运行的顺序
+先运行 -html内部的，---再运行 head标签里面外联的js文件
+
+css运行的优先级
+标签行内的 优先级最大，   再到 head标签里面的css， 最后到 外联的css，
+```
 
