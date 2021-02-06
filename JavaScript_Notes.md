@@ -5228,6 +5228,3 @@ ElementNode.attributes['attribteName'].nodeValue; // hello
 
 ## DOM节点操作
 
-getElementsByAttributes问我www我问问 padding
-
-3333
