@@ -588,7 +588,7 @@ parseFloat('3.14a');
     > 
     > //总之一句话：   先转化成布尔值 再取！
     > //  NaN， null ， undefined , 0, '空' ,他们取布尔值 都是 0，也就是 false；
-    > // 但是 ’0’ 取boolean（），不是0，是1.
+    > // 但是 ’0’ 取boolean（），不是0，是1. 是true， 不是 false
     > ```
     > 
     >
@@ -617,8 +617,10 @@ parseFloat('3.14a');
     //false
     alert(Boolean(undefined));
     //false;
+    alert(Boolean('0'));
+//true
     ```
-
+    
 + 
 
 ----
