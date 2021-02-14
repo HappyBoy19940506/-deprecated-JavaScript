@@ -5254,6 +5254,6 @@ ElementNode.attributes['attribteName'].nodeValue; // hello
 //
 
 ```
-eeewwwaadddddd2222222222d
+eeewwwaadddddd2222222222wwwwwd
 ```
 
