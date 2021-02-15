@@ -5253,7 +5253,5 @@ ElementNode.attributes['attribteName'].nodeValue; // hello
 
 //
 
-```
-eeewwwaadddddd2222222222wwwwwd
-```
+对象
 
