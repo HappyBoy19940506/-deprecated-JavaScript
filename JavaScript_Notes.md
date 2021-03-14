@@ -5248,7 +5248,7 @@ ElementNode.attributes['attribteName'].nodeValue; // hello
  变量函数 匿名函数 这种类型时候 一定要要 把调用写在下面。12122112
  zhende ma?那你每天能写几行代码？
  铁混子？
- 21122112121221hjhjß
+ 21122112121221hjhjß1212
 ```
 
 
