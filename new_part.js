@@ -1,0 +1,1 @@
+alert('out-sourced file \n second line');
