@@ -5255,3 +5255,46 @@ ElementNode.attributes['attribteName'].nodeValue; // hello
 
 
 
+---
+
+## JS中的同步异步阻塞事件循环
+
++ 同步\异步
++ 阻塞
++ 时间循环
++ promise
+
+
+
+----
+
+## Location属性
+
+1. **js:14 Uncaught TypeError: Cannot set property 'onclick' of null**
+
+    > ​	一般这种情况就是  找不到绑定的onclick事件，要么id不对，要么js加载的时候dom还没有渲染到该节点
+
+2. ```js
+    var node = document.querySelector(button);
+    node.addEventListner('click' , function(){});
+    
+    or 
+    
+    window.onload = function(){
+    document.getElementByID('id').onclick = function(){};
+    };
+    
+    ```
+
+3. 如何解决 setTimeInterval第一次执行的延迟问题
+
+4. ```js
+    function( arg1 , arg2 , funcName() ); 如果带(),会优先执行一遍funcName，然后再执行外部的function
+    function( arg1 , arg2 , funcName ) ; 不写(),代表函数指针，和第三种一个含义
+    function(arg1, arg2 ,function(){}); 也就是相当于匿名函数，名字无所谓了，比如 settimeout
+    ```
+
+5. 
+
+
+
