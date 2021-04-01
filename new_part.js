@@ -12,17 +12,18 @@ function intervalStart(){
 
 
  window.onload = function(){
-    // document.getElementById('btn').onclick = function(){
-
-
-    //     var count = 4;
-    //     var set =setInterval(function(){
-    //         count--;
-    //         document.getElementById('btn').innerText=(count); 
-    //     },1000);
-    //     if(count < 0){
-    //         clearInterval(set);
-    //     };
+    document.getElementById('btn').onclick = function(){
+        var count = 5;
+        document.getElementById('btn').innerText=(
+            'done! you will be redirected to google in'+ count +'seconds'); 
+        var set =setInterval(function(){
+            count--;
+            document.getElementById('btn').innerText=(
+                'done! you will be redirected to google in'+ count +'seconds');  
+        },1000);
+        if(count < 0){
+            clearInterval(set);
+        };
 
 
 

@@ -5288,10 +5288,10 @@ ElementNode.attributes['attribteName'].nodeValue; // hello
 
 3. 如何解决 setTimeInterval第一次执行的延迟问题
 
+    > 执行前先运行一次func就行了。
+
 4. ```js
-    function( arg1 , arg2 , funcName() ); 如果带(),会优先执行一遍funcName，然后再执行外部的function
-    function( arg1 , arg2 , funcName ) ; 不写(),代表函数指针，和第三种一个含义
-    function(arg1, arg2 ,function(){}); 也就是相当于匿名函数，名字无所谓了，比如 settimeout
+    4.1
     ```
 
 5. 
