@@ -5291,7 +5291,7 @@ ElementNode.attributes['attribteName'].nodeValue; // hello
     > 执行前先运行一次func就行了。
 
 4. ```js
-    4.1121221212121
+    4
     ```
 
 5. 
