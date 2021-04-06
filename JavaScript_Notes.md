@@ -5292,7 +5292,7 @@ ElementNode.attributes['attribteName'].nodeValue; // hello
 
 4. ```js
     4123 literation
-    12121212112112121221121221
+    121212121121121212211212211212
     ```
 
 5. 
