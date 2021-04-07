@@ -5291,8 +5291,7 @@ ElementNode.attributes['attribteName'].nodeValue; // hello
     > 执行前先运行一次func就行了。
 
 4. ```js
-    4123 literation
-    121212121121121212211212211212121
+    
     ```
 
 5. 
