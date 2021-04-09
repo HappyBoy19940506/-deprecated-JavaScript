@@ -5291,7 +5291,7 @@ ElementNode.attributes['attribteName'].nodeValue; // hello
     > 执行前先运行一次func就行了。
 
 4. ```js
-    do you feel the power of code ?1212211212
+    do you feel the power of code ?12122112121212121212112
     ```
 
 5. 
