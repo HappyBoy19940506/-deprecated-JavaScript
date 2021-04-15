@@ -5290,7 +5290,7 @@ ElementNode.attributes['attribteName'].nodeValue; // hello
 
     > 执行前先运行一次func就行了。
 
-4. 好的 哈哈哈1231212121266612121
+4. 好的 哈哈哈1231212121266612121完全
 
 5. 
 
