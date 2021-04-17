@@ -5290,7 +5290,7 @@ ElementNode.attributes['attribteName'].nodeValue; // hello
 
     > 执行前先运行一次func就行了。
 
-4. helicopter212112121121
+4. helicopter212112121121112
 
 5. 
 
