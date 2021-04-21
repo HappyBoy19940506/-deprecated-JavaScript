@@ -5290,7 +5290,7 @@ ElementNode.attributes['attribteName'].nodeValue; // hello
 
     > 执行前先运行一次func就行了。
 
-4. www???what he hell
+4. www???what he hell121
 
 5. 
 
