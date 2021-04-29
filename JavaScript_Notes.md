@@ -5289,7 +5289,7 @@ ElementNode.attributes['attribteName'].nodeValue; // hello
 
     > 执行前先运行一次func就行了。
 
-4. 1231211212haode12211221woca112121212121112111212onimabi1121122
+4. 1231211212haode12211221woca112121212121112111212121212onimabi1121122
 
 
 
