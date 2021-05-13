@@ -5289,7 +5289,7 @@ ElementNode.attributes['attribteName'].nodeValue; // hello
 
     > 执行前先运行一次func就行了。
 
-4. 12312333345678910
+4. 123123333456789101112
 
 
 
